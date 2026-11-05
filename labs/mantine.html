@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laboratório Mantine · Atlas de Design</title>
+<meta name="description" content="Mantine 9.7.5 rodando de verdade: tema ao vivo, fila de laudos, formulário e galeria de componentes.">
+<link rel="stylesheet" href="../vendor/mantine/bundle.css">
+<link rel="stylesheet" href="../vendor/mantine/tokens.css">
+<style>
+  body{margin:0}
+  #boot{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;padding:40px 16px;text-align:center;color:#868e96}
+  .lab-code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;line-height:1.6;white-space:pre;overflow-x:auto;margin:0;padding:12px;border-radius:var(--mantine-radius-default);background:var(--mantine-color-default-hover);color:var(--mantine-color-text)}
+  .lab-code .k{color:var(--mantine-primary-color-filled)}
+  .lab-row{cursor:pointer}
+  .lab-toast{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:max(16px,env(safe-area-inset-bottom,0px));width:min(360px,calc(100% - 32px));z-index:1000}
+</style>
+</head>
+<body>
+<div id="root"><p id="boot">Carregando o Mantine…</p></div>
+<script src="../vendor/mantine/react.js"></script>
+<script src="../vendor/mantine/react-dom.js"></script>
+<script src="../vendor/mantine/bundle.js"></script>
+<script src="mantine-lab.js"></script>
+</body>
+</html>

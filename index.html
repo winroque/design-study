@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Atlas de Design</title>
+<meta name="description" content="Atlas interativo de filosofias, estilos e design systems de interface: amostras clicáveis, laboratórios com Mantine e Carbon reais e um guia de qual escolher.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/atlas.css">
+<script src="assets/atlas.js"></script>
+<style>
+.routes{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:12px}
+.route{background:var(--surface);border:1px solid var(--line);padding:18px;text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s}
+.route:hover{border-color:var(--ink);transform:translateY(-2px)}
+.route .n{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.route p{font-size:14px;color:var(--muted)}
+.route.lab{border-color:var(--accent)}
+.route.lab .n{color:var(--accent)}
+.tax{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.tax div{background:var(--surface);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:6px}
+.tax .k{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.tax p{font-size:14px;color:var(--muted)}
+.chart-box{background:var(--surface);border:1px solid var(--line);padding:16px;overflow-x:auto}
+.chart-box svg{display:block;min-width:760px;width:100%;height:auto}
+.timeline{display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:6px}
+.tl{display:grid;grid-template-columns:72px 1fr;gap:12px;padding:10px 0 10px 18px;position:relative}
+.tl::before{content:"";position:absolute;left:-7px;top:16px;width:12px;height:12px;border-radius:50%;background:var(--surface);border:2px solid var(--ink)}
+.tl.key::before{background:var(--accent);border-color:var(--accent)}
+.tl .y{font-family:var(--f-mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:1px}
+.tl .t{font-size:14.5px}
+.tl .t b{font-weight:600}
+.gloss{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0 24px}
+.gloss div{border-top:1px solid var(--line);padding:12px 0;display:flex;flex-direction:column;gap:4px}
+.gloss dt{font-family:var(--f-display);font-size:17px;font-weight:600;text-transform:none;letter-spacing:0;color:var(--ink);padding:0}
+.gloss dd{font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<header id="top"></header>
+<main class="wrap">
+
+<section class="hero">
+  <span class="eyebrow">Caderno de estudo · interfaces digitais · 2026</span>
+  <h1>Atlas de Design</h1>
+  <p class="lede">Um mapa das escolas de design de interface, do estilo suíço ao Liquid Glass. Toda amostra aqui responde ao toque, porque o jeito de reagir ao clique faz parte do estilo. A pergunta que separa essas escolas é uma só: quanto a tela deve fingir que é um objeto físico, e quanto deve sair do caminho da informação.</p>
+</section>
+
+<section aria-labelledby="rotas">
+  <div class="sec-head"><span class="eyebrow">Por onde começar</span><h2 id="rotas">Roteiro do atlas</h2></div>
+  <div class="routes">
+    <a class="route" href="estilos.html"><span class="n">13 escolas</span><h3>Estilos e filosofias</h3><p>Do skeumorfismo ao neobrutalismo, cada um com uma amostra completa, prós, contras e quando usar.</p></a>
+    <a class="route" href="sistemas.html"><span class="n">10 sistemas</span><h3>Design systems atuais</h3><p>A mesma tela de fila de exames em Material 3, Liquid Glass, Fluent, Carbon, Mantine e outros.</p></a>
+    <a class="route" href="incomuns.html"><span class="n">24 experimentos</span><h3>Interfaces incomuns</h3><p>Dynamicland, teletexto, HyperCard, Acme, menus radiais e outras ideias fora do padrão.</p></a>
+    <a class="route" href="comparar.html"><span class="n">matriz e guia</span><h3>Comparar e escolher</h3><p>Seis eixos de comparação, bibliotecas React lado a lado e 16 cenários com recomendação.</p></a>
+    <a class="route lab" href="labs/mantine.html"><span class="n">componentes reais</span><h3>Laboratório Mantine</h3><p>Mantine 9.7.5 rodando de verdade: tema ao vivo, fila de laudos, formulário e galeria.</p></a>
+    <a class="route lab" href="labs/carbon.html"><span class="n">componentes reais</span><h3>Laboratório Carbon</h3><p>Carbon 1.120 da IBM: quatro temas, densidade de tabela ajustável e o UI Shell completo.</p></a>
+  </div>
+</section>
+
+<section aria-labelledby="niveis">
+  <div class="sec-head"><span class="eyebrow">Antes de comparar</span><h2 id="niveis">Três coisas diferentes que chamamos de "design"</h2></div>
+  <div class="tax">
+    <div><span class="k">Filosofia</span><h3>Flat, skeumorfismo, suíço</h3><p>Uma posição sobre como a interface deve se comportar: imitar o mundo real ou ser pura informação.</p></div>
+    <div><span class="k">Estilo visual</span><h3>Glass, neumorfismo, neobrutalismo</h3><p>Uma camada estética aplicada por cima. Muda o acabamento, não as regras de uso. Envelhece rápido.</p></div>
+    <div><span class="k">Design system e biblioteca</span><h3>Material, Fluent, Carbon, Mantine</h3><p>Componentes, tokens, espaçamentos e regras de acessibilidade prontos. É o que se usa de fato para construir produtos.</p></div>
+  </div>
+</section>
+
+<section aria-labelledby="pendulo">
+  <div class="sec-head"><span class="eyebrow">A história em um gráfico</span><h2 id="pendulo">O pêndulo entre objeto e plano</h2><p class="lede">Cada geração corrige o excesso da anterior. O ornamento levou ao flat, a falta de pistas visuais levou ao Material, e a uniformidade levou ao vidro e ao neobrutalismo.</p></div>
+  <div class="chart-box">
+    <svg viewBox="0 0 820 260" role="img" aria-label="Linha do tempo de 2000 a 2026 mostrando quanto o padrão das plataformas imitou o mundo físico: alto com Aqua e o iOS skeumórfico, mínimo com o flat em 2013, médio com Material, Fluent e Big Sur, e subindo de novo com o Liquid Glass em 2025.">
+      <g font-family="IBM Plex Mono, monospace" font-size="11" fill="var(--muted)">
+        <line x1="50" y1="200" x2="800" y2="200" stroke="var(--line)"/>
+        <line x1="50" y1="40" x2="800" y2="40" stroke="var(--soft)" stroke-dasharray="3 4"/>
+        <line x1="50" y1="120" x2="800" y2="120" stroke="var(--soft)" stroke-dasharray="3 4"/>
+        <text x="50" y="222" text-anchor="middle">2000</text><text x="190" y="222" text-anchor="middle">2005</text><text x="330" y="222" text-anchor="middle">2010</text><text x="470" y="222" text-anchor="middle">2015</text><text x="610" y="222" text-anchor="middle">2020</text><text x="750" y="222" text-anchor="middle">2025</text>
+        <text x="44" y="44" text-anchor="end">objeto</text><text x="44" y="204" text-anchor="end">plano</text>
+      </g>
+      <polyline fill="none" stroke="var(--ink)" stroke-width="2" points="78,80 246,40 414,200 442,120 526,140 610,100 638,130 750,80"/>
+      <g fill="var(--ink)"><circle cx="78" cy="80" r="5"/><circle cx="246" cy="40" r="5"/><circle cx="414" cy="200" r="5"/><circle cx="442" cy="120" r="5"/><circle cx="526" cy="140" r="5"/><circle cx="610" cy="100" r="5"/><circle cx="638" cy="130" r="5"/></g>
+      <circle cx="750" cy="80" r="7" fill="var(--accent)"/>
+      <g fill="var(--surface)" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="2 2"><circle cx="582" cy="120" r="5"/><circle cx="638" cy="200" r="5"/><circle cx="666" cy="80" r="5"/></g>
+      <g font-family="IBM Plex Sans, sans-serif" font-size="12.5" fill="var(--ink)">
+        <text x="78" y="66" text-anchor="middle">Aqua</text>
+        <text x="246" y="28" text-anchor="middle">iOS skeumórfico</text>
+        <text x="404" y="190" text-anchor="end">iOS 7 · flat</text>
+        <text x="442" y="106" text-anchor="middle">Material</text>
+        <text x="526" y="160" text-anchor="middle">Fluent</text>
+        <text x="610" y="86" text-anchor="middle">Big Sur</text>
+        <text x="650" y="148" text-anchor="start">Material You</text>
+        <text x="750" y="104" text-anchor="middle" fill="var(--accent)" font-weight="600">Liquid Glass</text>
+      </g>
+      <g font-family="IBM Plex Sans, sans-serif" font-size="11.5" fill="var(--muted)">
+        <text x="582" y="140" text-anchor="end" dx="-6">Neumorfismo</text>
+        <text x="648" y="196" text-anchor="start">Neobrutalismo</text>
+        <text x="666" y="64" text-anchor="middle">Clay</text>
+      </g>
+    </svg>
+  </div>
+  <p class="note">Linha cheia: padrão adotado pelas plataformas (Apple, Google e Microsoft). Círculos tracejados: modas de comunidade que não viraram padrão de sistema. A altura é avaliação qualitativa.</p>
+</section>
+
+<section aria-labelledby="linha">
+  <div class="sec-head"><span class="eyebrow">Marcos</span><h2 id="linha">Linha do tempo</h2></div>
+  <div class="timeline">
+    <div class="tl"><span class="y">1950s</span><span class="t"><b>Estilo Suíço.</b> Grid matemático e tipografia sem serifa no design gráfico. A raiz intelectual do flat.</span></div>
+    <div class="tl key"><span class="y">1973</span><span class="t"><b>Xerox Alto.</b> Janelas, ícones e mouse num computador de pesquisa. A interface gráfica nasce aqui.</span></div>
+    <div class="tl"><span class="y">1974</span><span class="t"><b>Teletexto.</b> Páginas numeradas na TV e quatro botões coloridos no controle remoto.</span></div>
+    <div class="tl"><span class="y">1981</span><span class="t"><b>Xerox Star.</b> Primeira metáfora completa de escritório: pastas, documentos, lixeira.</span></div>
+    <div class="tl key"><span class="y">1984</span><span class="t"><b>Macintosh.</b> A interface gráfica chega ao público.</span></div>
+    <div class="tl"><span class="y">1987</span><span class="t"><b>HyperCard.</b> O usuário programa pilhas de cartões. Avô dos wikis e do no-code.</span></div>
+    <div class="tl"><span class="y">1995</span><span class="t"><b>Windows 95 e Microsoft Bob.</b> O botão Iniciar vence; a casa virtual fracassa e deixa a Comic Sans como herança.</span></div>
+    <div class="tl"><span class="y">2001</span><span class="t"><b>Aqua no Mac OS X.</b> Gel translúcido e botões que "dá vontade de lamber".</span></div>
+    <div class="tl key"><span class="y">2007</span><span class="t"><b>iPhone.</b> Toque direto e skeumorfismo como pedagogia para quem nunca usou touch.</span></div>
+    <div class="tl"><span class="y">2010</span><span class="t"><b>Metro no Windows Phone 7.</b> Tipografia gigante, Live Tiles e nenhuma sombra.</span></div>
+    <div class="tl key"><span class="y">2013</span><span class="t"><b>iOS 7.</b> A Apple abandona o skeumorfismo de uma vez. O flat vira padrão.</span></div>
+    <div class="tl key"><span class="y">2014</span><span class="t"><b>Material Design.</b> O Google devolve profundidade ao flat com papel, sombra e regras explícitas.</span></div>
+    <div class="tl"><span class="y">2017</span><span class="t"><b>Fluent.</b> A Microsoft traz luz, profundidade e materiais de volta ao Windows.</span></div>
+    <div class="tl"><span class="y">2019</span><span class="t"><b>Neumorfismo.</b> Viraliza no Dribbble e falha nos testes de contraste.</span></div>
+    <div class="tl"><span class="y">2020</span><span class="t"><b>macOS Big Sur.</b> Vidro fosco e cantos arredondados no desktop.</span></div>
+    <div class="tl"><span class="y">2021</span><span class="t"><b>Material You.</b> Cor dinâmica extraída do papel de parede. Neobrutalismo ganha força na web.</span></div>
+    <div class="tl"><span class="y">2024</span><span class="t"><b>Chakra UI 3.</b> Reescrita sobre o Ark UI e máquinas de estado.</span></div>
+    <div class="tl key"><span class="y">2025</span><span class="t"><b>Liquid Glass e Material 3 Expressive.</b> Apple aposta no vidro; Google, em formas e movimento. Interface generativa chega ao Gemini.</span></div>
+    <div class="tl"><span class="y">2026</span><span class="t"><b>Mantine 9 e iOS 27.</b> Mantine passa a exigir React 19.2; a Apple adiciona controle de transparência ao Liquid Glass.</span></div>
+  </div>
+</section>
+
+<section aria-labelledby="glossario">
+  <div class="sec-head"><span class="eyebrow">Vocabulário</span><h2 id="glossario">Glossário</h2></div>
+  <dl class="gloss">
+    <div><dt>Affordance</dt><dd>A pista visual que diz o que um elemento faz. Um botão em relevo "pede" para ser apertado; um texto solto não.</dd></div>
+    <div><dt>Skeumorfismo</dt><dd>Imitar na tela a aparência de um objeto físico: couro, papel, metal.</dd></div>
+    <div><dt>Design token</dt><dd>Uma decisão de design com nome: <code>--color-primary</code>, <code>--radius-md</code>. Trocar o token muda o produto inteiro.</dd></div>
+    <div><dt>Design system</dt><dd>Tokens, componentes, regras de uso e documentação mantidos juntos. Material, Carbon e Fluent são exemplos.</dd></div>
+    <div><dt>Densidade</dt><dd>Quanta informação cabe por área. Celulares de consumo são esparsos; terminais e painéis clínicos são densos.</dd></div>
+    <div><dt>Hierarquia visual</dt><dd>A ordem em que o olho percorre a tela, definida por tamanho, peso, cor e posição.</dd></div>
+    <div><dt>Lei de Fitts</dt><dd>O tempo para acertar um alvo cresce com a distância e diminui com o tamanho. Explica menus radiais e botões nos cantos.</dd></div>
+    <div><dt>Tinta de dados</dt><dd>Conceito de Edward Tufte: a fração da tinta de um gráfico que representa dados. Quanto maior, melhor.</dd></div>
+    <div><dt>Interface diegética</dt><dd>Informação que existe dentro do mundo representado, como uma barra de vida desenhada no corpo do personagem.</dd></div>
+    <div><dt>Interface generativa</dt><dd>Tela montada por IA no momento da pergunta, em vez de desenhada uma vez e reutilizada.</dd></div>
+    <div><dt>WCAG</dt><dd>Diretrizes de acessibilidade da web. Exigem contraste mínimo de 4,5:1 para texto comum.</dd></div>
+    <div><dt>Tecnologia calma</dt><dd>Interfaces que informam pela periferia da atenção, sem exigir leitura. O Ambient Orb é o exemplo clássico.</dd></div>
+  </dl>
+</section>
+
+</main>
+<footer id="foot"></footer>
+</body>
+</html>
