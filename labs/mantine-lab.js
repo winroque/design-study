@@ -1,7 +1,8 @@
-/* Laboratório Mantine — componentes reais do @mantine/core 9.7.5, sem build (React.createElement). */
+/* Laboratório Mantine — componentes reais do @mantine/core 9.7.5, sem build (React.createElement).
+   Tema dos exemplos: pedidos de uma cafeteria fictícia. */
 (function () {
-  var React = window.React, M = window.Mantine, H = M.hooks || {};
-  var h = React.createElement, F = React.Fragment, useState = React.useState, useEffect = React.useEffect, useMemo = React.useMemo;
+  var React = window.React, M = window.Mantine;
+  var h = React.createElement, useState = React.useState, useEffect = React.useEffect, useMemo = React.useMemo;
 
   function store(k, d) { try { var v = localStorage.getItem('atlas-mantine-' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } }
   function save(k, v) { try { localStorage.setItem('atlas-mantine-' + k, JSON.stringify(v)); } catch (e) {} }
@@ -23,26 +24,27 @@
     flame: ['M12 22c4 0 7-3 7-7 0-4-3-6-4-10-2 2-3 4-3 6-1-1-2-2-2-4-3 3-5 5-5 8 0 4 3 7 7 7z'],
     eye: ['M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z', 'M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6z'],
     plus: ['M12 5v14', 'M5 12h14'],
-    sign: ['M3 17c3-1 4-6 6-6s1 5 3 5 2-3 3-3 1 2 2 2', 'M3 21h18']
+    cup: ['M17 8h1a4 4 0 0 1 0 8h-1', 'M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z', 'M6 2v3', 'M10 2v3', 'M14 2v3']
   };
 
   var COLORS = ['blue', 'indigo', 'violet', 'grape', 'pink', 'red', 'orange', 'teal', 'green', 'cyan'];
   var RADII = ['xs', 'sm', 'md', 'lg', 'xl'];
   var VARIANTS = ['filled', 'light', 'outline', 'subtle', 'default', 'gradient'];
   var SIZES = ['xs', 'sm', 'md', 'lg'];
-  var ST = { Fila: 'blue', Urgente: 'red', Pronto: 'teal' };
+  var ST = { 'Na fila': 'blue', 'Prioridade': 'red', 'Pronto': 'teal' };
+  var BEBIDAS = ['Cappuccino', 'Espresso duplo', 'Latte de aveia', 'Flat white', 'Mocha', 'Cold brew', 'Chá-mate gelado', 'Matcha latte', 'Chocolate quente'];
 
   var SEED = [
-    { id: 1, pac: 'M. A. S.', idade: 54, exame: 'TC de crânio', mod: 'TC', st: 'Urgente', hora: '22:41' },
-    { id: 2, pac: 'J. P. R.', idade: 31, exame: 'RX de tórax', mod: 'RX', st: 'Fila', hora: '22:38' },
-    { id: 3, pac: 'L. C. M.', idade: 67, exame: 'Angio-TC de tórax', mod: 'TC', st: 'Urgente', hora: '22:30' },
-    { id: 4, pac: 'A. B. F.', idade: 45, exame: 'US de abdome total', mod: 'US', st: 'Fila', hora: '22:22' },
-    { id: 5, pac: 'R. T. O.', idade: 72, exame: 'TC de abdome', mod: 'TC', st: 'Pronto', hora: '22:10' },
-    { id: 6, pac: 'C. D. L.', idade: 28, exame: 'RM de joelho', mod: 'RM', st: 'Fila', hora: '21:58' },
-    { id: 7, pac: 'F. N. G.', idade: 59, exame: 'TC de coluna lombar', mod: 'TC', st: 'Pronto', hora: '21:47' },
-    { id: 8, pac: 'P. H. A.', idade: 39, exame: 'RX de punho', mod: 'RX', st: 'Fila', hora: '21:40' },
-    { id: 9, pac: 'S. M. V.', idade: 81, exame: 'TC de crânio', mod: 'TC', st: 'Pronto', hora: '21:31' },
-    { id: 10, pac: 'G. E. K.', idade: 50, exame: 'RM de crânio', mod: 'RM', st: 'Fila', hora: '21:15' }
+    { id: 1, cli: 'Ana', qtd: 1, item: 'Cappuccino', tam: 'M', st: 'Prioridade', hora: '08:41' },
+    { id: 2, cli: 'Bruno', qtd: 2, item: 'Espresso duplo', tam: 'P', st: 'Na fila', hora: '08:38' },
+    { id: 3, cli: 'Carla', qtd: 1, item: 'Latte de aveia', tam: 'G', st: 'Prioridade', hora: '08:30' },
+    { id: 4, cli: 'Diego', qtd: 1, item: 'Cold brew', tam: 'G', st: 'Na fila', hora: '08:22' },
+    { id: 5, cli: 'Elisa', qtd: 3, item: 'Pão de queijo', tam: 'P', st: 'Pronto', hora: '08:10' },
+    { id: 6, cli: 'Fábio', qtd: 1, item: 'Mocha', tam: 'M', st: 'Na fila', hora: '07:58' },
+    { id: 7, cli: 'Gabi', qtd: 1, item: 'Matcha latte', tam: 'M', st: 'Pronto', hora: '07:47' },
+    { id: 8, cli: 'Hugo', qtd: 2, item: 'Flat white', tam: 'P', st: 'Na fila', hora: '07:40' },
+    { id: 9, cli: 'Íris', qtd: 1, item: 'Chá-mate gelado', tam: 'G', st: 'Pronto', hora: '07:31' },
+    { id: 10, cli: 'João', qtd: 1, item: 'Chocolate quente', tam: 'M', st: 'Na fila', hora: '07:15' }
   ];
 
   function Label(p) { return h(M.Text, { size: 'xs', fw: 600, tt: 'uppercase', c: 'dimmed', style: { letterSpacing: '.04em' } }, p.children); }
@@ -52,7 +54,7 @@
     var lines = [
       ['k', "import "], ['', "{ MantineProvider, createTheme } "], ['k', "from "], ['', "'@mantine/core';\n\n"],
       ['k', "const "], ['', "theme = createTheme({\n  primaryColor: '" + t.color + "',\n  defaultRadius: '" + t.radius + "',\n});\n\n"],
-      ['', "<MantineProvider theme={theme} forceColorScheme=\"" + t.scheme + "\">\n  <Button variant=\"" + t.variant + "\" size=\"" + t.size + "\">\n    Salvar laudo\n  </Button>\n</MantineProvider>"]
+      ['', "<MantineProvider theme={theme} forceColorScheme=\"" + t.scheme + "\">\n  <Button variant=\"" + t.variant + "\" size=\"" + t.size + "\">\n    Fazer pedido\n  </Button>\n</MantineProvider>"]
     ];
     return h('pre', { className: 'lab-code', 'aria-label': 'Código equivalente' }, lines.map(function (l, i) { return h('span', { key: i, className: l[0] }, l[1]); }));
   }
@@ -83,125 +85,125 @@
         p.ring != null ? h(M.RingProgress, { size: 56, thickness: 6, roundCaps: true, sections: [{ value: p.ring, color: p.color || 'var(--mantine-primary-color-filled)' }] }) : null));
   }
 
-  function Queue(p) {
+  function Orders(p) {
     var rows = p.rows, t = p.theme;
     var q = useState(''), f = useState('Todos'), page = useState(1), open = useState(null);
     var filtered = rows.filter(function (r) {
       var okS = f[0] === 'Todos' || r.st === f[0];
       var s = q[0].trim().toLowerCase();
-      return okS && (!s || (r.pac + ' ' + r.exame + ' ' + r.mod).toLowerCase().indexOf(s) > -1);
+      return okS && (!s || (r.cli + ' ' + r.item).toLowerCase().indexOf(s) > -1);
     });
     var per = 6, total = Math.max(1, Math.ceil(filtered.length / per)), pg = Math.min(page[0], total);
     var shown = filtered.slice((pg - 1) * per, pg * per);
-    var fila = rows.filter(function (r) { return r.st !== 'Pronto'; }).length, urg = rows.filter(function (r) { return r.st === 'Urgente'; }).length, done = rows.length - fila;
+    var fila = rows.filter(function (r) { return r.st !== 'Pronto'; }).length, pri = rows.filter(function (r) { return r.st === 'Prioridade'; }).length, done = rows.length - fila;
     var cur = open[0] != null ? rows.filter(function (r) { return r.id === open[0]; })[0] : null;
 
     return h(M.Stack, { gap: 'md' },
       h(M.SimpleGrid, { cols: { base: 1, xs: 2, lg: 4 }, spacing: 'sm' },
-        h(Stat, { label: 'Na fila', value: fila, sub: 'aguardando laudo', ring: Math.round(fila / rows.length * 100) }),
-        h(Stat, { label: 'Urgentes', value: urg, sub: 'prioridade máxima', ring: Math.round(urg / rows.length * 100), color: 'red' }),
-        h(Stat, { label: 'Laudados', value: done, sub: 'neste plantão', ring: Math.round(done / rows.length * 100), color: 'teal' }),
-        h(Stat, { label: 'Tempo médio', value: '14 min', sub: 'por exame (exemplo)' })),
+        h(Stat, { label: 'Na fila', value: fila, sub: 'aguardando preparo', ring: Math.round(fila / rows.length * 100) }),
+        h(Stat, { label: 'Prioridade', value: pri, sub: 'passam na frente', ring: Math.round(pri / rows.length * 100), color: 'red' }),
+        h(Stat, { label: 'Entregues', value: done, sub: 'nesta manhã', ring: Math.round(done / rows.length * 100), color: 'teal' }),
+        h(Stat, { label: 'Tempo médio', value: '4 min', sub: 'por pedido (exemplo)' })),
       h(M.Group, { justify: 'space-between', gap: 'sm' },
-        h(M.TextInput, { size: t.size, placeholder: 'Buscar paciente ou exame', leftSection: icon(I.search), value: q[0], onChange: function (e) { q[1](e.currentTarget.value); page[1](1); }, style: { flex: '1 1 220px' }, 'aria-label': 'Buscar' }),
-        h(M.SegmentedControl, { size: t.size, data: ['Todos', 'Fila', 'Urgente', 'Pronto'], value: f[0], onChange: function (v) { f[1](v); page[1](1); } })),
+        h(M.TextInput, { size: t.size, placeholder: 'Buscar cliente ou bebida', leftSection: icon(I.search), value: q[0], onChange: function (e) { q[1](e.currentTarget.value); page[1](1); }, style: { flex: '1 1 220px' }, 'aria-label': 'Buscar' }),
+        h(M.SegmentedControl, { size: t.size, data: ['Todos', 'Na fila', 'Prioridade', 'Pronto'], value: f[0], onChange: function (v) { f[1](v); page[1](1); } })),
       h(M.Paper, { withBorder: true },
         h(M.Table.ScrollContainer, { minWidth: 620 },
           h(M.Table, { striped: true, highlightOnHover: true, verticalSpacing: t.size, horizontalSpacing: 'md' },
-            h(M.Table.Thead, null, h(M.Table.Tr, null, ['Paciente', 'Exame', 'Modalidade', 'Status', 'Chegada', ''].map(function (c, i) { return h(M.Table.Th, { key: i }, c); }))),
+            h(M.Table.Thead, null, h(M.Table.Tr, null, ['Cliente', 'Pedido', 'Tamanho', 'Status', 'Horário', ''].map(function (c, i) { return h(M.Table.Th, { key: i }, c); }))),
             h(M.Table.Tbody, null, shown.length ? shown.map(function (r) {
               return h(M.Table.Tr, { key: r.id, className: 'lab-row', onClick: function () { open[1](r.id); } },
-                h(M.Table.Td, null, h(M.Group, { gap: 'sm', wrap: 'nowrap' }, h(M.Avatar, { size: 'sm', color: ST[r.st], radius: 'xl' }, r.pac.replace(/[^A-Z]/g, '').slice(0, 2)), h('div', null, h(M.Text, { size: 'sm', fw: 600 }, r.pac), h(M.Text, { size: 'xs', c: 'dimmed' }, r.idade + ' anos')))),
-                h(M.Table.Td, null, r.exame),
-                h(M.Table.Td, null, h(M.Badge, { variant: 'outline', color: 'gray' }, r.mod)),
-                h(M.Table.Td, null, h(M.Badge, { variant: r.st === 'Urgente' ? 'filled' : 'light', color: ST[r.st] }, r.st)),
+                h(M.Table.Td, null, h(M.Group, { gap: 'sm', wrap: 'nowrap' }, h(M.Avatar, { size: 'sm', color: ST[r.st], radius: 'xl' }, r.cli.slice(0, 2).toUpperCase()), h(M.Text, { size: 'sm', fw: 600 }, r.cli))),
+                h(M.Table.Td, null, (r.qtd > 1 ? r.qtd + '× ' : '') + r.item),
+                h(M.Table.Td, null, h(M.Badge, { variant: 'outline', color: 'gray' }, r.tam)),
+                h(M.Table.Td, null, h(M.Badge, { variant: r.st === 'Prioridade' ? 'filled' : 'light', color: ST[r.st] }, r.st)),
                 h(M.Table.Td, null, h(M.Text, { size: 'sm', ff: 'monospace' }, r.hora)),
                 h(M.Table.Td, { onClick: function (e) { e.stopPropagation(); } },
                   h(M.Menu, { position: 'bottom-end', shadow: 'md', withinPortal: true },
-                    h(M.Menu.Target, null, h(M.ActionIcon, { variant: 'subtle', color: 'gray', 'aria-label': 'Ações de ' + r.pac }, icon(I.dots))),
+                    h(M.Menu.Target, null, h(M.ActionIcon, { variant: 'subtle', color: 'gray', 'aria-label': 'Ações do pedido de ' + r.cli }, icon(I.dots))),
                     h(M.Menu.Dropdown, null,
-                      h(M.Menu.Label, null, r.exame),
+                      h(M.Menu.Label, null, r.item),
                       h(M.Menu.Item, { leftSection: icon(I.eye, 14), onClick: function () { open[1](r.id); } }, 'Abrir'),
-                      h(M.Menu.Item, { leftSection: icon(I.flame, 14), onClick: function () { p.setSt(r.id, 'Urgente'); } }, 'Marcar urgente'),
+                      h(M.Menu.Item, { leftSection: icon(I.flame, 14), onClick: function () { p.setSt(r.id, 'Prioridade'); } }, 'Dar prioridade'),
                       h(M.Menu.Divider),
-                      h(M.Menu.Item, { color: 'teal', leftSection: icon(I.check, 14), onClick: function () { p.setSt(r.id, 'Pronto'); p.toast('Laudo assinado', r.exame + ' de ' + r.pac + ' liberado.', 'teal'); } }, 'Assinar laudo')))));
-            }) : h(M.Table.Tr, null, h(M.Table.Td, { colSpan: 6 }, h(M.Text, { c: 'dimmed', ta: 'center', py: 'lg', size: 'sm' }, 'Nenhum exame encontrado para esse filtro.'))))))),
+                      h(M.Menu.Item, { color: 'teal', leftSection: icon(I.check, 14), onClick: function () { p.setSt(r.id, 'Pronto'); p.toast('Pedido entregue', r.item + ' para ' + r.cli + '.', 'teal'); } }, 'Entregar pedido')))));
+            }) : h(M.Table.Tr, null, h(M.Table.Td, { colSpan: 6 }, h(M.Text, { c: 'dimmed', ta: 'center', py: 'lg', size: 'sm' }, 'Nenhum pedido encontrado para esse filtro.'))))))),
       h(M.Group, { justify: 'space-between' },
-        h(M.Text, { size: 'sm', c: 'dimmed' }, filtered.length + ' exames · toque numa linha para abrir'),
+        h(M.Text, { size: 'sm', c: 'dimmed' }, filtered.length + ' pedidos · toque numa linha para abrir'),
         h(M.Pagination, { total: total, value: pg, onChange: page[1], size: 'sm' })),
-      h(M.Modal, { opened: !!cur, onClose: function () { open[1](null); }, title: cur ? cur.exame : '', centered: true },
+      h(M.Modal, { opened: !!cur, onClose: function () { open[1](null); }, title: cur ? cur.item : '', centered: true },
         cur ? h(M.Stack, { gap: 'sm' },
-          h(M.Group, { gap: 'xs' }, h(M.Badge, { variant: 'outline', color: 'gray' }, cur.mod), h(M.Badge, { variant: 'light', color: ST[cur.st] }, cur.st), h(M.Text, { size: 'sm', c: 'dimmed' }, 'chegou às ' + cur.hora)),
-          h(M.Text, { size: 'sm' }, 'Paciente ' + cur.pac + ', ' + cur.idade + ' anos. Dados fictícios para demonstração.'),
-          h(M.Textarea, { label: 'Impressão', placeholder: 'Digite a conclusão do laudo', autosize: true, minRows: 3, size: t.size }),
+          h(M.Group, { gap: 'xs' }, h(M.Badge, { variant: 'outline', color: 'gray' }, 'Tamanho ' + cur.tam), h(M.Badge, { variant: 'light', color: ST[cur.st] }, cur.st), h(M.Text, { size: 'sm', c: 'dimmed' }, 'pedido às ' + cur.hora)),
+          h(M.Text, { size: 'sm' }, cur.qtd + ' unidade' + (cur.qtd > 1 ? 's' : '') + ' para ' + cur.cli + '. Dados fictícios.'),
+          h(M.Textarea, { label: 'Observação', placeholder: 'Ex.: sem açúcar, leite vegetal', autosize: true, minRows: 2, size: t.size }),
           h(M.Group, { justify: 'flex-end', mt: 'sm' },
             h(M.Button, { variant: 'default', size: t.size, onClick: function () { open[1](null); } }, 'Fechar'),
-            h(M.Button, { variant: t.variant, size: t.size, leftSection: icon(I.sign), onClick: function () { p.setSt(cur.id, 'Pronto'); p.toast('Laudo assinado', cur.exame + ' de ' + cur.pac + ' liberado.', 'teal'); open[1](null); } }, 'Assinar laudo'))) : null)
+            h(M.Button, { variant: t.variant, size: t.size, leftSection: icon(I.cup), gradient: { from: t.color, to: 'cyan', deg: 45 }, onClick: function () { p.setSt(cur.id, 'Pronto'); p.toast('Pedido entregue', cur.item + ' para ' + cur.cli + '.', 'teal'); open[1](null); } }, 'Entregar pedido'))) : null)
     );
   }
 
-  function NewReport(p) {
+  function NewOrder(p) {
     var t = p.theme;
-    var pac = useState('M. A. S.'), idade = useState(54), ex = useState('TC de crânio'), mod = useState('TC'), achado = useState(''), cmp = useState(true), urg = useState(false), saving = useState(false);
-    var filled = [pac[0].trim(), String(idade[0] || ''), ex[0], achado[0].trim()].filter(Boolean).length;
+    var cli = useState('Lia'), qtd = useState(1), item = useState('Cappuccino'), tam = useState('M'), obs = useState(''), viagem = useState(true), pri = useState(false), saving = useState(false);
+    var filled = [cli[0].trim(), String(qtd[0] || ''), item[0], obs[0].trim()].filter(Boolean).length;
     var pct = Math.round(filled / 4 * 100);
     function submit() {
-      if (!pac[0].trim()) return;
+      if (!cli[0].trim()) return;
       saving[1](true);
       setTimeout(function () {
         saving[1](false);
-        p.add({ pac: pac[0].trim(), idade: idade[0] || 0, exame: ex[0], mod: mod[0], st: urg[0] ? 'Urgente' : 'Fila' });
-        p.toast('Exame adicionado à fila', ex[0] + ' de ' + pac[0].trim() + (urg[0] ? ' como urgente.' : '.'), urg[0] ? 'red' : (t.color));
-        achado[1]('');
+        p.add({ cli: cli[0].trim(), qtd: qtd[0] || 1, item: item[0], tam: tam[0], st: pri[0] ? 'Prioridade' : 'Na fila' });
+        p.toast('Pedido adicionado', item[0] + ' ' + tam[0] + ' para ' + cli[0].trim() + (pri[0] ? ', com prioridade.' : '.'), pri[0] ? 'red' : t.color);
+        obs[1]('');
       }, 700);
     }
     return h(M.Paper, { withBorder: true, p: 'lg', component: 'form', onSubmit: function (e) { e.preventDefault(); submit(); } },
       h(M.Stack, { gap: 'md' },
         h(M.Group, { justify: 'space-between', align: 'flex-start' },
-          h('div', null, h(M.Title, { order: 3 }, 'Novo laudo'), h(M.Text, { size: 'sm', c: 'dimmed' }, 'O formulário usa o tamanho e a variante escolhidos no painel de tema.')),
-          h(M.Group, { gap: 6 }, h(M.Badge, { variant: 'light' }, 'Rascunho'), urg[0] ? h(M.Badge, { color: 'red', variant: 'filled' }, 'Urgente') : null)),
+          h('div', null, h(M.Title, { order: 3 }, 'Novo pedido'), h(M.Text, { size: 'sm', c: 'dimmed' }, 'O formulário usa o tamanho e a variante escolhidos no painel de tema.')),
+          h(M.Group, { gap: 6 }, h(M.Badge, { variant: 'light' }, viagem[0] ? 'Para viagem' : 'Na mesa'), pri[0] ? h(M.Badge, { color: 'red', variant: 'filled' }, 'Prioridade') : null)),
         h(M.SimpleGrid, { cols: { base: 1, sm: 2 }, spacing: 'md' },
-          h(M.TextInput, { label: 'Paciente', required: true, size: t.size, value: pac[0], onChange: function (e) { pac[1](e.currentTarget.value); }, error: pac[0].trim() ? null : 'Informe o paciente' }),
-          h(M.NumberInput, { label: 'Idade', size: t.size, min: 0, max: 120, suffix: ' anos', value: idade[0], onChange: idade[1] })),
-        h(M.Select, { label: 'Exame', size: t.size, searchable: true, data: ['TC de crânio', 'TC de tórax', 'Angio-TC de tórax', 'TC de abdome', 'RM de crânio', 'RM de joelho', 'US de abdome total', 'RX de tórax'], value: ex[0], onChange: function (v) { if (v) { ex[1](v); mod[1](v.split(' ')[0].replace('Angio-', '')); } }, allowDeselect: false }),
-        h(M.Stack, { gap: 4 }, h(M.Text, { size: 'sm', fw: 600 }, 'Modalidade'), h(M.SegmentedControl, { size: t.size, data: ['TC', 'RM', 'US', 'RX'], value: mod[0], onChange: mod[1] })),
-        h(M.Textarea, { label: 'Achado principal', description: 'Uma frase. O texto completo vai no editor de laudo.', size: t.size, autosize: true, minRows: 2, placeholder: 'Ex.: hematoma subdural agudo à esquerda, 8 mm', value: achado[0], onChange: function (e) { achado[1](e.currentTarget.value); } }),
+          h(M.TextInput, { label: 'Nome no copo', required: true, size: t.size, value: cli[0], onChange: function (e) { cli[1](e.currentTarget.value); }, error: cli[0].trim() ? null : 'Informe um nome' }),
+          h(M.NumberInput, { label: 'Quantidade', size: t.size, min: 1, max: 10, value: qtd[0], onChange: qtd[1] })),
+        h(M.Select, { label: 'Bebida', size: t.size, searchable: true, data: BEBIDAS, value: item[0], onChange: function (v) { if (v) item[1](v); }, allowDeselect: false }),
+        h(M.Stack, { gap: 4 }, h(M.Text, { size: 'sm', fw: 600 }, 'Tamanho'), h(M.SegmentedControl, { size: t.size, data: [{ label: 'P · 240 ml', value: 'P' }, { label: 'M · 350 ml', value: 'M' }, { label: 'G · 480 ml', value: 'G' }], value: tam[0], onChange: tam[1] })),
+        h(M.Textarea, { label: 'Observação', description: 'Opcional. Vai impressa na etiqueta do copo.', size: t.size, autosize: true, minRows: 2, placeholder: 'Ex.: sem açúcar, leite de aveia', value: obs[0], onChange: function (e) { obs[1](e.currentTarget.value); } }),
         h(M.Group, { gap: 'xl' },
-          h(M.Checkbox, { label: 'Comparar com exame anterior', size: t.size === 'lg' ? 'md' : 'sm', checked: cmp[0], onChange: function (e) { cmp[1](e.currentTarget.checked); } }),
-          h(M.Switch, { label: 'Laudo urgente', color: 'red', size: t.size === 'lg' ? 'md' : 'sm', checked: urg[0], onChange: function (e) { urg[1](e.currentTarget.checked); } })),
+          h(M.Checkbox, { label: 'Para viagem', size: t.size === 'lg' ? 'md' : 'sm', checked: viagem[0], onChange: function (e) { viagem[1](e.currentTarget.checked); } }),
+          h(M.Switch, { label: 'Prioridade', color: 'red', size: t.size === 'lg' ? 'md' : 'sm', checked: pri[0], onChange: function (e) { pri[1](e.currentTarget.checked); } })),
         h(M.Stack, { gap: 4 }, h(M.Group, { justify: 'space-between' }, h(M.Text, { size: 'sm', c: 'dimmed' }, 'Preenchimento'), h(M.Text, { size: 'sm', c: 'dimmed' }, pct + '%')), h(M.Progress, { value: pct, size: 'sm', color: pct === 100 ? 'teal' : undefined, transitionDuration: 300 })),
         h(M.Group, { justify: 'flex-end' },
-          h(M.Button, { variant: 'default', size: t.size, onClick: function () { achado[1](''); urg[1](false); } }, 'Descartar'),
-          h(M.Button, { type: 'submit', variant: t.variant, size: t.size, loading: saving[0], leftSection: icon(I.plus), gradient: { from: t.color, to: 'cyan', deg: 45 } }, 'Adicionar à fila'))));
+          h(M.Button, { variant: 'default', size: t.size, onClick: function () { obs[1](''); pri[1](false); } }, 'Limpar'),
+          h(M.Button, { type: 'submit', variant: t.variant, size: t.size, loading: saving[0], leftSection: icon(I.plus), gradient: { from: t.color, to: 'cyan', deg: 45 } }, 'Adicionar pedido'))));
   }
 
-  var STEPS = [['Aquisição', 'Imagens no PACS'], ['Laudo', 'Em digitação'], ['Revisão', 'Segunda leitura'], ['Liberado', 'Disponível ao médico']];
+  var STEPS = [['Pedido', 'No caixa'], ['Preparo', 'Com o barista'], ['Pronto', 'No balcão'], ['Entregue', 'Com o cliente']];
 
   function Gallery(p) {
     var t = p.theme;
-    var step = useState(1), chips = useState(['TC', 'RM']), rate = useState(4), sl = useState(40);
+    var step = useState(1), chips = useState(['Café', 'Sem lactose']), rate = useState(4), sl = useState(60);
     return h(M.SimpleGrid, { cols: { base: 1, md: 2 }, spacing: 'md' },
       h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Button · todas as variantes'),
         h(M.Group, { gap: 'xs' }, VARIANTS.map(function (v) { return h(M.Button, { key: v, variant: v, size: t.size, gradient: { from: t.color, to: 'cyan', deg: 45 } }, v); })),
-        h(M.Group, { gap: 'xs' }, h(M.Button, { loading: true, size: t.size }, 'loading'), h(M.Button, { disabled: true, size: t.size }, 'disabled'), h(M.Button, { color: 'red', size: t.size }, 'Excluir'), h(M.Button.Group, null, h(M.Button, { variant: 'default', size: t.size }, 'TC'), h(M.Button, { variant: 'default', size: t.size }, 'RM'), h(M.Button, { variant: 'default', size: t.size }, 'US'))))),
+        h(M.Group, { gap: 'xs' }, h(M.Button, { loading: true, size: t.size }, 'loading'), h(M.Button, { disabled: true, size: t.size }, 'disabled'), h(M.Button, { color: 'red', size: t.size }, 'Cancelar pedido'), h(M.Button.Group, null, h(M.Button, { variant: 'default', size: t.size }, 'P'), h(M.Button, { variant: 'default', size: t.size }, 'M'), h(M.Button, { variant: 'default', size: t.size }, 'G'))))),
       h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Badge, ActionIcon e Avatar'),
         h(M.Group, { gap: 'xs' }, ['filled', 'light', 'outline', 'dot', 'default', 'transparent'].map(function (v) { return h(M.Badge, { key: v, variant: v }, v); })),
-        h(M.Group, { gap: 'xs' }, ['filled', 'light', 'outline', 'subtle', 'default'].map(function (v) { return h(M.ActionIcon, { key: v, variant: v, size: 'lg', 'aria-label': v }, icon(I.pen)); })),
-        h(M.Avatar.Group, null, ['WS', 'NA', 'RD', 'MA'].map(function (x, i) { return h(M.Avatar, { key: x, radius: 'xl', color: COLORS[i * 2] }, x); }), h(M.Avatar, { radius: 'xl' }, '+5')))),
+        h(M.Group, { gap: 'xs' }, ['filled', 'light', 'outline', 'subtle', 'default'].map(function (v) { return h(M.ActionIcon, { key: v, variant: v, size: 'lg', 'aria-label': v }, icon(I.cup)); })),
+        h(M.Avatar.Group, null, ['AN', 'BR', 'CA', 'DI'].map(function (x, i) { return h(M.Avatar, { key: x, radius: 'xl', color: COLORS[i * 2] }, x); }), h(M.Avatar, { radius: 'xl' }, '+5')))),
       h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Alert'),
-        h(M.Alert, { variant: 'light', color: 'blue', title: 'Exame anterior disponível', icon: icon(I.info) }, 'TC de crânio de 12/08/2026 pode ser usada para comparação.'),
-        h(M.Alert, { variant: 'light', color: 'red', title: 'Achado crítico', icon: icon(I.alert) }, 'Comunique o médico assistente e registre o horário no laudo.'))),
-      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Stepper · fluxo do laudo'),
+        h(M.Alert, { variant: 'light', color: 'blue', title: 'Leite de aveia acabando', icon: icon(I.info) }, 'Restam 2 litros. Peça reposição antes do almoço.'),
+        h(M.Alert, { variant: 'light', color: 'red', title: 'Máquina 2 parada', icon: icon(I.alert) }, 'Use a máquina 1 até a manutenção chegar.'))),
+      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Stepper · caminho do pedido'),
         h(M.Stepper, { active: step[0], onStepClick: step[1], size: 'sm', orientation: 'vertical' }, STEPS.map(function (s, i) { return h(M.Stepper.Step, { key: i, label: s[0], description: s[1] }); })),
         h(M.Group, null, h(M.Button, { variant: 'default', size: 'xs', onClick: function () { step[1](Math.max(0, step[0] - 1)); } }, 'Voltar'), h(M.Button, { size: 'xs', variant: t.variant, gradient: { from: t.color, to: 'cyan', deg: 45 }, onClick: function () { step[1](Math.min(4, step[0] + 1)); } }, 'Avançar')))),
       h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Chip, Slider, Rating e Loader'),
-        h(M.Chip.Group, { multiple: true, value: chips[0], onChange: chips[1] }, h(M.Group, { gap: 'xs' }, ['TC', 'RM', 'US', 'RX', 'MG'].map(function (c) { return h(M.Chip, { key: c, value: c, size: 'sm' }, c); }))),
-        h(M.Text, { size: 'sm' }, 'Janela de contraste: ', h('b', null, sl[0])),
-        h(M.Slider, { value: sl[0], onChange: sl[1], marks: [{ value: 20, label: 'pulmão' }, { value: 50, label: 'partes moles' }, { value: 80, label: 'osso' }], mb: 'lg', 'aria-label': 'Janela' }),
+        h(M.Chip.Group, { multiple: true, value: chips[0], onChange: chips[1] }, h(M.Group, { gap: 'xs' }, ['Café', 'Chá', 'Gelado', 'Sem lactose', 'Vegano'].map(function (c) { return h(M.Chip, { key: c, value: c, size: 'sm' }, c); }))),
+        h(M.Text, { size: 'sm' }, 'Intensidade da torra: ', h('b', null, sl[0])),
+        h(M.Slider, { value: sl[0], onChange: sl[1], marks: [{ value: 20, label: 'clara' }, { value: 50, label: 'média' }, { value: 80, label: 'escura' }], mb: 'lg', 'aria-label': 'Intensidade da torra' }),
         h(M.Group, { justify: 'space-between' }, h(M.Rating, { value: rate[0], onChange: rate[1] }), h(M.Group, { gap: 'md' }, h(M.Loader, { size: 'sm' }), h(M.Loader, { size: 'sm', type: 'bars' }), h(M.Loader, { size: 'sm', type: 'dots' }))))),
       h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Accordion e Kbd'),
         h(M.Accordion, { variant: 'separated', defaultValue: 'tema' },
-          h(M.Accordion.Item, { value: 'tema' }, h(M.Accordion.Control, null, 'Por que tudo muda junto?'), h(M.Accordion.Panel, null, h(M.Text, { size: 'sm' }, 'Cada componente lê variáveis CSS como --mantine-primary-color-filled e --mantine-radius-default. O MantineProvider reescreve essas variáveis quando o tema muda.'))),
+          h(M.Accordion.Item, { value: 'tema' }, h(M.Accordion.Control, null, 'Por que tudo muda junto?'), h(M.Accordion.Panel, null, h(M.Text, { size: 'sm' }, 'Cada componente lê variáveis CSS como --mantine-primary-color-filled e --mantine-radius-default. Mudar o tema reescreve essas variáveis, e a página inteira acompanha.'))),
           h(M.Accordion.Item, { value: 'atalhos' }, h(M.Accordion.Control, null, 'Atalhos de teclado'), h(M.Accordion.Panel, null, h(M.Group, { gap: 6 }, h(M.Kbd, null, '⌘'), '+', h(M.Kbd, null, 'K'), h(M.Text, { size: 'sm', c: 'dimmed' }, 'abre a busca no pacote @mantine/spotlight')))))))
     );
   }
@@ -248,17 +250,17 @@
               h(M.Stack, { gap: 4 },
                 h(M.Text, { size: 'xs', fw: 700, tt: 'uppercase', c: 'dimmed', style: { letterSpacing: '.08em' } }, 'Atlas de Design · componentes reais'),
                 h(M.Title, { order: 1 }, 'Mantine na prática'),
-                h(M.Text, { c: 'dimmed', maw: 720 }, 'Esta página não imita o Mantine: ela roda a biblioteca de verdade. Mude o tema no painel e veja a fila de laudos, o formulário e a galeria reagirem. Os dados de pacientes são fictícios.')),
+                h(M.Text, { c: 'dimmed', maw: 720 }, 'Esta página não imita o Mantine: ela roda a biblioteca de verdade, montando o painel de pedidos de uma cafeteria fictícia. Mude o tema no painel e veja a lista, o formulário e a galeria reagirem.')),
               h(M.SimpleGrid, { cols: { base: 1, md: 3 }, spacing: 'lg' },
-                h('div', { style: { gridColumn: 'span 1' } }, h(ThemePanel, { theme: t, set: set })),
+                h('div', null, h(ThemePanel, { theme: t, set: set })),
                 h('div', { className: 'lab-span2' },
                   h(M.Tabs, { value: tab[0], onChange: function (v) { if (v) tab[1](v); }, keepMounted: false },
                     h(M.Tabs.List, { mb: 'md' },
-                      h(M.Tabs.Tab, { value: 'fila', leftSection: icon(I.list, 14) }, 'Fila de laudos'),
-                      h(M.Tabs.Tab, { value: 'novo', leftSection: icon(I.pen, 14) }, 'Novo laudo'),
+                      h(M.Tabs.Tab, { value: 'fila', leftSection: icon(I.list, 14) }, 'Pedidos'),
+                      h(M.Tabs.Tab, { value: 'novo', leftSection: icon(I.pen, 14) }, 'Novo pedido'),
                       h(M.Tabs.Tab, { value: 'galeria', leftSection: icon(I.grid, 14) }, 'Componentes')),
-                    h(M.Tabs.Panel, { value: 'fila' }, h(Queue, { rows: rows[0], theme: t, setSt: setSt, toast: showToast })),
-                    h(M.Tabs.Panel, { value: 'novo' }, h(NewReport, { theme: t, add: add, toast: function (a, b, c) { showToast(a, b, c); tab[1]('fila'); } })),
+                    h(M.Tabs.Panel, { value: 'fila' }, h(Orders, { rows: rows[0], theme: t, setSt: setSt, toast: showToast })),
+                    h(M.Tabs.Panel, { value: 'novo' }, h(NewOrder, { theme: t, add: add, toast: function (a, b, c) { showToast(a, b, c); tab[1]('fila'); } })),
                     h(M.Tabs.Panel, { value: 'galeria' }, h(Gallery, { theme: t }))))),
               h(M.Text, { size: 'xs', c: 'dimmed' }, 'Mantine é MIT, © Vitaly Rtishchev. Pacote vindo do design system "Mantine" do Claude Design.')))),
         toast[0] ? h('div', { className: 'lab-toast', key: toast[0].k, role: 'status' },

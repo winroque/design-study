@@ -7,11 +7,11 @@ Página de estudo de design de interface: um atlas interativo das filosofias, es
 | Página | O que tem |
 |---|---|
 | `index.html` | Roteiro, os três níveis (filosofia, estilo, design system), gráfico do pêndulo, linha do tempo e glossário |
-| `estilos.html` | 13 escolas com a mesma ficha de laudo interativa, sinais para reconhecer e receita em CSS |
-| `sistemas.html` | A mesma tela de fila de exames em 10 design systems atuais |
-| `incomuns.html` | 24 interfaces experimentais e históricas, todas clicáveis |
-| `comparar.html` | Matriz de seis eixos (filtrável e ordenável), bibliotecas React lado a lado e 16 cenários de decisão |
-| `labs/mantine.html` | Mantine 9.7.5 real: tema ao vivo, fila de laudos, formulário e galeria |
+| `estilos.html` | 25 escolas com a mesma ficha de pedido interativa, sinais para reconhecer e receita em CSS |
+| `sistemas.html` | A mesma tela de pedidos em 10 design systems atuais |
+| `incomuns.html` | 42 interfaces experimentais, gestos, inovações que viraram padrão e designs estranhos, todas interativas |
+| `comparar.html` | Matriz de seis eixos (filtrável e ordenável), bibliotecas React lado a lado e 19 cenários de decisão |
+| `labs/mantine.html` | Mantine 9.7.5 real: tema ao vivo, painel de pedidos, formulário e galeria |
 | `labs/carbon.html` | Carbon 1.120 real: quatro temas, densidade da tabela, seleção em lote e UI Shell |
 
 As galerias recriam a aparência de cada escola em HTML e CSS próprios. Os laboratórios usam os componentes reais, empacotados em `vendor/` a partir dos design systems "Mantine" e "Carbon" do Claude Design. Licenças e origem em [`vendor/README.md`](vendor/README.md).

@@ -88,17 +88,18 @@
   drawS(); act($('dg'), function () { hp = hp <= 1 ? 8 : hp - 1; drawS(); });
 
   /* ---------- Interface generativa ---------- */
-  var qs = ['plantões de novembro', 'fila de laudos por modalidade', 'comparar dois exames'], gi = 0, go = $('gout');
+  var qs = ['3 dias em Lisboa', 'gastos do mês por categoria', 'comparar dois celulares'], gi = 0, go = $('gout');
   function sk() { go.innerHTML = '<div style="display:flex;flex-direction:column;gap:6px"><div style="height:14px;width:70%;background:#eee;border-radius:4px"></div><div style="height:30px;background:#f3f3f3;border-radius:6px"></div><div style="height:22px;width:85%;background:#eee;border-radius:4px"></div></div>'; }
   function res(i) {
     if (i === 0) {
-      var d = ''; for (var k = 1; k <= 21; k++) { var on = [3, 7, 12, 15, 19].indexOf(k) > -1; d += '<div style="height:13px;border-radius:3px;background:' + (on ? '#3b82f6' : '#f1f1f1') + ';color:' + (on ? '#fff' : '#999') + ';font-size:7px;text-align:center;line-height:13px">' + k + '</div>'; }
-      go.innerHTML = '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px">' + d + '</div><div style="font-size:10px;color:#555;margin-top:6px">5 plantões noturnos</div>';
+      var d = ''; for (var k = 1; k <= 21; k++) { var on = [12, 13, 14].indexOf(k) > -1; d += '<div style="height:13px;border-radius:3px;background:' + (on ? '#3b82f6' : '#f1f1f1') + ';color:' + (on ? '#fff' : '#999') + ';font-size:7px;text-align:center;line-height:13px">' + k + '</div>'; }
+      go.innerHTML = '<div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px">' + d + '</div><div style="font-size:10px;color:#555;margin-top:6px">3 dias, 9 passeios sugeridos</div>';
     } else if (i === 1) {
-      var b = [['RX', 80, '#10b981'], ['TC', 55, '#3b82f6'], ['RM', 30, '#8b5cf6'], ['US', 45, '#f59e0b']];
-      go.innerHTML = '<div style="display:flex;flex-direction:column;gap:6px">' + b.map(function (x) { return '<div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#333"><span style="width:18px">' + x[0] + '</span><span style="height:11px;width:' + x[1] + '%;background:' + x[2] + ';border-radius:3px"></span></div>'; }).join('') + '</div>';
+      var b = [['Mercado', 80, '#10b981'], ['Casa', 55, '#3b82f6'], ['Lazer', 30, '#8b5cf6'], ['Transp.', 45, '#f59e0b']];
+      go.innerHTML = '<div style="display:flex;flex-direction:column;gap:6px">' + b.map(function (x) { return '<div style="display:flex;align-items:center;gap:6px;font-size:10px;color:#333"><span style="width:40px">' + x[0] + '</span><span style="height:11px;width:' + x[1] + '%;background:' + x[2] + ';border-radius:3px"></span></div>'; }).join('') + '</div>';
     } else {
-      go.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;height:100%"><div style="background:#111;border-radius:6px;position:relative"><span style="position:absolute;left:6px;top:4px;color:#aaa;font-size:9px">2025</span><span style="position:absolute;left:40%;top:40%;width:10px;height:10px;border-radius:50%;background:#bbb"></span></div><div style="background:#111;border-radius:6px;position:relative"><span style="position:absolute;left:6px;top:4px;color:#aaa;font-size:9px">2026</span><span style="position:absolute;left:38%;top:36%;width:16px;height:16px;border-radius:50%;background:#bbb;outline:1px solid #f59e0b;outline-offset:2px"></span></div></div>';
+      var ph = function (n, gb, cam, bat, best) { return '<div style="border:1px solid #e5e5e5;border-radius:8px;padding:6px;display:flex;flex-direction:column;gap:3px;font-size:9px;color:#333"><div style="display:flex;gap:6px;align-items:center"><span style="width:12px;height:20px;border:2px solid #333;border-radius:3px;display:block"></span><b style="font-size:10px">' + n + '</b></div><div>' + gb + '</div><div>' + cam + '</div><div' + (best ? ' style="color:#16a34a;font-weight:700"' : '') + '>' + bat + '</div></div>'; };
+      go.innerHTML = '<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">' + ph('Modelo A', '128 GB', 'câmera 48 MP', 'bateria 22 h', false) + ph('Modelo B', '256 GB', 'câmera 50 MP', 'bateria 29 h', true) + '</div>';
     }
   }
   res(0);
@@ -124,7 +125,7 @@
   });
 
   /* ---------- HyperCard ---------- */
-  var hcCards = [['Pilha de casos', '3 cartões. Use as setas para navegar. Cada botão pode ter um script.'], ['Caso 1 · TC de crânio', 'Hematoma subdural agudo à esquerda, 8 mm.'], ['Caso 2 · RX de tórax', 'Pneumotórax à direita, cerca de 30%.']], hi = 0;
+  var hcCards = [['Pilha de receitas', '3 cartões. Use as setas para navegar. Cada botão pode ter um script.'], ['Bolo de cenoura', '3 cenouras, 3 ovos, 1 xícara de óleo. Cobertura de chocolate.'], ['Pão de queijo', '500 g de polvilho, 2 ovos e queijo meia cura ralado.']], hi = 0;
   function hcR() { $('hcC').innerHTML = '<div style="font-size:13px;font-weight:700;margin-bottom:6px">' + hcCards[hi][0] + '</div><div style="font-size:11px;line-height:1.35">' + hcCards[hi][1] + '</div><div style="position:absolute;right:12px;top:24px;font-size:9px">' + (hi + 1) + '/3</div>'; }
   function hcGo(d) {
     hi = (hi + d + 3) % 3; var f = $('hcF');
@@ -162,7 +163,7 @@
   /* ---------- Teletexto ---------- */
   var pages = {
     100: ['#0000ff', '#ffff00', 'ÍNDICE', [['#00ffff', 'Notícias ........ 101'], ['#00ffff', 'Tempo ........... 102'], ['#00ffff', 'Esportes ........ 103'], ['#fff', 'Selecione pelas cores']]],
-    101: ['#ff0000', '#fff', 'NOTÍCIAS', [['#fff', 'Plantão: fila de TC'], ['#fff', 'cai 20% no turno'], ['#ffff00', 'Mais na página 104'], ['#888', '(página ilustrativa)']]],
+    101: ['#ff0000', '#fff', 'NOTÍCIAS', [['#fff', 'Metrô: todas as linhas'], ['#fff', 'operando normalmente'], ['#ffff00', 'Mais na página 104'], ['#888', '(página ilustrativa)']]],
     102: ['#00aa00', '#fff', 'TEMPO', [['#ffff00', 'Norte ▄▄█ 31°  sol'], ['#ffff00', 'Sul   ▄▄▄ 19°  chuva'], ['#00ffff', 'Umidade baixa à tarde'], ['#888', '(página ilustrativa)']]],
     103: ['#ffff00', '#000', 'ESPORTES', [['#fff', 'Rodada .......... 105'], ['#fff', 'Tabela .......... 106'], ['#00ff00', 'Ao vivo ......... 107'], ['#888', '(página ilustrativa)']]]
   }, cur = 100, busy = false;
@@ -181,15 +182,15 @@
   if (!reduce) setInterval(function () { if (!busy) ttH(cur); }, 1000);
 
   /* ---------- Acme ---------- */
-  var body0 = ['TC de crânio sem contraste.', 'Hematoma subdural agudo à E,', 'espessura de 8 mm.'], body = body0.slice(), out = [], look = false;
-  function acR() { $('acb').innerHTML = body.map(function (l) { return look ? l.replace('Hematoma', '<span style="background:#eeee9e">Hematoma</span>') : l; }).join('<br>') + (out.length ? '<div style="color:#0000aa;margin-top:4px">+Errors: ' + out[out.length - 1] + '</div>' : ''); }
-  $('actag').innerHTML = ['/laudos/tc.txt', 'Del', 'Snarf', 'Get', 'Put', '|', 'Look', 'Undo'].map(function (w) { return (w[0] === '/' || w === '|') ? w : '<span class="aw" data-w="' + w + '">' + w + '</span>'; }).join(' ');
+  var body0 = ['Lista de compras:', 'café em grão, leite de aveia,', 'pão de fermentação natural.'], body = body0.slice(), out = [], look = false;
+  function acR() { $('acb').innerHTML = body.map(function (l) { return look ? l.replace('café', '<span style="background:#eeee9e">café</span>') : l; }).join('<br>') + (out.length ? '<div style="color:#0000aa;margin-top:4px">+Errors: ' + out[out.length - 1] + '</div>' : ''); }
+  $('actag').innerHTML = ['/notas/compras.txt', 'Del', 'Snarf', 'Get', 'Put', '|', 'Look', 'Undo'].map(function (w) { return (w[0] === '/' || w === '|') ? w : '<span class="aw" data-w="' + w + '">' + w + '</span>'; }).join(' ');
   $('actag').addEventListener('click', function (e) {
     var w = e.target.getAttribute && e.target.getAttribute('data-w'); if (!w) return;
-    if (w === 'Put') out.push('/laudos/tc.txt gravado');
+    if (w === 'Put') out.push('/notas/compras.txt gravado');
     if (w === 'Snarf') out.push('3 linhas copiadas');
     if (w === 'Get') { body = body0.slice(); look = false; out.push('arquivo recarregado'); }
-    if (w === 'Look') { look = !look; out.push(look ? '"Hematoma" na linha 2' : 'busca limpa'); }
+    if (w === 'Look') { look = !look; out.push(look ? '"café" na linha 2' : 'busca limpa'); }
     if (w === 'Undo') out.pop();
     if (w === 'Del') { $('acb').style.opacity = 0; setTimeout(function () { $('acb').style.opacity = 1; }, 700); out.push('janela fechada (e reaberta)'); }
     acR();
@@ -197,7 +198,7 @@
   acR();
 
   /* ---------- Menu radial ---------- */
-  var pItems = ['Medir', 'Janela', 'Zoom', 'Girar', 'Anotar', 'Comparar'], pOpen = false, pI = $('pieI');
+  var pItems = ['Copiar', 'Colar', 'Cortar', 'Girar', 'Desfazer', 'Enviar'], pOpen = false, pI = $('pieI');
   pItems.forEach(function (t, i) {
     var a = (i * 60 - 90) * Math.PI / 180, d = document.createElement('div');
     d.className = 'pi'; d.textContent = t;
@@ -225,7 +226,7 @@
   hxB();
 
   /* ---------- Live Tiles ---------- */
-  var tiles = [['#1ba1e2', '12', 'fila', '3', 'urgentes'], ['#a4c400', '48', 'laudos hoje', '+6', 'última hora'], ['#e51400', '3', 'plantões', 'qui', 'próximo'], ['#f09609', '5', 'mensagens', 'Dr. A.', 'última']], lts = [];
+  var tiles = [['#1ba1e2', '12', 'e-mails', '3', 'importantes'], ['#a4c400', '28°', 'agora', '31°', 'máxima hoje'], ['#e51400', '3', 'eventos', '14h', 'próximo'], ['#f09609', '5', 'mensagens', 'Ana', 'última']], lts = [];
   tiles.forEach(function (t) {
     var d = document.createElement('div'); d.className = 'lt'; d.setAttribute('role', 'button'); d.tabIndex = 0; d.setAttribute('aria-label', 'Virar bloco ' + t[2]);
     d.innerHTML = '<div class="lf" style="background:' + t[0] + '"><span class="n">' + t[1] + '</span><span class="tt">' + t[2] + '</span></div><div class="lf b" style="background:' + t[0] + ';filter:brightness(.85)"><span class="n" style="font-size:18px">' + t[3] + '</span><span class="tt">' + t[4] + '</span></div>';
@@ -234,7 +235,7 @@
   if (!reduce) setInterval(function () { lts[Math.floor(Math.random() * lts.length)].classList.toggle('f'); }, 2400);
 
   /* ---------- Paleta de comandos ---------- */
-  var cmds = [['Próximo da fila', '⌘J'], ['Abrir exame anterior', '⌘O'], ['Comparar séries', '⌘⇧C'], ['Janela pulmão', 'W 1'], ['Janela óssea', 'W 2'], ['Medir distância', 'M'], ['Assinar laudo', '⌘↵']], cpSel = 0, cpM = cmds;
+  var cmds = [['Novo documento', '⌘N'], ['Abrir recente', '⌘O'], ['Alternar tema', '⌘⇧L'], ['Dividir tela', '⌘ \\'], ['Buscar no arquivo', '⌘F'], ['Exportar PDF', '⌘E'], ['Fechar aba', '⌘W']], cpSel = 0, cpM = cmds;
   function norm(s) { return s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase(); }
   function cpR() {
     var q = norm($('cpI').value);
@@ -253,13 +254,13 @@
   cpR();
 
   /* ---------- Ambient Orb ---------- */
-  var orbs = [['#34c759', 8], ['#ffcc00', 23], ['#ff3b30', 41]], oi = 0;
+  var orbs = [['#34c759', 10], ['#ffcc00', 45], ['#ff3b30', 85]], oi = 0;
   function orbR() {
     var c = orbs[oi][0], b = $('orbB');
     b.style.background = 'radial-gradient(circle at 35% 30%,rgba(255,255,255,.85),transparent 45%),radial-gradient(circle,transparent 55%,rgba(0,0,0,.35)),' + c;
     b.style.boxShadow = '0 0 34px ' + c + ',0 0 70px ' + c + '55';
     b.style.animation = (oi === 2 && !reduce) ? 'pulse 1.2s ease-in-out infinite' : 'none';
-    $('orbL').textContent = 'FILA: ' + orbs[oi][1] + ' LAUDOS';
+    $('orbL').textContent = 'CHUVA: ' + orbs[oi][1] + '%';
   }
   orbR(); act($('orb'), function () { oi = (oi + 1) % 3; orbR(); });
 
@@ -267,13 +268,13 @@
   var data = [42, 48, 45, 57, 61, 66], mo = ['mai', 'jun', 'jul', 'ago', 'set', 'out'], J = '', C = '';
   J += '<rect x="0" y="0" width="180" height="150" fill="url(#jg)"/>';
   for (var g = 28; g <= 128; g += 20) J += '<line x1="22" y1="' + g + '" x2="172" y2="' + g + '" stroke="#5a6f94" stroke-width="1.2"/>';
-  J += '<text x="90" y="16" text-anchor="middle" font-size="12" font-weight="900" fill="#c00" stroke="#fff" stroke-width=".4" font-family="Impact,Arial Black,sans-serif">LAUDOS/MÊS!!!</text>';
+  J += '<text x="90" y="16" text-anchor="middle" font-size="12" font-weight="900" fill="#c00" stroke="#fff" stroke-width=".4" font-family="Impact,Arial Black,sans-serif">VISITAS/MÊS!!!</text>';
   data.forEach(function (v, i) {
     var x = 30 + i * 23, h = v * 1.3, t = 128 - h;
     J += '<polygon points="' + (x + 14) + ',' + t + ' ' + (x + 19) + ',' + (t - 5) + ' ' + (x + 19) + ',123 ' + (x + 14) + ',128" fill="#7b1040"/><polygon points="' + x + ',' + t + ' ' + (x + 5) + ',' + (t - 5) + ' ' + (x + 19) + ',' + (t - 5) + ' ' + (x + 14) + ',' + t + '" fill="#ffb199"/><rect x="' + x + '" y="' + t + '" width="14" height="' + h + '" fill="url(#jb)" stroke="#000" stroke-width=".6"/><text x="' + (x + 7) + '" y="' + (t - 8) + '" text-anchor="middle" font-size="7" font-weight="700" fill="#000">' + v + '</text>';
   });
-  J += '<rect x="132" y="22" width="42" height="14" fill="#fff" stroke="#000"/><rect x="135" y="26" width="6" height="6" fill="#c2185b"/><text x="144" y="32" font-size="7" fill="#000">Laudos</text>';
-  C += '<text x="20" y="22" font-size="9" fill="#666" font-family="Georgia,serif">Laudos por mês, mai–out (fictício)</text>';
+  J += '<rect x="132" y="22" width="42" height="14" fill="#fff" stroke="#000"/><rect x="135" y="26" width="6" height="6" fill="#c2185b"/><text x="144" y="32" font-size="7" fill="#000">Visitas</text>';
+  C += '<text x="20" y="22" font-size="9" fill="#666" font-family="Georgia,serif">Visitas ao site por mês (fictício)</text>';
   C += '<polyline points="' + data.map(function (v, i) { return (24 + i * 28) + ',' + (120 - (v - 40) * 3); }).join(' ') + '" fill="none" stroke="#333" stroke-width="1.3"/>';
   C += '<circle cx="164" cy="42" r="2.6" fill="#d33"/><text x="164" y="34" text-anchor="middle" font-size="10" fill="#d33" font-family="Georgia,serif">66</text>';
   C += '<text x="24" y="128" text-anchor="middle" font-size="9" fill="#666" font-family="Georgia,serif">42</text>';
