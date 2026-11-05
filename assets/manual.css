@@ -1,0 +1,110 @@
+/* Atlas de Design — casca "manual de normas".
+   Referência: manuais de identidade dos anos 70 (Vignelli para o metrô de Nova York, NASA).
+   Impresso é o manual em papel; Planta é o desenho técnico do mesmo site.
+   Uma única família variável (Archivo) e a largura codifica o papel do texto:
+   larga para títulos, normal para leitura, condensada para cotas e anotações. */
+:root{
+  --papel:#F7F7F4; --tinta:#000000; --grafite:#5E5E5A; --fio:#C9C9C4; --sinal:#D41F16;
+  --cota:#D41F16; --veu:rgba(212,31,22,.06); --malha:none; --placa-borda:#000000;
+  --f:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --max:1240px; --gut:24px; --pad:max(16px,env(safe-area-inset-left,0px));
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --papel:#0F3D6E; --tinta:#EAF2FF; --grafite:#A9C1DE; --fio:rgba(234,242,255,.28); --sinal:#FFD24A;
+  --cota:#7FDBFF; --veu:rgba(127,219,255,.07); --placa-borda:rgba(234,242,255,.6);
+  --malha:linear-gradient(rgba(234,242,255,.12) 1px,transparent 1px) 0 0/120px 120px,linear-gradient(90deg,rgba(234,242,255,.12) 1px,transparent 1px) 0 0/120px 120px,linear-gradient(rgba(234,242,255,.06) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,rgba(234,242,255,.06) 1px,transparent 1px) 0 0/24px 24px;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --papel:#0F3D6E; --tinta:#EAF2FF; --grafite:#A9C1DE; --fio:rgba(234,242,255,.28); --sinal:#FFD24A;
+  --cota:#7FDBFF; --veu:rgba(127,219,255,.07); --placa-borda:rgba(234,242,255,.6);
+  --malha:linear-gradient(rgba(234,242,255,.12) 1px,transparent 1px) 0 0/120px 120px,linear-gradient(90deg,rgba(234,242,255,.12) 1px,transparent 1px) 0 0/120px 120px,linear-gradient(rgba(234,242,255,.06) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,rgba(234,242,255,.06) 1px,transparent 1px) 0 0/24px 24px;
+  color-scheme:dark}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;position:relative;background-color:var(--papel);background-image:var(--malha);color:var(--tinta);
+  font-family:var(--f);font-size:17px;line-height:1.55;font-stretch:100%;font-weight:400;
+  transition:background-color .35s,color .35s}
+[hidden]{display:none!important}
+a{color:inherit}
+p{margin:0}
+h1,h2,h3{margin:0;text-wrap:balance}
+:focus-visible{outline:2px solid var(--sinal);outline-offset:3px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Escala tipográfica (Bringhurst): 13 · 15 · 17 · 21 · 28 · 48 · 112 */
+.wrap{max-width:var(--max);margin:0 auto;padding-left:var(--pad);padding-right:max(16px,env(safe-area-inset-right,0px))}
+.g{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--gut)}
+.m{grid-column:1/4;min-width:0}
+.c{grid-column:4/13;min-width:0}
+.anot{font-size:13px;font-stretch:72%;font-weight:500;line-height:1.35;color:var(--grafite);letter-spacing:.01em}
+.lede{font-size:21px;line-height:1.45;max-width:34em;font-weight:400}
+h2{font-size:clamp(32px,4.4vw,48px);line-height:1.02;font-stretch:118%;font-weight:700;letter-spacing:-.015em}
+h3{font-size:21px;line-height:1.2;font-stretch:104%;font-weight:650}
+
+/* Cabeçalho do manual */
+.mb{position:sticky;top:0;z-index:60;background-color:var(--papel);background-image:var(--malha);background-attachment:fixed;border-bottom:1px solid var(--tinta);transition:background-color .35s}
+.mb-in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"marca nav ctrl";align-items:center;column-gap:28px;padding-block:12px}
+.marca{grid-area:marca;font-size:19px;font-stretch:125%;font-weight:800;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.nav{grid-area:nav;display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.nav::-webkit-scrollbar{display:none}
+.nav a{text-decoration:none;white-space:nowrap;font-size:15px;font-weight:500;padding-block:4px;border-bottom:3px solid transparent;display:inline-flex;gap:6px;align-items:baseline}
+.nav a i{font-style:normal;font-stretch:72%;color:var(--grafite);font-size:13px;font-variant-numeric:tabular-nums}
+.nav a:hover{border-bottom-color:var(--fio)}
+.nav a[aria-current="page"]{border-bottom-color:var(--sinal)}
+.ctrl{grid-area:ctrl;display:flex;gap:10px;align-items:center}
+.bt{font:inherit;font-size:13px;font-stretch:80%;font-weight:600;color:var(--tinta);background:transparent;border:1px solid var(--tinta);border-radius:0;padding:5px 10px;cursor:pointer;display:inline-flex;gap:6px;align-items:center;white-space:nowrap;min-height:32px}
+.bt svg{width:14px;height:14px;flex-shrink:0}
+.bt[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+.seg{display:inline-flex}
+.seg .bt+.bt{border-left:0}
+
+/* Seções */
+main{padding-bottom:40px}
+.sec{margin-top:112px;row-gap:20px;scroll-margin-top:80px}
+.sec::before,.colofao::before{content:"";grid-column:1/-1;height:3px;background:var(--tinta);margin-bottom:-6px}
+.sec>.m .num{font-size:15px;font-stretch:72%;font-weight:600;font-variant-numeric:tabular-nums}
+.sec>.c{display:flex;flex-direction:column;gap:22px}
+
+/* Colofão */
+.colofao{margin-top:112px;padding-bottom:48px;row-gap:20px}
+.colofao .c{display:flex;flex-direction:column;gap:14px;font-size:15px;max-width:44em}
+.colofao h2{font-size:21px;font-stretch:104%;font-weight:650;letter-spacing:0}
+.amostras{display:flex;flex-wrap:wrap;gap:14px 22px;margin-top:4px}
+.amostras div{display:flex;gap:8px;align-items:center}
+.amostras b{width:28px;height:28px;border:1px solid var(--fio);display:block}
+.amostras span{font-size:13px;font-stretch:72%;line-height:1.25}
+
+/* Modo Construção: grade, linha de base e cotas */
+.obra{position:absolute;inset:0;pointer-events:none;z-index:40;opacity:0;transition:opacity .25s;
+  background:repeating-linear-gradient(to bottom,transparent 0 7px,color-mix(in srgb,var(--cota) 16%,transparent) 7px 8px)}
+.obra .wrap{height:100%}
+.obra .g{height:100%}
+.obra i{display:block;background:var(--veu);border-inline:1px solid color-mix(in srgb,var(--cota) 40%,transparent);transform:scaleY(0);transform-origin:top;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.construcao .obra{opacity:1}
+.construcao .obra i{transform:scaleY(1)}
+.obra i:nth-child(2){transition-delay:.02s}.obra i:nth-child(3){transition-delay:.04s}.obra i:nth-child(4){transition-delay:.06s}
+.obra i:nth-child(5){transition-delay:.08s}.obra i:nth-child(6){transition-delay:.1s}.obra i:nth-child(7){transition-delay:.12s}
+.obra i:nth-child(8){transition-delay:.14s}.obra i:nth-child(9){transition-delay:.16s}.obra i:nth-child(10){transition-delay:.18s}
+.obra i:nth-child(11){transition-delay:.2s}.obra i:nth-child(12){transition-delay:.22s}
+.construcao [data-cota]{outline:1px dashed var(--cota);outline-offset:2px;position:relative}
+.construcao [data-cota]::after{content:attr(data-cota);position:absolute;left:-1px;bottom:calc(100% + 3px);z-index:45;
+  font-family:var(--f);font-size:11px;font-stretch:68%;font-weight:600;line-height:1.3;letter-spacing:.02em;font-style:normal;text-transform:none;
+  color:var(--cota);background:var(--papel);padding:0 4px;white-space:nowrap;pointer-events:none}
+
+@media (max-width:820px){
+  :root{--gut:16px}
+  .g{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .m,.c{grid-column:1/-1}
+  .obra i:nth-child(n+5){display:none}
+  .mb-in{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"marca ctrl" "nav nav";row-gap:8px}
+  .marca{font-stretch:108%;font-size:18px}
+  .nav{gap:16px}
+  .bt .tx{display:none}
+  .sec,.colofao{margin-top:80px}
+  .lede{font-size:19px}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;transition-delay:0s!important;scroll-behavior:auto!important}
+}
