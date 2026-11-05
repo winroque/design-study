@@ -31,20 +31,20 @@
   var RADII = ['xs', 'sm', 'md', 'lg', 'xl'];
   var VARIANTS = ['filled', 'light', 'outline', 'subtle', 'default', 'gradient'];
   var SIZES = ['xs', 'sm', 'md', 'lg'];
-  var ST = { 'Na fila': 'blue', 'Prioridade': 'red', 'Pronto': 'teal' };
-  var BEBIDAS = ['Cappuccino', 'Espresso duplo', 'Latte de aveia', 'Flat white', 'Mocha', 'Cold brew', 'Chá-mate gelado', 'Matcha latte', 'Chocolate quente'];
+  var ST = { 'Queued': 'blue', 'Priority': 'red', 'Ready': 'teal' };
+  var BEBIDAS = ['Cappuccino', 'Double espresso', 'Oat latte', 'Flat white', 'Mocha', 'Cold brew', 'Iced yerba mate', 'Matcha latte', 'Hot chocolate'];
 
   var SEED = [
-    { id: 1, cli: 'Ana', qtd: 1, item: 'Cappuccino', tam: 'M', st: 'Prioridade', hora: '08:41' },
-    { id: 2, cli: 'Bruno', qtd: 2, item: 'Espresso duplo', tam: 'P', st: 'Na fila', hora: '08:38' },
-    { id: 3, cli: 'Carla', qtd: 1, item: 'Latte de aveia', tam: 'G', st: 'Prioridade', hora: '08:30' },
-    { id: 4, cli: 'Diego', qtd: 1, item: 'Cold brew', tam: 'G', st: 'Na fila', hora: '08:22' },
-    { id: 5, cli: 'Elisa', qtd: 3, item: 'Pão de queijo', tam: 'P', st: 'Pronto', hora: '08:10' },
-    { id: 6, cli: 'Fábio', qtd: 1, item: 'Mocha', tam: 'M', st: 'Na fila', hora: '07:58' },
-    { id: 7, cli: 'Gabi', qtd: 1, item: 'Matcha latte', tam: 'M', st: 'Pronto', hora: '07:47' },
-    { id: 8, cli: 'Hugo', qtd: 2, item: 'Flat white', tam: 'P', st: 'Na fila', hora: '07:40' },
-    { id: 9, cli: 'Íris', qtd: 1, item: 'Chá-mate gelado', tam: 'G', st: 'Pronto', hora: '07:31' },
-    { id: 10, cli: 'João', qtd: 1, item: 'Chocolate quente', tam: 'M', st: 'Na fila', hora: '07:15' }
+    { id: 1, cli: 'Ana', qtd: 1, item: 'Cappuccino', tam: 'M', st: 'Priority', hora: '08:41' },
+    { id: 2, cli: 'Bruno', qtd: 2, item: 'Double espresso', tam: 'S', st: 'Queued', hora: '08:38' },
+    { id: 3, cli: 'Carla', qtd: 1, item: 'Oat latte', tam: 'L', st: 'Priority', hora: '08:30' },
+    { id: 4, cli: 'Diego', qtd: 1, item: 'Cold brew', tam: 'L', st: 'Queued', hora: '08:22' },
+    { id: 5, cli: 'Elisa', qtd: 3, item: 'Cheese bread', tam: 'S', st: 'Ready', hora: '08:10' },
+    { id: 6, cli: 'Fábio', qtd: 1, item: 'Mocha', tam: 'M', st: 'Queued', hora: '07:58' },
+    { id: 7, cli: 'Gabi', qtd: 1, item: 'Matcha latte', tam: 'M', st: 'Ready', hora: '07:47' },
+    { id: 8, cli: 'Hugo', qtd: 2, item: 'Flat white', tam: 'S', st: 'Queued', hora: '07:40' },
+    { id: 9, cli: 'Íris', qtd: 1, item: 'Iced yerba mate', tam: 'L', st: 'Ready', hora: '07:31' },
+    { id: 10, cli: 'João', qtd: 1, item: 'Hot chocolate', tam: 'M', st: 'Queued', hora: '07:15' }
   ];
 
   function Label(p) { return h(M.Text, { size: 'xs', fw: 600, tt: 'uppercase', c: 'dimmed', style: { letterSpacing: '.04em' } }, p.children); }
@@ -54,27 +54,27 @@
     var lines = [
       ['k', "import "], ['', "{ MantineProvider, createTheme } "], ['k', "from "], ['', "'@mantine/core';\n\n"],
       ['k', "const "], ['', "theme = createTheme({\n  primaryColor: '" + t.color + "',\n  defaultRadius: '" + t.radius + "',\n});\n\n"],
-      ['', "<MantineProvider theme={theme} forceColorScheme=\"" + t.scheme + "\">\n  <Button variant=\"" + t.variant + "\" size=\"" + t.size + "\">\n    Fazer pedido\n  </Button>\n</MantineProvider>"]
+      ['', "<MantineProvider theme={theme} forceColorScheme=\"" + t.scheme + "\">\n  <Button variant=\"" + t.variant + "\" size=\"" + t.size + "\">\n    Place order\n  </Button>\n</MantineProvider>"]
     ];
-    return h('pre', { className: 'lab-code', 'aria-label': 'Código equivalente' }, lines.map(function (l, i) { return h('span', { key: i, className: l[0] }, l[1]); }));
+    return h('pre', { className: 'lab-code', 'aria-label': 'Equivalent code' }, lines.map(function (l, i) { return h('span', { key: i, className: l[0] }, l[1]); }));
   }
 
   function ThemePanel(p) {
     var t = p.theme, set = p.set;
     return h(M.Paper, { withBorder: true, p: 'md' },
       h(M.Stack, { gap: 'md' },
-        h(M.Title, { order: 4 }, 'Tema'),
-        h(M.Text, { size: 'sm', c: 'dimmed' }, 'Tudo nesta página vem de um único objeto de tema. Mude os valores e veja os componentes reagirem.'),
+        h(M.Title, { order: 4 }, 'Theme'),
+        h(M.Text, { size: 'sm', c: 'dimmed' }, 'Everything on this page comes from a single theme object. Change the values and watch the components react.'),
         h(M.Stack, { gap: 6 }, h(Label, null, 'primaryColor'),
           h(M.Group, { gap: 6 }, COLORS.map(function (c) {
             return h(M.Tooltip, { key: c, label: c, withArrow: true },
-              h(M.ColorSwatch, { component: 'button', type: 'button', color: 'var(--mantine-color-' + c + '-filled)', size: 28, onClick: function () { set('color', c); }, 'aria-label': 'Cor ' + c, 'aria-pressed': t.color === c, style: { color: '#fff', cursor: 'pointer' } }, t.color === c ? h(M.CheckIcon, { size: 12 }) : null));
+              h(M.ColorSwatch, { component: 'button', type: 'button', color: 'var(--mantine-color-' + c + '-filled)', size: 28, onClick: function () { set('color', c); }, 'aria-label': 'Color ' + c, 'aria-pressed': t.color === c, style: { color: '#fff', cursor: 'pointer' } }, t.color === c ? h(M.CheckIcon, { size: 12 }) : null));
           }))),
         h(M.Stack, { gap: 6 }, h(Label, null, 'defaultRadius'), h(M.SegmentedControl, { fullWidth: true, size: 'xs', data: RADII, value: t.radius, onChange: function (v) { set('radius', v); } })),
-        h(M.Stack, { gap: 6 }, h(Label, null, 'Tamanho dos controles'), h(M.SegmentedControl, { fullWidth: true, size: 'xs', data: SIZES, value: t.size, onChange: function (v) { set('size', v); } }),
-          h(M.Text, { size: 'xs', c: 'dimmed' }, 'xs 30px · sm 36px · md 42px · lg 50px de altura. Em telas de trabalho, xs ou sm deixam tudo mais denso.')),
-        h(M.Select, { label: 'Variante do botão principal', size: 'sm', data: VARIANTS, value: t.variant, onChange: function (v) { if (v) set('variant', v); }, allowDeselect: false }),
-        h(M.Stack, { gap: 6 }, h(Label, null, 'Código equivalente'), h(CodeView, { theme: t }))
+        h(M.Stack, { gap: 6 }, h(Label, null, 'Control size'), h(M.SegmentedControl, { fullWidth: true, size: 'xs', data: SIZES, value: t.size, onChange: function (v) { set('size', v); } }),
+          h(M.Text, { size: 'xs', c: 'dimmed' }, 'xs 30px · sm 36px · md 42px · lg 50px tall. On work screens, xs or sm make everything denser.')),
+        h(M.Select, { label: 'Main button variant', size: 'sm', data: VARIANTS, value: t.variant, onChange: function (v) { if (v) set('variant', v); }, allowDeselect: false }),
+        h(M.Stack, { gap: 6 }, h(Label, null, 'Equivalent code'), h(CodeView, { theme: t }))
       ));
   }
 
@@ -87,58 +87,58 @@
 
   function Orders(p) {
     var rows = p.rows, t = p.theme;
-    var q = useState(''), f = useState('Todos'), page = useState(1), open = useState(null);
+    var q = useState(''), f = useState('All'), page = useState(1), open = useState(null);
     var filtered = rows.filter(function (r) {
-      var okS = f[0] === 'Todos' || r.st === f[0];
+      var okS = f[0] === 'All' || r.st === f[0];
       var s = q[0].trim().toLowerCase();
       return okS && (!s || (r.cli + ' ' + r.item).toLowerCase().indexOf(s) > -1);
     });
     var per = 6, total = Math.max(1, Math.ceil(filtered.length / per)), pg = Math.min(page[0], total);
     var shown = filtered.slice((pg - 1) * per, pg * per);
-    var fila = rows.filter(function (r) { return r.st !== 'Pronto'; }).length, pri = rows.filter(function (r) { return r.st === 'Prioridade'; }).length, done = rows.length - fila;
+    var fila = rows.filter(function (r) { return r.st !== 'Ready'; }).length, pri = rows.filter(function (r) { return r.st === 'Priority'; }).length, done = rows.length - fila;
     var cur = open[0] != null ? rows.filter(function (r) { return r.id === open[0]; })[0] : null;
 
     return h(M.Stack, { gap: 'md' },
       h(M.SimpleGrid, { cols: { base: 1, xs: 2, lg: 4 }, spacing: 'sm' },
-        h(Stat, { label: 'Na fila', value: fila, sub: 'aguardando preparo', ring: Math.round(fila / rows.length * 100) }),
-        h(Stat, { label: 'Prioridade', value: pri, sub: 'passam na frente', ring: Math.round(pri / rows.length * 100), color: 'red' }),
-        h(Stat, { label: 'Entregues', value: done, sub: 'nesta manhã', ring: Math.round(done / rows.length * 100), color: 'teal' }),
-        h(Stat, { label: 'Tempo médio', value: '4 min', sub: 'por pedido (exemplo)' })),
+        h(Stat, { label: 'Queued', value: fila, sub: 'waiting to be made', ring: Math.round(fila / rows.length * 100) }),
+        h(Stat, { label: 'Priority', value: pri, sub: 'jump the line', ring: Math.round(pri / rows.length * 100), color: 'red' }),
+        h(Stat, { label: 'Delivered', value: done, sub: 'this morning', ring: Math.round(done / rows.length * 100), color: 'teal' }),
+        h(Stat, { label: 'Average time', value: '4 min', sub: 'per order (example)' })),
       h(M.Group, { justify: 'space-between', gap: 'sm' },
-        h(M.TextInput, { size: t.size, placeholder: 'Buscar cliente ou bebida', leftSection: icon(I.search), value: q[0], onChange: function (e) { q[1](e.currentTarget.value); page[1](1); }, style: { flex: '1 1 220px' }, 'aria-label': 'Buscar' }),
-        h(M.SegmentedControl, { size: t.size, data: ['Todos', 'Na fila', 'Prioridade', 'Pronto'], value: f[0], onChange: function (v) { f[1](v); page[1](1); } })),
+        h(M.TextInput, { size: t.size, placeholder: 'Search customer or drink', leftSection: icon(I.search), value: q[0], onChange: function (e) { q[1](e.currentTarget.value); page[1](1); }, style: { flex: '1 1 220px' }, 'aria-label': 'Search' }),
+        h(M.SegmentedControl, { size: t.size, data: ['All', 'Queued', 'Priority', 'Ready'], value: f[0], onChange: function (v) { f[1](v); page[1](1); } })),
       h(M.Paper, { withBorder: true },
         h(M.Table.ScrollContainer, { minWidth: 620 },
           h(M.Table, { striped: true, highlightOnHover: true, verticalSpacing: t.size, horizontalSpacing: 'md' },
-            h(M.Table.Thead, null, h(M.Table.Tr, null, ['Cliente', 'Pedido', 'Tamanho', 'Status', 'Horário', ''].map(function (c, i) { return h(M.Table.Th, { key: i }, c); }))),
+            h(M.Table.Thead, null, h(M.Table.Tr, null, ['Customer', 'Order', 'Size', 'Status', 'Time', ''].map(function (c, i) { return h(M.Table.Th, { key: i }, c); }))),
             h(M.Table.Tbody, null, shown.length ? shown.map(function (r) {
               return h(M.Table.Tr, { key: r.id, className: 'lab-row', onClick: function () { open[1](r.id); } },
                 h(M.Table.Td, null, h(M.Group, { gap: 'sm', wrap: 'nowrap' }, h(M.Avatar, { size: 'sm', color: ST[r.st], radius: 'xl' }, r.cli.slice(0, 2).toUpperCase()), h(M.Text, { size: 'sm', fw: 600 }, r.cli))),
                 h(M.Table.Td, null, (r.qtd > 1 ? r.qtd + '× ' : '') + r.item),
                 h(M.Table.Td, null, h(M.Badge, { variant: 'outline', color: 'gray' }, r.tam)),
-                h(M.Table.Td, null, h(M.Badge, { variant: r.st === 'Prioridade' ? 'filled' : 'light', color: ST[r.st] }, r.st)),
+                h(M.Table.Td, null, h(M.Badge, { variant: r.st === 'Priority' ? 'filled' : 'light', color: ST[r.st] }, r.st)),
                 h(M.Table.Td, null, h(M.Text, { size: 'sm', ff: 'monospace' }, r.hora)),
                 h(M.Table.Td, { onClick: function (e) { e.stopPropagation(); } },
                   h(M.Menu, { position: 'bottom-end', shadow: 'md', withinPortal: true },
-                    h(M.Menu.Target, null, h(M.ActionIcon, { variant: 'subtle', color: 'gray', 'aria-label': 'Ações do pedido de ' + r.cli }, icon(I.dots))),
+                    h(M.Menu.Target, null, h(M.ActionIcon, { variant: 'subtle', color: 'gray', 'aria-label': 'Actions for the order from ' + r.cli }, icon(I.dots))),
                     h(M.Menu.Dropdown, null,
                       h(M.Menu.Label, null, r.item),
-                      h(M.Menu.Item, { leftSection: icon(I.eye, 14), onClick: function () { open[1](r.id); } }, 'Abrir'),
-                      h(M.Menu.Item, { leftSection: icon(I.flame, 14), onClick: function () { p.setSt(r.id, 'Prioridade'); } }, 'Dar prioridade'),
+                      h(M.Menu.Item, { leftSection: icon(I.eye, 14), onClick: function () { open[1](r.id); } }, 'Open'),
+                      h(M.Menu.Item, { leftSection: icon(I.flame, 14), onClick: function () { p.setSt(r.id, 'Priority'); } }, 'Prioritize'),
                       h(M.Menu.Divider),
-                      h(M.Menu.Item, { color: 'teal', leftSection: icon(I.check, 14), onClick: function () { p.setSt(r.id, 'Pronto'); p.toast('Pedido entregue', r.item + ' para ' + r.cli + '.', 'teal'); } }, 'Entregar pedido')))));
-            }) : h(M.Table.Tr, null, h(M.Table.Td, { colSpan: 6 }, h(M.Text, { c: 'dimmed', ta: 'center', py: 'lg', size: 'sm' }, 'Nenhum pedido encontrado para esse filtro.'))))))),
+                      h(M.Menu.Item, { color: 'teal', leftSection: icon(I.check, 14), onClick: function () { p.setSt(r.id, 'Ready'); p.toast('Order delivered', r.item + ' for ' + r.cli + '.', 'teal'); } }, 'Deliver order')))));
+            }) : h(M.Table.Tr, null, h(M.Table.Td, { colSpan: 6 }, h(M.Text, { c: 'dimmed', ta: 'center', py: 'lg', size: 'sm' }, 'No orders found for this filter.'))))))),
       h(M.Group, { justify: 'space-between' },
-        h(M.Text, { size: 'sm', c: 'dimmed' }, filtered.length + ' pedidos · toque numa linha para abrir'),
+        h(M.Text, { size: 'sm', c: 'dimmed' }, filtered.length + ' orders · tap a row to open it'),
         h(M.Pagination, { total: total, value: pg, onChange: page[1], size: 'sm' })),
       h(M.Modal, { opened: !!cur, onClose: function () { open[1](null); }, title: cur ? cur.item : '', centered: true },
         cur ? h(M.Stack, { gap: 'sm' },
-          h(M.Group, { gap: 'xs' }, h(M.Badge, { variant: 'outline', color: 'gray' }, 'Tamanho ' + cur.tam), h(M.Badge, { variant: 'light', color: ST[cur.st] }, cur.st), h(M.Text, { size: 'sm', c: 'dimmed' }, 'pedido às ' + cur.hora)),
-          h(M.Text, { size: 'sm' }, cur.qtd + ' unidade' + (cur.qtd > 1 ? 's' : '') + ' para ' + cur.cli + '. Dados fictícios.'),
-          h(M.Textarea, { label: 'Observação', placeholder: 'Ex.: sem açúcar, leite vegetal', autosize: true, minRows: 2, size: t.size }),
+          h(M.Group, { gap: 'xs' }, h(M.Badge, { variant: 'outline', color: 'gray' }, 'Size ' + cur.tam), h(M.Badge, { variant: 'light', color: ST[cur.st] }, cur.st), h(M.Text, { size: 'sm', c: 'dimmed' }, 'ordered at ' + cur.hora)),
+          h(M.Text, { size: 'sm' }, cur.qtd + ' item' + (cur.qtd > 1 ? 's' : '') + ' for ' + cur.cli + '. Fictional data.'),
+          h(M.Textarea, { label: 'Note', placeholder: 'E.g. no sugar, plant milk', autosize: true, minRows: 2, size: t.size }),
           h(M.Group, { justify: 'flex-end', mt: 'sm' },
-            h(M.Button, { variant: 'default', size: t.size, onClick: function () { open[1](null); } }, 'Fechar'),
-            h(M.Button, { variant: t.variant, size: t.size, leftSection: icon(I.cup), gradient: { from: t.color, to: 'cyan', deg: 45 }, onClick: function () { p.setSt(cur.id, 'Pronto'); p.toast('Pedido entregue', cur.item + ' para ' + cur.cli + '.', 'teal'); open[1](null); } }, 'Entregar pedido'))) : null)
+            h(M.Button, { variant: 'default', size: t.size, onClick: function () { open[1](null); } }, 'Close'),
+            h(M.Button, { variant: t.variant, size: t.size, leftSection: icon(I.cup), gradient: { from: t.color, to: 'cyan', deg: 45 }, onClick: function () { p.setSt(cur.id, 'Ready'); p.toast('Order delivered', cur.item + ' for ' + cur.cli + '.', 'teal'); open[1](null); } }, 'Deliver order'))) : null)
     );
   }
 
@@ -152,59 +152,59 @@
       saving[1](true);
       setTimeout(function () {
         saving[1](false);
-        p.add({ cli: cli[0].trim(), qtd: qtd[0] || 1, item: item[0], tam: tam[0], st: pri[0] ? 'Prioridade' : 'Na fila' });
-        p.toast('Pedido adicionado', item[0] + ' ' + tam[0] + ' para ' + cli[0].trim() + (pri[0] ? ', com prioridade.' : '.'), pri[0] ? 'red' : t.color);
+        p.add({ cli: cli[0].trim(), qtd: qtd[0] || 1, item: item[0], tam: tam[0], st: pri[0] ? 'Priority' : 'Queued' });
+        p.toast('Order added', item[0] + ' ' + tam[0] + ' for ' + cli[0].trim() + (pri[0] ? ', prioritized.' : '.'), pri[0] ? 'red' : t.color);
         obs[1]('');
       }, 700);
     }
     return h(M.Paper, { withBorder: true, p: 'lg', component: 'form', onSubmit: function (e) { e.preventDefault(); submit(); } },
       h(M.Stack, { gap: 'md' },
         h(M.Group, { justify: 'space-between', align: 'flex-start' },
-          h('div', null, h(M.Title, { order: 3 }, 'Novo pedido'), h(M.Text, { size: 'sm', c: 'dimmed' }, 'O formulário usa o tamanho e a variante escolhidos no painel de tema.')),
-          h(M.Group, { gap: 6 }, h(M.Badge, { variant: 'light' }, viagem[0] ? 'Para viagem' : 'Na mesa'), pri[0] ? h(M.Badge, { color: 'red', variant: 'filled' }, 'Prioridade') : null)),
+          h('div', null, h(M.Title, { order: 3 }, 'New order'), h(M.Text, { size: 'sm', c: 'dimmed' }, 'The form uses the size and variant chosen in the theme panel.')),
+          h(M.Group, { gap: 6 }, h(M.Badge, { variant: 'light' }, viagem[0] ? 'To go' : 'For here'), pri[0] ? h(M.Badge, { color: 'red', variant: 'filled' }, 'Priority') : null)),
         h(M.SimpleGrid, { cols: { base: 1, sm: 2 }, spacing: 'md' },
-          h(M.TextInput, { label: 'Nome no copo', required: true, size: t.size, value: cli[0], onChange: function (e) { cli[1](e.currentTarget.value); }, error: cli[0].trim() ? null : 'Informe um nome' }),
-          h(M.NumberInput, { label: 'Quantidade', size: t.size, min: 1, max: 10, value: qtd[0], onChange: qtd[1] })),
-        h(M.Select, { label: 'Bebida', size: t.size, searchable: true, data: BEBIDAS, value: item[0], onChange: function (v) { if (v) item[1](v); }, allowDeselect: false }),
-        h(M.Stack, { gap: 4 }, h(M.Text, { size: 'sm', fw: 600 }, 'Tamanho'), h(M.SegmentedControl, { size: t.size, data: [{ label: 'P · 240 ml', value: 'P' }, { label: 'M · 350 ml', value: 'M' }, { label: 'G · 480 ml', value: 'G' }], value: tam[0], onChange: tam[1] })),
-        h(M.Textarea, { label: 'Observação', description: 'Opcional. Vai impressa na etiqueta do copo.', size: t.size, autosize: true, minRows: 2, placeholder: 'Ex.: sem açúcar, leite de aveia', value: obs[0], onChange: function (e) { obs[1](e.currentTarget.value); } }),
+          h(M.TextInput, { label: 'Name on cup', required: true, size: t.size, value: cli[0], onChange: function (e) { cli[1](e.currentTarget.value); }, error: cli[0].trim() ? null : 'Enter a name' }),
+          h(M.NumberInput, { label: 'Quantity', size: t.size, min: 1, max: 10, value: qtd[0], onChange: qtd[1] })),
+        h(M.Select, { label: 'Drink', size: t.size, searchable: true, data: BEBIDAS, value: item[0], onChange: function (v) { if (v) item[1](v); }, allowDeselect: false }),
+        h(M.Stack, { gap: 4 }, h(M.Text, { size: 'sm', fw: 600 }, 'Size'), h(M.SegmentedControl, { size: t.size, data: [{ label: 'S · 8 oz', value: 'S' }, { label: 'M · 12 oz', value: 'M' }, { label: 'L · 16 oz', value: 'L' }], value: tam[0], onChange: tam[1] })),
+        h(M.Textarea, { label: 'Note', description: 'Optional. Printed on the cup label.', size: t.size, autosize: true, minRows: 2, placeholder: 'E.g. no sugar, oat milk', value: obs[0], onChange: function (e) { obs[1](e.currentTarget.value); } }),
         h(M.Group, { gap: 'xl' },
-          h(M.Checkbox, { label: 'Para viagem', size: t.size === 'lg' ? 'md' : 'sm', checked: viagem[0], onChange: function (e) { viagem[1](e.currentTarget.checked); } }),
-          h(M.Switch, { label: 'Prioridade', color: 'red', size: t.size === 'lg' ? 'md' : 'sm', checked: pri[0], onChange: function (e) { pri[1](e.currentTarget.checked); } })),
-        h(M.Stack, { gap: 4 }, h(M.Group, { justify: 'space-between' }, h(M.Text, { size: 'sm', c: 'dimmed' }, 'Preenchimento'), h(M.Text, { size: 'sm', c: 'dimmed' }, pct + '%')), h(M.Progress, { value: pct, size: 'sm', color: pct === 100 ? 'teal' : undefined, transitionDuration: 300 })),
+          h(M.Checkbox, { label: 'To go', size: t.size === 'lg' ? 'md' : 'sm', checked: viagem[0], onChange: function (e) { viagem[1](e.currentTarget.checked); } }),
+          h(M.Switch, { label: 'Priority', color: 'red', size: t.size === 'lg' ? 'md' : 'sm', checked: pri[0], onChange: function (e) { pri[1](e.currentTarget.checked); } })),
+        h(M.Stack, { gap: 4 }, h(M.Group, { justify: 'space-between' }, h(M.Text, { size: 'sm', c: 'dimmed' }, 'Completion'), h(M.Text, { size: 'sm', c: 'dimmed' }, pct + '%')), h(M.Progress, { value: pct, size: 'sm', color: pct === 100 ? 'teal' : undefined, transitionDuration: 300 })),
         h(M.Group, { justify: 'flex-end' },
-          h(M.Button, { variant: 'default', size: t.size, onClick: function () { obs[1](''); pri[1](false); } }, 'Limpar'),
-          h(M.Button, { type: 'submit', variant: t.variant, size: t.size, loading: saving[0], leftSection: icon(I.plus), gradient: { from: t.color, to: 'cyan', deg: 45 } }, 'Adicionar pedido'))));
+          h(M.Button, { variant: 'default', size: t.size, onClick: function () { obs[1](''); pri[1](false); } }, 'Clear'),
+          h(M.Button, { type: 'submit', variant: t.variant, size: t.size, loading: saving[0], leftSection: icon(I.plus), gradient: { from: t.color, to: 'cyan', deg: 45 } }, 'Add order'))));
   }
 
-  var STEPS = [['Pedido', 'No caixa'], ['Preparo', 'Com o barista'], ['Pronto', 'No balcão'], ['Entregue', 'Com o cliente']];
+  var STEPS = [['Order', 'At the register'], ['Making', 'With the barista'], ['Ready', 'At the counter'], ['Delivered', 'With the customer']];
 
   function Gallery(p) {
     var t = p.theme;
-    var step = useState(1), chips = useState(['Café', 'Sem lactose']), rate = useState(4), sl = useState(60);
+    var step = useState(1), chips = useState(['Coffee', 'Lactose-free']), rate = useState(4), sl = useState(60);
     return h(M.SimpleGrid, { cols: { base: 1, md: 2 }, spacing: 'md' },
-      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Button · todas as variantes'),
+      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Button · every variant'),
         h(M.Group, { gap: 'xs' }, VARIANTS.map(function (v) { return h(M.Button, { key: v, variant: v, size: t.size, gradient: { from: t.color, to: 'cyan', deg: 45 } }, v); })),
-        h(M.Group, { gap: 'xs' }, h(M.Button, { loading: true, size: t.size }, 'loading'), h(M.Button, { disabled: true, size: t.size }, 'disabled'), h(M.Button, { color: 'red', size: t.size }, 'Cancelar pedido'), h(M.Button.Group, null, h(M.Button, { variant: 'default', size: t.size }, 'P'), h(M.Button, { variant: 'default', size: t.size }, 'M'), h(M.Button, { variant: 'default', size: t.size }, 'G'))))),
-      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Badge, ActionIcon e Avatar'),
+        h(M.Group, { gap: 'xs' }, h(M.Button, { loading: true, size: t.size }, 'loading'), h(M.Button, { disabled: true, size: t.size }, 'disabled'), h(M.Button, { color: 'red', size: t.size }, 'Cancel order'), h(M.Button.Group, null, h(M.Button, { variant: 'default', size: t.size }, 'P'), h(M.Button, { variant: 'default', size: t.size }, 'M'), h(M.Button, { variant: 'default', size: t.size }, 'G'))))),
+      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Badge, ActionIcon and Avatar'),
         h(M.Group, { gap: 'xs' }, ['filled', 'light', 'outline', 'dot', 'default', 'transparent'].map(function (v) { return h(M.Badge, { key: v, variant: v }, v); })),
         h(M.Group, { gap: 'xs' }, ['filled', 'light', 'outline', 'subtle', 'default'].map(function (v) { return h(M.ActionIcon, { key: v, variant: v, size: 'lg', 'aria-label': v }, icon(I.cup)); })),
         h(M.Avatar.Group, null, ['AN', 'BR', 'CA', 'DI'].map(function (x, i) { return h(M.Avatar, { key: x, radius: 'xl', color: COLORS[i * 2] }, x); }), h(M.Avatar, { radius: 'xl' }, '+5')))),
       h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Alert'),
-        h(M.Alert, { variant: 'light', color: 'blue', title: 'Leite de aveia acabando', icon: icon(I.info) }, 'Restam 2 litros. Peça reposição antes do almoço.'),
-        h(M.Alert, { variant: 'light', color: 'red', title: 'Máquina 2 parada', icon: icon(I.alert) }, 'Use a máquina 1 até a manutenção chegar.'))),
-      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Stepper · caminho do pedido'),
+        h(M.Alert, { variant: 'light', color: 'blue', title: 'Running low on oat milk', icon: icon(I.info) }, '2 liters left. Order more before lunch.'),
+        h(M.Alert, { variant: 'light', color: 'red', title: 'Machine 2 is down', icon: icon(I.alert) }, 'Use machine 1 until the repair arrives.'))),
+      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Stepper · the order’s path'),
         h(M.Stepper, { active: step[0], onStepClick: step[1], size: 'sm', orientation: 'vertical' }, STEPS.map(function (s, i) { return h(M.Stepper.Step, { key: i, label: s[0], description: s[1] }); })),
-        h(M.Group, null, h(M.Button, { variant: 'default', size: 'xs', onClick: function () { step[1](Math.max(0, step[0] - 1)); } }, 'Voltar'), h(M.Button, { size: 'xs', variant: t.variant, gradient: { from: t.color, to: 'cyan', deg: 45 }, onClick: function () { step[1](Math.min(4, step[0] + 1)); } }, 'Avançar')))),
-      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Chip, Slider, Rating e Loader'),
-        h(M.Chip.Group, { multiple: true, value: chips[0], onChange: chips[1] }, h(M.Group, { gap: 'xs' }, ['Café', 'Chá', 'Gelado', 'Sem lactose', 'Vegano'].map(function (c) { return h(M.Chip, { key: c, value: c, size: 'sm' }, c); }))),
-        h(M.Text, { size: 'sm' }, 'Intensidade da torra: ', h('b', null, sl[0])),
-        h(M.Slider, { value: sl[0], onChange: sl[1], marks: [{ value: 20, label: 'clara' }, { value: 50, label: 'média' }, { value: 80, label: 'escura' }], mb: 'lg', 'aria-label': 'Intensidade da torra' }),
+        h(M.Group, null, h(M.Button, { variant: 'default', size: 'xs', onClick: function () { step[1](Math.max(0, step[0] - 1)); } }, 'Back'), h(M.Button, { size: 'xs', variant: t.variant, gradient: { from: t.color, to: 'cyan', deg: 45 }, onClick: function () { step[1](Math.min(4, step[0] + 1)); } }, 'Next')))),
+      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Chip, Slider, Rating and Loader'),
+        h(M.Chip.Group, { multiple: true, value: chips[0], onChange: chips[1] }, h(M.Group, { gap: 'xs' }, ['Coffee', 'Tea', 'Iced', 'Lactose-free', 'Vegan'].map(function (c) { return h(M.Chip, { key: c, value: c, size: 'sm' }, c); }))),
+        h(M.Text, { size: 'sm' }, 'Roast level: ', h('b', null, sl[0])),
+        h(M.Slider, { value: sl[0], onChange: sl[1], marks: [{ value: 20, label: 'light' }, { value: 50, label: 'medium' }, { value: 80, label: 'dark' }], mb: 'lg', 'aria-label': 'Roast level' }),
         h(M.Group, { justify: 'space-between' }, h(M.Rating, { value: rate[0], onChange: rate[1] }), h(M.Group, { gap: 'md' }, h(M.Loader, { size: 'sm' }), h(M.Loader, { size: 'sm', type: 'bars' }), h(M.Loader, { size: 'sm', type: 'dots' }))))),
-      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Accordion e Kbd'),
+      h(M.Paper, { withBorder: true, p: 'md' }, h(M.Stack, { gap: 'sm' }, h(M.Title, { order: 5 }, 'Accordion and Kbd'),
         h(M.Accordion, { variant: 'separated', defaultValue: 'tema' },
-          h(M.Accordion.Item, { value: 'tema' }, h(M.Accordion.Control, null, 'Por que tudo muda junto?'), h(M.Accordion.Panel, null, h(M.Text, { size: 'sm' }, 'Cada componente lê variáveis CSS como --mantine-primary-color-filled e --mantine-radius-default. Mudar o tema reescreve essas variáveis, e a página inteira acompanha.'))),
-          h(M.Accordion.Item, { value: 'atalhos' }, h(M.Accordion.Control, null, 'Atalhos de teclado'), h(M.Accordion.Panel, null, h(M.Group, { gap: 6 }, h(M.Kbd, null, '⌘'), '+', h(M.Kbd, null, 'K'), h(M.Text, { size: 'sm', c: 'dimmed' }, 'abre a busca no pacote @mantine/spotlight')))))))
+          h(M.Accordion.Item, { value: 'tema' }, h(M.Accordion.Control, null, 'Why does everything change together?'), h(M.Accordion.Panel, null, h(M.Text, { size: 'sm' }, 'Each component reads CSS variables such as --mantine-primary-color-filled and --mantine-radius-default. Changing the theme rewrites those variables, and the whole page follows.'))),
+          h(M.Accordion.Item, { value: 'atalhos' }, h(M.Accordion.Control, null, 'Keyboard shortcuts'), h(M.Accordion.Panel, null, h(M.Group, { gap: 6 }, h(M.Kbd, null, '⌘'), '+', h(M.Kbd, null, 'K'), h(M.Text, { size: 'sm', c: 'dimmed' }, 'opens search in the @mantine/spotlight package')))))))
     );
   }
 
@@ -238,31 +238,31 @@
         h(M.AppShell.Header, null,
           h(M.Group, { h: '100%', px: 'md', justify: 'space-between', wrap: 'nowrap', gap: 'sm' },
             h(M.Group, { gap: 'sm', wrap: 'nowrap', style: { minWidth: 0 } },
-              h(M.ActionIcon, { component: 'a', href: '../index.html', variant: 'default', size: 'lg', 'aria-label': 'Voltar ao atlas' }, icon(I.back)),
-              h(M.Title, { order: 4, style: { whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }, 'Laboratório Mantine'),
+              h(M.ActionIcon, { component: 'a', href: '../index.html', variant: 'default', size: 'lg', 'aria-label': 'Back to the atlas' }, icon(I.back)),
+              h(M.Title, { order: 4, style: { whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' } }, 'Mantine lab'),
               h(M.Badge, { variant: 'light', visibleFrom: 'sm' }, '@mantine/core 9.7.5')),
             h(M.Group, { gap: 'xs', wrap: 'nowrap' },
-              h(M.Anchor, { href: 'carbon.html', size: 'sm', visibleFrom: 'sm' }, 'Ver o Carbon'),
-              h(M.SegmentedControl, { size: 'xs', data: [{ label: 'Claro', value: 'light' }, { label: 'Escuro', value: 'dark' }], value: t.scheme, onChange: function (v) { set('scheme', v); } })))),
+              h(M.Anchor, { href: 'carbon.html', size: 'sm', visibleFrom: 'sm' }, 'See Carbon'),
+              h(M.SegmentedControl, { size: 'xs', data: [{ label: 'Light', value: 'light' }, { label: 'Dark', value: 'dark' }], value: t.scheme, onChange: function (v) { set('scheme', v); } })))),
         h(M.AppShell.Main, null,
           h(M.Container, { size: 'xl', px: 0 },
             h(M.Stack, { gap: 'lg' },
               h(M.Stack, { gap: 4 },
-                h(M.Text, { size: 'xs', fw: 700, tt: 'uppercase', c: 'dimmed', style: { letterSpacing: '.08em' } }, 'Atlas de Design · componentes reais'),
-                h(M.Title, { order: 1 }, 'Mantine na prática'),
-                h(M.Text, { c: 'dimmed', maw: 720 }, 'Esta página não imita o Mantine: ela roda a biblioteca de verdade, montando o painel de pedidos de uma cafeteria fictícia. Mude o tema no painel e veja a lista, o formulário e a galeria reagirem.')),
+                h(M.Text, { size: 'xs', fw: 700, tt: 'uppercase', c: 'dimmed', style: { letterSpacing: '.08em' } }, 'Atlas · real components'),
+                h(M.Title, { order: 1 }, 'Mantine in practice'),
+                h(M.Text, { c: 'dimmed', maw: 720 }, 'This page does not imitate Mantine: it runs the real library, building the orders panel of a fictional coffee shop. Change the theme in the panel and watch the list, the form and the gallery react.')),
               h(M.SimpleGrid, { cols: { base: 1, md: 3 }, spacing: 'lg' },
                 h('div', null, h(ThemePanel, { theme: t, set: set })),
                 h('div', { className: 'lab-span2' },
                   h(M.Tabs, { value: tab[0], onChange: function (v) { if (v) tab[1](v); }, keepMounted: false },
                     h(M.Tabs.List, { mb: 'md' },
-                      h(M.Tabs.Tab, { value: 'fila', leftSection: icon(I.list, 14) }, 'Pedidos'),
-                      h(M.Tabs.Tab, { value: 'novo', leftSection: icon(I.pen, 14) }, 'Novo pedido'),
-                      h(M.Tabs.Tab, { value: 'galeria', leftSection: icon(I.grid, 14) }, 'Componentes')),
+                      h(M.Tabs.Tab, { value: 'fila', leftSection: icon(I.list, 14) }, 'Orders'),
+                      h(M.Tabs.Tab, { value: 'novo', leftSection: icon(I.pen, 14) }, 'New order'),
+                      h(M.Tabs.Tab, { value: 'galeria', leftSection: icon(I.grid, 14) }, 'Components')),
                     h(M.Tabs.Panel, { value: 'fila' }, h(Orders, { rows: rows[0], theme: t, setSt: setSt, toast: showToast })),
                     h(M.Tabs.Panel, { value: 'novo' }, h(NewOrder, { theme: t, add: add, toast: function (a, b, c) { showToast(a, b, c); tab[1]('fila'); } })),
                     h(M.Tabs.Panel, { value: 'galeria' }, h(Gallery, { theme: t }))))),
-              h(M.Text, { size: 'xs', c: 'dimmed' }, 'Mantine é MIT, © Vitaly Rtishchev. Pacote vindo do design system "Mantine" do Claude Design.')))),
+              h(M.Text, { size: 'xs', c: 'dimmed' }, 'Mantine is MIT, © Vitaly Rtishchev. Bundle taken from the “Mantine” design system in Claude Design.')))),
         toast[0] ? h('div', { className: 'lab-toast', key: toast[0].k, role: 'status' },
           h(M.Notification, { title: toast[0].title, color: toast[0].color, onClose: function () { toast[1](null); }, withBorder: true, icon: icon(I.check), radius: 'md' }, toast[0].msg)) : null
       ));

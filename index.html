@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Atlas, design de interface</title>
-<meta name="description" content="Atlas interativo de filosofias, estilos e design systems de interface, composto como um manual de normas gráficas.">
+<title>Atlas, interface design</title>
+<meta name="description" content="An interactive atlas of interface design philosophies, styles and design systems, set as a graphic standards manual.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Josefin+Sans:wght@700&family=Orbitron:wght@900&family=Patrick+Hand&family=Press+Start+2P&family=Rubik:wght@900&display=swap">
@@ -302,7 +302,7 @@ code{font-family:var(--f);font-stretch:72%;font-weight:600;font-size:.95em;backg
 <header id="top"></header>
 <main>
 
-<header class="capa wrap" aria-label="Capa">
+<header class="capa wrap" aria-label="Cover">
   <div class="cota-h" aria-hidden="true"><span></span><b id="cw">largura</b><span></span></div>
   <div class="placa s-suico" id="placa">
     <div class="deco" id="deco" aria-hidden="true"></div>
@@ -310,41 +310,41 @@ code{font-family:var(--f);font-stretch:72%;font-weight:600;font-size:.95em;backg
   </div>
   <div class="regua">
     <div class="esc" id="esc" aria-hidden="true"></div>
-    <input type="range" id="regua" min="0" max="24" step="1" value="1" aria-label="Estilo da capa">
+    <input type="range" id="regua" min="0" max="24" step="1" value="1" aria-label="Cover style">
   </div>
   <div class="g legenda">
     <div class="m">
-      <p class="fig"><span class="anot">Fig. 0.1</span><br><b id="fn">Estilo Suíço</b>, <span id="fy">1950</span>. <span id="fd">Grade, sem serifa e assimetria.</span></p>
-      <p class="acoes"><button type="button" class="bt" id="play">Pausar</button><a id="fl" href="estilos.html#suico">Abrir no capítulo 1</a></p>
+      <p class="fig"><span class="anot">Fig. 0.1</span><br><b id="fn">Swiss Style</b>, <span id="fy">1950</span>. <span id="fd">Grid, sans serif and asymmetry.</span></p>
+      <p class="acoes"><button type="button" class="bt" id="play">Pause</button><a id="fl" href="styles.html#suico">Open in chapter 1</a></p>
     </div>
     <div class="c">
-      <p class="lede" data-spec="lede">Um mapa das escolas de design de interface, do Bauhaus ao Liquid Glass. Cada amostra responde ao toque, porque o jeito de reagir ao clique também faz parte do estilo. Uma pergunta separa todas elas: quanto a tela deve fingir que é um objeto, e quanto deve sair do caminho da informação.</p>
-      <p class="anot" style="margin-top:12px">A capa percorre as 25 escolas do capítulo 1. Arraste a régua ou use as setas do teclado para escolher uma.</p>
+      <p class="lede" data-spec="lede">A map of the schools of interface design, from the Bauhaus to Liquid Glass. Every specimen responds to touch, because the way a thing reacts to a click is part of its style. One question separates them all: how much should the screen pretend to be an object, and how much should it get out of the way of the information.</p>
+      <p class="anot" style="margin-top:12px">The cover cycles through the 25 schools in chapter 1. Drag the ruler or use the arrow keys to pick one.</p>
     </div>
   </div>
 </header>
 
 <section class="wrap g sec" id="capitulos" aria-labelledby="h-cap">
   <div class="m"><span class="num">0.1</span></div>
-  <div class="c"><h2 id="h-cap" data-spec="h2">Capítulos</h2></div>
-  <nav class="toc" aria-label="Capítulos">
-    <a class="g" href="estilos.html"><div class="m"><span class="n" data-spec="número">1</span></div><div class="c"><h3 data-spec="h3">Estilos e filosofias</h3><p>25 escolas, do Bauhaus ao terminal, cada uma com a mesma ficha de pedido e a receita em CSS.</p></div></a>
-    <a class="g" href="sistemas.html"><div class="m"><span class="n">2</span></div><div class="c"><h3>Design systems atuais</h3><p>A mesma tela de pedidos em Material 3, Liquid Glass, Fluent, Carbon, Mantine e outros cinco.</p></div></a>
-    <a class="g" href="incomuns.html"><div class="m"><span class="n">3</span></div><div class="c"><h3>Incomuns, inovações e estranhos</h3><p>42 experimentos: Dynamicland, slide to unlock, roda do iPod, Dynamic Island e padrões obscuros.</p></div></a>
-    <a class="g" href="comparar.html"><div class="m"><span class="n">4</span></div><div class="c"><h3>Comparar e escolher</h3><p>Matriz de seis eixos, bibliotecas React lado a lado e 19 cenários com recomendação.</p></div></a>
-    <a class="g" href="labs/mantine.html"><div class="m"><span class="n">5.1</span></div><div class="c"><h3>Laboratório Mantine</h3><p>Mantine 9.7.5 de verdade: tema ao vivo, painel de pedidos, formulário e galeria.</p></div></a>
-    <a class="g" href="labs/carbon.html"><div class="m"><span class="n">5.2</span></div><div class="c"><h3>Laboratório Carbon</h3><p>Carbon 1.120 da IBM: quatro temas, densidade de tabela ajustável e o UI Shell.</p></div></a>
+  <div class="c"><h2 id="h-cap" data-spec="h2">Chapters</h2></div>
+  <nav class="toc" aria-label="Chapters">
+    <a class="g" href="styles.html"><div class="m"><span class="n" data-spec="número">1</span></div><div class="c"><h3 data-spec="h3">Styles and philosophies</h3><p>25 schools, from the Bauhaus to the terminal, each with the same order card and the CSS recipe.</p></div></a>
+    <a class="g" href="systems.html"><div class="m"><span class="n">2</span></div><div class="c"><h3>Today’s design systems</h3><p>The same orders screen in Material 3, Liquid Glass, Fluent, Carbon, Mantine and five others.</p></div></a>
+    <a class="g" href="unusual.html"><div class="m"><span class="n">3</span></div><div class="c"><h3>Unusual, innovative and strange</h3><p>42 experiments: Dynamicland, slide to unlock, the iPod wheel, the Dynamic Island and dark patterns.</p></div></a>
+    <a class="g" href="compare.html"><div class="m"><span class="n">4</span></div><div class="c"><h3>Compare and choose</h3><p>A six-axis matrix, React libraries side by side and 19 scenarios with a recommendation.</p></div></a>
+    <a class="g" href="labs/mantine.html"><div class="m"><span class="n">5.1</span></div><div class="c"><h3>Mantine lab</h3><p>The real Mantine 9.7.5: live theme, orders panel, form and gallery.</p></div></a>
+    <a class="g" href="labs/carbon.html"><div class="m"><span class="n">5.2</span></div><div class="c"><h3>Carbon lab</h3><p>IBM’s Carbon 1.120: four themes, adjustable table density and the UI Shell.</p></div></a>
   </nav>
 </section>
 
 <section class="wrap g sec" id="niveis" aria-labelledby="h-niv">
   <div class="m"><span class="num">0.2</span></div>
   <div class="c">
-    <h2 id="h-niv">Três coisas que chamamos de design</h2>
+    <h2 id="h-niv">Three things we call design</h2>
     <div class="niveis">
-      <div><h3>Filosofia</h3><span class="ex">Flat, skeumorfismo, suíço</span><p>Uma posição sobre como a interface deve se comportar: imitar o mundo real ou ser pura informação.</p></div>
-      <div><h3>Estilo visual</h3><span class="ex">Glass, neumorfismo, neobrutalismo</span><p>Uma camada estética aplicada por cima. Muda o acabamento, não as regras de uso, e envelhece rápido.</p></div>
-      <div><h3>Design system</h3><span class="ex">Material, Fluent, Carbon, Mantine</span><p>Componentes, tokens, espaçamentos e regras de acessibilidade prontos. É o que se usa de fato para construir produtos.</p></div>
+      <div><h3>Philosophy</h3><span class="ex">Flat, skeuomorphism, Swiss</span><p>A position on how an interface should behave: imitate the real world, or be pure information.</p></div>
+      <div><h3>Visual style</h3><span class="ex">Glass, neumorphism, neobrutalism</span><p>An aesthetic layer applied on top. It changes the finish, not the rules of use, and it ages fast.</p></div>
+      <div><h3>Design system</h3><span class="ex">Material, Fluent, Carbon, Mantine</span><p>Ready-made components, tokens, spacing and accessibility rules. It is what teams actually use to build products.</p></div>
     </div>
   </div>
 </section>
@@ -352,10 +352,10 @@ code{font-family:var(--f);font-stretch:72%;font-weight:600;font-size:.95em;backg
 <section class="wrap g sec" id="pendulo" aria-labelledby="h-pen">
   <div class="m"><span class="num">0.3</span></div>
   <div class="c">
-    <h2 id="h-pen">O pêndulo entre objeto e plano</h2>
-    <p class="lede">Cada geração corrige o excesso da anterior. O ornamento levou ao flat, a falta de pistas visuais levou ao Material, e a uniformidade levou ao vidro e ao neobrutalismo.</p>
+    <h2 id="h-pen">The pendulum between object and plane</h2>
+    <p class="lede">Each generation corrects the excess of the one before. Ornament led to flat, the lack of visual cues led to Material, and sameness led to glass and neobrutalism.</p>
     <div class="pend-box"><div class="pend" id="pend">
-    <svg viewBox="0 0 820 250" role="img" aria-label="De 2000 a 2026, quanto o padrão das plataformas imitou o mundo físico: alto com Aqua e o iOS skeumórfico, mínimo com o flat em 2013, médio com Material, Fluent e Big Sur, e subindo de novo com o Liquid Glass em 2025.">
+    <svg viewBox="0 0 820 250" role="img" aria-label="From 2000 to 2026, how much the platform default imitated the physical world: high with Aqua and skeuomorphic iOS, lowest with flat in 2013, middling with Material, Fluent and Big Sur, and rising again with Liquid Glass in 2025.">
       <g font-family="Archivo, sans-serif" font-stretch="70%" font-size="12" fill="var(--grafite)">
         <line x1="60" y1="200" x2="800" y2="200" stroke="var(--tinta)"/>
         <line x1="60" y1="40" x2="800" y2="40" stroke="var(--fio)" stroke-dasharray="2 5"/>
@@ -370,7 +370,7 @@ code{font-family:var(--f);font-stretch:72%;font-weight:600;font-size:.95em;backg
         <g fill="none" stroke="var(--grafite)" stroke-width="1.2" stroke-dasharray="2 2"><circle cx="592" cy="120" r="4.5"/><circle cx="648" cy="200" r="4.5"/><circle cx="676" cy="80" r="4.5"/></g>
         <g font-family="Archivo, sans-serif" font-size="13" font-weight="600" fill="var(--tinta)">
           <text x="88" y="66" text-anchor="middle">Aqua</text>
-          <text x="256" y="27" text-anchor="middle">iOS skeumórfico</text>
+          <text x="256" y="27" text-anchor="middle">Skeuomorphic iOS</text>
           <text x="414" y="190" text-anchor="end">iOS 7, flat</text>
           <text x="452" y="106" text-anchor="middle">Material</text>
           <text x="536" y="161" text-anchor="middle">Fluent</text>
@@ -379,64 +379,64 @@ code{font-family:var(--f);font-stretch:72%;font-weight:600;font-size:.95em;backg
           <text x="760" y="106" text-anchor="middle" fill="var(--sinal)" font-weight="800">Liquid Glass</text>
         </g>
         <g font-family="Archivo, sans-serif" font-stretch="75%" font-size="12" fill="var(--grafite)">
-          <text x="584" y="139" text-anchor="end">Neumorfismo</text>
-          <text x="658" y="196" text-anchor="start">Neobrutalismo</text>
+          <text x="584" y="139" text-anchor="end">Neumorphism</text>
+          <text x="658" y="196" text-anchor="start">Neobrutalism</text>
           <text x="676" y="66" text-anchor="middle">Clay</text>
         </g>
       </g>
     </svg></div></div>
-    <p class="anot"><b>Fig. 0.3</b> Linha cheia: o padrão adotado por Apple, Google e Microsoft. Círculos tracejados: modas de comunidade que não viraram padrão de sistema. A altura é uma avaliação qualitativa.</p>
+    <p class="anot"><b>Fig. 0.3</b> Solid line: the default adopted by Apple, Google and Microsoft. Dashed circles: community fashions that never became a system default. Height is a qualitative judgment.</p>
   </div>
 </section>
 
 <section class="wrap g sec" id="linha" aria-labelledby="h-lin">
   <div class="m"><span class="num">0.4</span></div>
-  <div class="c"><h2 id="h-lin">Linha do tempo</h2><p class="anot" style="margin-top:10px">Anos em negrito com quadrado marcam viradas das grandes plataformas.</p></div>
+  <div class="c"><h2 id="h-lin">Timeline</h2><p class="anot" style="margin-top:10px">Bold years with a square mark turning points for the big platforms.</p></div>
   <div class="tl">
-    <div class="g"><span class="m y">1919</span><p class="c"><b>Bauhaus.</b> A escola alemã junta arte e indústria: geometria, cores primárias e função acima de tudo.</p></div>
-    <div class="g"><span class="m y">1950</span><p class="c"><b>Estilo Suíço.</b> Grade matemática e tipografia sem serifa no design gráfico. A raiz intelectual do flat.</p></div>
-    <div class="g"><span class="m y">1970</span><p class="c"><b>Manual do metrô de Nova York.</b> Vignelli e Noorda definem sinalização por regras escritas. É o modelo deste site.</p></div>
-    <div class="g k"><span class="m y">1973</span><p class="c"><b>Xerox Alto.</b> Janelas, ícones e mouse num computador de pesquisa. A interface gráfica nasce aqui.</p></div>
-    <div class="g"><span class="m y">1974</span><p class="c"><b>Teletexto.</b> Páginas numeradas na TV e quatro botões coloridos no controle remoto.</p></div>
-    <div class="g"><span class="m y">1981</span><p class="c"><b>Xerox Star e Memphis.</b> A primeira metáfora completa de escritório, com o ícone de hambúrguer de Norm Cox; em Milão, o grupo Memphis desafia o bom gosto.</p></div>
-    <div class="g k"><span class="m y">1984</span><p class="c"><b>Macintosh.</b> A interface gráfica chega ao público.</p></div>
-    <div class="g"><span class="m y">1987</span><p class="c"><b>HyperCard.</b> O usuário programa pilhas de cartões. Avô dos wikis e do no-code.</p></div>
-    <div class="g"><span class="m y">1995</span><p class="c"><b>Windows 95 e Microsoft Bob.</b> O botão Iniciar vence; a casa virtual fracassa e deixa a Comic Sans como herança.</p></div>
-    <div class="g"><span class="m y">2001</span><p class="c"><b>Aqua e iPod.</b> Gel translúcido no Mac OS X; uma roda que percorre milhares de músicas com um dedo.</p></div>
-    <div class="g k"><span class="m y">2007</span><p class="c"><b>iPhone.</b> Toque direto, deslize para desbloquear e skeumorfismo como pedagogia para quem nunca usou touch.</p></div>
-    <div class="g"><span class="m y">2009</span><p class="c"><b>Puxar para atualizar e cartões do webOS.</b> Dois gestos que viraram padrão em todos os celulares.</p></div>
-    <div class="g"><span class="m y">2010</span><p class="c"><b>Metro no Windows Phone 7.</b> Tipografia gigante, Live Tiles e nenhuma sombra. Surge o termo "padrões obscuros".</p></div>
-    <div class="g k"><span class="m y">2013</span><p class="c"><b>iOS 7.</b> A Apple abandona o skeumorfismo de uma vez. O flat vira padrão.</p></div>
-    <div class="g k"><span class="m y">2014</span><p class="c"><b>Material Design.</b> O Google devolve profundidade ao flat com papel, sombra e regras explícitas.</p></div>
-    <div class="g"><span class="m y">2016</span><p class="c"><b>Fontes variáveis e Figma.</b> A tipografia ganha eixos contínuos; o design vira multiplayer.</p></div>
-    <div class="g"><span class="m y">2017</span><p class="c"><b>Fluent.</b> A Microsoft traz luz, profundidade e materiais de volta ao Windows.</p></div>
-    <div class="g"><span class="m y">2019</span><p class="c"><b>Neumorfismo.</b> Viraliza no Dribbble e falha nos testes de contraste.</p></div>
-    <div class="g"><span class="m y">2020</span><p class="c"><b>macOS Big Sur.</b> Vidro fosco e cantos arredondados no desktop.</p></div>
-    <div class="g"><span class="m y">2021</span><p class="c"><b>Material You.</b> Cor dinâmica extraída do papel de parede. Neobrutalismo ganha força na web.</p></div>
-    <div class="g"><span class="m y">2022</span><p class="c"><b>Dynamic Island.</b> O recorte da câmera do iPhone vira espaço de interface.</p></div>
-    <div class="g"><span class="m y">2024</span><p class="c"><b>Chakra UI 3.</b> Reescrita sobre o Ark UI e máquinas de estado.</p></div>
-    <div class="g k"><span class="m y">2025</span><p class="c"><b>Liquid Glass e Material 3 Expressive.</b> Apple aposta no vidro; Google, em formas e movimento. Interface generativa chega ao Gemini.</p></div>
-    <div class="g"><span class="m y">2026</span><p class="c"><b>Mantine 9 e iOS 27.</b> Mantine passa a exigir React 19.2; a Apple adiciona controle de transparência ao Liquid Glass.</p></div>
+    <div class="g"><span class="m y">1919</span><p class="c"><b>Bauhaus.</b> The German school joins art and industry: geometry, primary colors and function above all.</p></div>
+    <div class="g"><span class="m y">1950</span><p class="c"><b>Swiss Style.</b> A mathematical grid and sans-serif type in graphic design. The intellectual root of flat.</p></div>
+    <div class="g"><span class="m y">1970</span><p class="c"><b>New York subway manual.</b> Vignelli and Noorda define signage through written rules. It is the model for this site.</p></div>
+    <div class="g k"><span class="m y">1973</span><p class="c"><b>Xerox Alto.</b> Windows, icons and a mouse on a research computer. The graphical interface is born here.</p></div>
+    <div class="g"><span class="m y">1974</span><p class="c"><b>Teletext.</b> Numbered pages on TV and four colored buttons on the remote.</p></div>
+    <div class="g"><span class="m y">1981</span><p class="c"><b>Xerox Star and Memphis.</b> The first complete office metaphor, with Norm Cox’s hamburger icon; in Milan, the Memphis group challenges good taste.</p></div>
+    <div class="g k"><span class="m y">1984</span><p class="c"><b>Macintosh.</b> The graphical interface reaches the public.</p></div>
+    <div class="g"><span class="m y">1987</span><p class="c"><b>HyperCard.</b> Users program stacks of cards. Grandparent of wikis and no-code.</p></div>
+    <div class="g"><span class="m y">1995</span><p class="c"><b>Windows 95 and Microsoft Bob.</b> The Start button wins; the virtual house flops and leaves Comic Sans as its legacy.</p></div>
+    <div class="g"><span class="m y">2001</span><p class="c"><b>Aqua and the iPod.</b> Translucent gel on Mac OS X; a wheel that scrolls through thousands of songs with one finger.</p></div>
+    <div class="g k"><span class="m y">2007</span><p class="c"><b>iPhone.</b> Direct touch, slide to unlock, and skeuomorphism as a teaching aid for people who had never used a touchscreen.</p></div>
+    <div class="g"><span class="m y">2009</span><p class="c"><b>Pull to refresh and webOS cards.</b> Two gestures that became standard on every phone.</p></div>
+    <div class="g"><span class="m y">2010</span><p class="c"><b>Metro on Windows Phone 7.</b> Huge type, Live Tiles and no shadows at all. The term “dark patterns” appears.</p></div>
+    <div class="g k"><span class="m y">2013</span><p class="c"><b>iOS 7.</b> Apple drops skeuomorphism in one go. Flat becomes the default.</p></div>
+    <div class="g k"><span class="m y">2014</span><p class="c"><b>Material Design.</b> Google gives depth back to flat with paper, shadow and explicit rules.</p></div>
+    <div class="g"><span class="m y">2016</span><p class="c"><b>Variable fonts and Figma.</b> Type gains continuous axes; design goes multiplayer.</p></div>
+    <div class="g"><span class="m y">2017</span><p class="c"><b>Fluent.</b> Microsoft brings light, depth and materials back to Windows.</p></div>
+    <div class="g"><span class="m y">2019</span><p class="c"><b>Neumorphism.</b> Goes viral on Dribbble and fails contrast tests.</p></div>
+    <div class="g"><span class="m y">2020</span><p class="c"><b>macOS Big Sur.</b> Frosted glass and rounded corners on the desktop.</p></div>
+    <div class="g"><span class="m y">2021</span><p class="c"><b>Material You.</b> Dynamic color pulled from the wallpaper. Neobrutalism gains ground on the web.</p></div>
+    <div class="g"><span class="m y">2022</span><p class="c"><b>Dynamic Island.</b> The iPhone’s camera cutout becomes interface space.</p></div>
+    <div class="g"><span class="m y">2024</span><p class="c"><b>Chakra UI 3.</b> Rewritten on top of Ark UI and state machines.</p></div>
+    <div class="g k"><span class="m y">2025</span><p class="c"><b>Liquid Glass and Material 3 Expressive.</b> Apple bets on glass; Google on shape and motion. Generative UI arrives in Gemini.</p></div>
+    <div class="g"><span class="m y">2026</span><p class="c"><b>Mantine 9 and iOS 27.</b> Mantine starts requiring React 19.2; Apple adds a transparency control to Liquid Glass.</p></div>
   </div>
 </section>
 
 <section class="wrap g sec" id="glossario" aria-labelledby="h-glo">
   <div class="m"><span class="num">0.5</span></div>
   <div class="c">
-    <h2 id="h-glo">Glossário</h2>
+    <h2 id="h-glo">Glossary</h2>
     <dl class="glos">
-      <div><dt>Affordance</dt><dd>A pista visual que diz o que um elemento faz. Um botão em relevo pede para ser apertado; um texto solto não.</dd></div>
-      <div><dt>Skeumorfismo</dt><dd>Imitar na tela a aparência de um objeto físico: couro, papel, metal.</dd></div>
-      <div><dt>Design token</dt><dd>Uma decisão de design com nome: <code>--color-primary</code>, <code>--radius-md</code>. Trocar o token muda o produto inteiro.</dd></div>
-      <div><dt>Design system</dt><dd>Tokens, componentes, regras de uso e documentação mantidos juntos. Material, Carbon e Fluent são exemplos.</dd></div>
-      <div><dt>Densidade</dt><dd>Quanta informação cabe por área. Celulares de consumo são esparsos; terminais financeiros e painéis de operação são densos.</dd></div>
-      <div><dt>Hierarquia visual</dt><dd>A ordem em que o olho percorre a tela, definida por tamanho, peso, cor e posição.</dd></div>
-      <div><dt>Lei de Fitts</dt><dd>O tempo para acertar um alvo cresce com a distância e diminui com o tamanho. Explica menus radiais e botões nos cantos.</dd></div>
-      <div><dt>Tinta de dados</dt><dd>Conceito de Edward Tufte: a fração da tinta de um gráfico que representa dados. Quanto maior, melhor.</dd></div>
-      <div><dt>Interface diegética</dt><dd>Informação que existe dentro do mundo representado, como uma barra de vida desenhada no corpo do personagem.</dd></div>
-      <div><dt>Interface generativa</dt><dd>Tela montada por IA no momento da pergunta, em vez de desenhada uma vez e reutilizada.</dd></div>
-      <div><dt>WCAG</dt><dd>Diretrizes de acessibilidade da web. Exigem contraste mínimo de 4,5:1 para texto comum.</dd></div>
-      <div><dt>Fonte variável</dt><dd>Um único arquivo de fonte com eixos contínuos, como peso e largura. Este site inteiro usa uma só.</dd></div>
+      <div><dt>Affordance</dt><dd>The visual cue that tells you what an element does. A raised button asks to be pressed; loose text does not.</dd></div>
+      <div><dt>Skeuomorphism</dt><dd>Imitating the look of a physical object on screen: leather, paper, metal.</dd></div>
+      <div><dt>Design token</dt><dd>A design decision with a name: <code>--color-primary</code>, <code>--radius-md</code>. Change the token and the whole product changes.</dd></div>
+      <div><dt>Design system</dt><dd>Tokens, components, usage rules and documentation kept together. Material, Carbon and Fluent are examples.</dd></div>
+      <div><dt>Density</dt><dd>How much information fits per area. Consumer phones are sparse; trading terminals and operations dashboards are dense.</dd></div>
+      <div><dt>Visual hierarchy</dt><dd>The order in which the eye travels across the screen, set by size, weight, color and position.</dd></div>
+      <div><dt>Fitts’s law</dt><dd>The time to hit a target grows with distance and shrinks with size. It explains pie menus and buttons in corners.</dd></div>
+      <div><dt>Data-ink</dt><dd>Edward Tufte’s idea: the share of a chart’s ink that represents data. The higher, the better.</dd></div>
+      <div><dt>Diegetic interface</dt><dd>Information that exists inside the depicted world, like a health bar drawn on a character’s body.</dd></div>
+      <div><dt>Generative interface</dt><dd>A screen assembled by AI at the moment of the question, instead of designed once and reused.</dd></div>
+      <div><dt>WCAG</dt><dd>The web accessibility guidelines. They require a minimum contrast of 4.5:1 for body text.</dd></div>
+      <div><dt>Variable font</dt><dd>A single font file with continuous axes, such as weight and width. This whole site uses just one.</dd></div>
     </dl>
   </div>
 </section>
@@ -450,31 +450,31 @@ code{font-family:var(--f);font-stretch:72%;font-weight:600;font-size:.95em;backg
   var STARS = '';
   [[8,14],[18,70],[30,16],[62,12],[80,84],[88,26],[93,78],[5,46]].forEach(function (p) { STARS += '<i class="st" style="left:' + p[0] + '%;top:' + p[1] + '%"></i>'; });
   var S = [
-    ['bauhaus', 'Bauhaus', '1919', 'Geometria pura e cores primárias.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i><i class="d4"></i>'],
-    ['suico', 'Estilo Suíço', '1950', 'Grade, sem serifa e assimetria.', '<i class="d2">Manual de normas<br>Edição de 2026</i>'],
-    ['memphis', 'Memphis', '1981', 'Padrões, rabiscos e cor sem culpa.', '<i class="d1"><svg viewBox="0 0 120 24"><path d="M3 12 Q 13 0 23 12 T 43 12 T 63 12 T 83 12 T 103 12 T 117 12" fill="none" stroke="#00B3A6" stroke-width="6" stroke-linecap="round"/></svg></i><i class="d2"></i><i class="d3"></i><i class="d4"><svg viewBox="0 0 120 24"><path d="M3 20 L15 4 L27 20 L39 4 L51 20 L63 4 L75 20 L87 4 L99 20 L111 4" fill="none" stroke="#111" stroke-width="4"/></svg></i>'],
-    ['cyber', 'Cyberpunk', '1982', 'Neon, falha e cantos de HUD.', '<i class="d0"></i><i class="d1"></i><i class="d2"></i><i class="d3"></i><i class="d4"></i><i class="d5">SYS://ATLAS 2.0.26</i>'],
-    ['pixel', 'Pixel, 8 bits', '1985', 'Cada ponto é um quadrado visível.', STARS + '<i class="d1">PRESS START</i>'],
-    ['y2k', 'Y2K cromado', '1998', 'Cromo, brilho e otimismo do milênio.', '<i class="sp" style="left:9%;top:14%;font-size:5cqi">✦</i><i class="sp" style="right:14%;top:12%;font-size:3cqi">✦</i><i class="sp" style="left:20%;bottom:12%;font-size:2.6cqi">✦</i><i class="d1"></i>'],
-    ['contraste', 'Alto contraste', '1999', 'Contraste máximo e foco sempre visível.', '<i class="d1">Contraste 17,2:1</i>'],
-    ['aqua', 'Aqua', '2001', 'Gel translúcido sobre listras finas.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i>'],
-    ['aero', 'Frutiger Aero', '2004', 'Céu, bolhas, vidro e grama.', '<i class="d1"></i><i class="b" style="left:7%;top:16%;width:8cqi;height:8cqi"></i><i class="b" style="left:16%;top:46%;width:4cqi;height:4cqi"></i><i class="b" style="right:9%;top:10%;width:11cqi;height:11cqi"></i><i class="b" style="right:20%;top:52%;width:5cqi;height:5cqi"></i>'],
-    ['skeu', 'Skeumorfismo', '2007', 'Couro, costura e relevo de verdade.', '<i class="d1"></i>'],
-    ['rabisco', 'Rabisco', '2008', 'Parece esboço, então convida a mudar.', '<i class="d1"><svg viewBox="0 0 200 20"><path d="M4 12 C 40 3, 70 19, 110 9 S 170 5, 196 12" fill="none" stroke="#1E5BC6" stroke-width="3" stroke-linecap="round"/></svg></i><i class="d2">← isto é um título</i>'],
-    ['flat', 'Flat, Metro', '2010', 'Cor chapada e tipografia leve.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i><i class="d4"></i>'],
-    ['vapor', 'Vaporwave', '2012', 'Pôr do sol, grade e nostalgia irônica.', '<i class="d1"></i><i class="d2"></i><i class="d3">a e s t h e t i c</i>'],
-    ['material', 'Material Design', '2014', 'Papel, sombra e botão flutuante.', '<i class="d1"><b></b><b></b><b></b></i><i class="d2">+</i>'],
-    ['brutweb', 'Brutalismo web', '2014', 'HTML cru, sem disfarce.', '<i class="d1"></i><i class="d2">Última atualização: 12/03/1999. Você é o visitante nº 004217.</i><i class="d3">[voltar]</i>'],
-    ['tipovar', 'Tipografia variável', '2016', 'Peso e largura contínuos numa fonte só.', '<i class="d1">Archivo, largura 62 a 125, peso 100 a 900</i>'],
-    ['neu', 'Neumorfismo', '2019', 'Relevo suave da cor do fundo.', '<i class="d1"></i><i class="d2"></i>'],
-    ['glass', 'Glassmorfismo', '2020', 'Painel fosco sobre cor viva.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i>'],
-    ['clay', 'Claymorfismo', '2021', 'Formas infladas como massinha.', '<i class="d1"></i><i class="d2"></i>'],
-    ['brutal', 'Neobrutalismo', '2021', 'Borda grossa e sombra dura.', '<i class="d1">novo!</i><i class="d2"></i>'],
-    ['aurora', 'Aurora', '2021', 'Luz difusa sobre fundo escuro.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i>'],
-    ['bento', 'Bento grid', '2022', 'Blocos de tamanhos diferentes numa grade.', '<i class="d1">25</i><i class="d2"></i><i class="d3">estilos, de 1919 a hoje</i>'],
-    ['neoskeu', 'Neo-skeumorfismo tátil', '2023', 'Botões que parecem hardware.', '<i class="d1"></i><i class="d2"></i>'],
-    ['blueprint', 'Blueprint', '2023', 'Traço fino sobre papel azul.', '<i class="d1"></i><i class="d2"></i><i class="d3">escala 1:1</i>'],
-    ['term', 'Terminal', 'de sempre', 'Só texto, cursor e teclado.', '<i class="d1">visitante@atlas:~/design-study</i>']
+    ['bauhaus', 'Bauhaus', '1919', 'Pure geometry and primary colors.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i><i class="d4"></i>'],
+    ['suico', 'Swiss Style', '1950', 'Grid, sans serif and asymmetry.', '<i class="d2">Standards manual<br>2026 edition</i>'],
+    ['memphis', 'Memphis', '1981', 'Patterns, squiggles and guilt-free color.', '<i class="d1"><svg viewBox="0 0 120 24"><path d="M3 12 Q 13 0 23 12 T 43 12 T 63 12 T 83 12 T 103 12 T 117 12" fill="none" stroke="#00B3A6" stroke-width="6" stroke-linecap="round"/></svg></i><i class="d2"></i><i class="d3"></i><i class="d4"><svg viewBox="0 0 120 24"><path d="M3 20 L15 4 L27 20 L39 4 L51 20 L63 4 L75 20 L87 4 L99 20 L111 4" fill="none" stroke="#111" stroke-width="4"/></svg></i>'],
+    ['cyber', 'Cyberpunk', '1982', 'Neon, glitches and HUD corners.', '<i class="d0"></i><i class="d1"></i><i class="d2"></i><i class="d3"></i><i class="d4"></i><i class="d5">SYS://ATLAS 2.0.26</i>'],
+    ['pixel', 'Pixel, 8-bit', '1985', 'Every dot is a visible square.', STARS + '<i class="d1">PRESS START</i>'],
+    ['y2k', 'Chrome Y2K', '1998', 'Chrome, shine and millennium optimism.', '<i class="sp" style="left:9%;top:14%;font-size:5cqi">✦</i><i class="sp" style="right:14%;top:12%;font-size:3cqi">✦</i><i class="sp" style="left:20%;bottom:12%;font-size:2.6cqi">✦</i><i class="d1"></i>'],
+    ['contraste', 'High contrast', '1999', 'Maximum contrast and focus always visible.', '<i class="d1">Contrast 17.2:1</i>'],
+    ['aqua', 'Aqua', '2001', 'Translucent gel over fine pinstripes.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i>'],
+    ['aero', 'Frutiger Aero', '2004', 'Sky, bubbles, glass and grass.', '<i class="d1"></i><i class="b" style="left:7%;top:16%;width:8cqi;height:8cqi"></i><i class="b" style="left:16%;top:46%;width:4cqi;height:4cqi"></i><i class="b" style="right:9%;top:10%;width:11cqi;height:11cqi"></i><i class="b" style="right:20%;top:52%;width:5cqi;height:5cqi"></i>'],
+    ['skeu', 'Skeuomorphism', '2007', 'Leather, stitching and real relief.', '<i class="d1"></i>'],
+    ['rabisco', 'Sketch', '2008', 'It looks like a draft, so it invites change.', '<i class="d1"><svg viewBox="0 0 200 20"><path d="M4 12 C 40 3, 70 19, 110 9 S 170 5, 196 12" fill="none" stroke="#1E5BC6" stroke-width="3" stroke-linecap="round"/></svg></i><i class="d2">← this is a heading</i>'],
+    ['flat', 'Flat, Metro', '2010', 'Solid color and light type.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i><i class="d4"></i>'],
+    ['vapor', 'Vaporwave', '2012', 'Sunset, grid and ironic nostalgia.', '<i class="d1"></i><i class="d2"></i><i class="d3">a e s t h e t i c</i>'],
+    ['material', 'Material Design', '2014', 'Paper, shadow and a floating button.', '<i class="d1"><b></b><b></b><b></b></i><i class="d2">+</i>'],
+    ['brutweb', 'Web brutalism', '2014', 'Raw HTML, no disguise.', '<i class="d1"></i><i class="d2">Last updated: 03/12/1999. You are visitor no. 004217.</i><i class="d3">[back]</i>'],
+    ['tipovar', 'Variable type', '2016', 'Continuous weight and width in a single font.', '<i class="d1">Archivo, width 62 to 125, weight 100 to 900</i>'],
+    ['neu', 'Neumorphism', '2019', 'Soft relief in the color of the background.', '<i class="d1"></i><i class="d2"></i>'],
+    ['glass', 'Glassmorphism', '2020', 'A frosted panel over vivid color.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i>'],
+    ['clay', 'Claymorphism', '2021', 'Puffy shapes like modeling clay.', '<i class="d1"></i><i class="d2"></i>'],
+    ['brutal', 'Neobrutalism', '2021', 'Thick borders and hard shadows.', '<i class="d1">new!</i><i class="d2"></i>'],
+    ['aurora', 'Aurora', '2021', 'Diffuse light over a dark background.', '<i class="d1"></i><i class="d2"></i><i class="d3"></i>'],
+    ['bento', 'Bento grid', '2022', 'Blocks of different sizes in one grid.', '<i class="d1">25</i><i class="d2"></i><i class="d3">styles, from 1919 to today</i>'],
+    ['neoskeu', 'Tactile neo-skeuomorphism', '2023', 'Buttons that feel like hardware.', '<i class="d1"></i><i class="d2"></i>'],
+    ['blueprint', 'Blueprint', '2023', 'Thin lines on blue paper.', '<i class="d1"></i><i class="d2"></i><i class="d3">scale 1:1</i>'],
+    ['term', 'Terminal', 'always', 'Just text, a cursor and a keyboard.', '<i class="d1">visitor@atlas:~/design-study</i>']
   ];
 
   var placa = A.$('placa'), deco = A.$('deco'), lt = A.$('lt'), regua = A.$('regua'), esc = A.$('esc');
@@ -500,7 +500,7 @@ code{font-family:var(--f);font-stretch:72%;font-weight:600;font-size:.95em;backg
     placa.className = 'placa s-' + s[0];
     deco.innerHTML = s[4];
     fn.textContent = s[1]; fy.textContent = s[2]; fd.textContent = s[3];
-    fl.href = 'estilos.html#' + s[0];
+    fl.href = 'styles.html#' + s[0];
     regua.value = i;
     regua.setAttribute('aria-valuetext', s[1] + ', ' + s[2]);
   }
@@ -510,7 +510,7 @@ code{font-family:var(--f);font-stretch:72%;font-weight:600;font-size:.95em;backg
   function setPlay(on) {
     playing = on; clearInterval(timer);
     if (on) timer = setInterval(tick, 2600);
-    play.textContent = on ? 'Pausar' : 'Reproduzir';
+    play.textContent = on ? 'Pause' : 'Play';
   }
   play.addEventListener('click', function () { if (!playing) tick(); setPlay(!playing); });
   regua.addEventListener('input', function () { setPlay(false); show(+regua.value); });

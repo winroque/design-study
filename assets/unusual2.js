@@ -24,13 +24,13 @@
   /* ---------- Puxar para atualizar ---------- */
   (function () {
     var t = $('ptr'), list = $('ptrList'), spin = $('ptrSpin'), arrow = $('ptrA'), lab = $('ptrL'), y0 = null, moved = false, busy = false, h = 0;
-    var items = [['#f97316', 'Ana', 'Bolo de laranja chegou ao cardápio'], ['#0ea5e9', 'Café Atlas', 'Amanhã abrimos às 7h'], ['#22c55e', 'Léo', 'Alguém viu meu guarda-chuva?'], ['#a855f7', 'Bia', 'Playlist da tarde: jazz']];
-    var pool = [['#ef4444', 'Rui', 'Dois espressos pelo preço de um'], ['#14b8a6', 'Mia', 'Senha do Wi-Fi mudou'], ['#eab308', 'Caio', 'Fila de 3 pessoas agora'], ['#6366f1', 'Nina', 'Chegou café do sul de Minas']], pi = 0;
+    var items = [['#f97316', 'Ana', 'Orange cake just joined the menu'], ['#0ea5e9', 'Atlas Coffee', 'Tomorrow we open at 7 AM'], ['#22c55e', 'Léo', 'Has anyone seen my umbrella?'], ['#a855f7', 'Bia', 'Afternoon playlist: jazz']];
+    var pool = [['#ef4444', 'Rui', 'Two espressos for the price of one'], ['#14b8a6', 'Mia', 'The Wi-Fi password changed'], ['#eab308', 'Caio', 'Line of 3 people right now'], ['#6366f1', 'Nina', 'Fresh coffee from southern Minas Gerais']], pi = 0;
     function draw() { list.innerHTML = items.slice(0, 5).map(function (it) { return '<div class="ptr-item"><i style="background:' + it[0] + '"></i><div><b>' + it[1] + '</b><br>' + it[2] + '</div></div>'; }).join(''); }
-    function setH(v) { h = v; spin.style.height = v + 'px'; arrow.style.transform = v > 30 ? 'rotate(180deg)' : 'none'; lab.textContent = v > 30 ? 'solte para atualizar' : 'puxe para atualizar'; }
+    function setH(v) { h = v; spin.style.height = v + 'px'; arrow.style.transform = v > 30 ? 'rotate(180deg)' : 'none'; lab.textContent = v > 30 ? 'release to refresh' : 'pull to refresh'; }
     function refresh() {
       if (busy) return; busy = true; spin.style.transition = 'height .2s'; setH(32);
-      arrow.textContent = '⟳'; arrow.style.transform = 'none'; lab.textContent = 'atualizando…';
+      arrow.textContent = '⟳'; arrow.style.transform = 'none'; lab.textContent = 'refreshing…';
       if (!reduce) arrow.style.animation = 'spin .8s linear infinite';
       setTimeout(function () {
         items.unshift(pool[pi++ % pool.length]); draw();
@@ -48,9 +48,9 @@
 
   /* ---------- Roda do iPod ---------- */
   (function () {
-    var wheel = $('wheel'), center = $('wheelC'), L = $('ipodL'), items = ['Músicas', 'Álbuns', 'Artistas', 'Podcasts', 'Ajustes'], sel = 0, a0 = null, acc = 0, playing = null;
+    var wheel = $('wheel'), center = $('wheelC'), L = $('ipodL'), items = ['Songs', 'Albums', 'Artists', 'Podcasts', 'Settings'], sel = 0, a0 = null, acc = 0, playing = null;
     function draw() {
-      L.innerHTML = playing ? '<div style="padding:6px 5px;color:#222">▶ Tocando<br><b>' + playing + '</b></div>' :
+      L.innerHTML = playing ? '<div style="padding:6px 5px;color:#222">▶ Now playing<br><b>' + playing + '</b></div>' :
         (function () { var st = clamp(sel - 1, 0, items.length - 3); return items.slice(st, st + 3).map(function (t, j) { var i = st + j; return '<div style="padding:1px 5px;display:flex;justify-content:space-between;' + (i === sel ? 'background:#3a6ea5;color:#fff' : 'color:#222') + '">' + t + '<span>›</span></div>'; }).join(''); })();
       wheel.setAttribute('aria-valuenow', sel);
     }
@@ -69,11 +69,11 @@
 
   /* ---------- Cartas para deslizar ---------- */
   (function () {
-    var deck = $('swpDeck'), data = [['Comédia leve', '1h35 · nota 4,2', '#fde68a'], ['Documentário', '52 min · nota 4,6', '#bfdbfe'], ['Suspense', '2h10 · nota 3,9', '#fecaca'], ['Animação', '1h40 · nota 4,8', '#bbf7d0'], ['Drama', '2h05 · nota 4,1', '#e9d5ff']], i = 0, liked = 0, top = null;
-    function card(d) { return A.el('<div class="swc"><div style="position:absolute;left:0;right:0;top:0;height:58%;background:' + d[2] + '"></div><span class="lab y" style="left:10px;color:#16a34a;border-color:#16a34a;transform:rotate(-12deg)">QUERO</span><span class="lab n" style="right:10px;color:#e11d48;border-color:#e11d48;transform:rotate(12deg)">PASSA</span><b style="position:relative;font-size:12px;color:#111">' + d[0] + '</b><span style="position:relative;font-size:9px;color:#666">' + d[1] + '</span></div>'); }
+    var deck = $('swpDeck'), data = [['Light comedy', '1h35 · rated 4.2', '#fde68a'], ['Documentary', '52 min · rated 4.6', '#bfdbfe'], ['Thriller', '2h10 · rated 3.9', '#fecaca'], ['Animation', '1h40 · rated 4.8', '#bbf7d0'], ['Drama', '2h05 · rated 4.1', '#e9d5ff']], i = 0, liked = 0, top = null;
+    function card(d) { return A.el('<div class="swc"><div style="position:absolute;left:0;right:0;top:0;height:58%;background:' + d[2] + '"></div><span class="lab y" style="left:10px;color:#16a34a;border-color:#16a34a;transform:rotate(-12deg)">LIKE</span><span class="lab n" style="right:10px;color:#e11d48;border-color:#e11d48;transform:rotate(12deg)">PASS</span><b style="position:relative;font-size:12px;color:#111">' + d[0] + '</b><span style="position:relative;font-size:9px;color:#666">' + d[1] + '</span></div>'); }
     function render() {
       deck.innerHTML = '';
-      if (i >= data.length) { deck.appendChild(A.el('<div class="swc" style="align-items:center;justify-content:center;text-align:center;font-size:11px;color:#333;cursor:pointer">Acabou! Você quis ' + liked + ' de ' + data.length + '.<br><small style="color:#888">toque para recomeçar</small></div>')); deck.firstChild.addEventListener('click', function () { i = 0; liked = 0; render(); }); top = null; return; }
+      if (i >= data.length) { deck.appendChild(A.el('<div class="swc" style="align-items:center;justify-content:center;text-align:center;font-size:11px;color:#333;cursor:pointer">Done! You liked ' + liked + ' of ' + data.length + '.<br><small style="color:#888">tap to start over</small></div>')); deck.firstChild.addEventListener('click', function () { i = 0; liked = 0; render(); }); top = null; return; }
       if (data[i + 1]) { var b = card(data[i + 1]); b.style.transform = 'scale(.94) translateY(6px)'; deck.appendChild(b); }
       top = card(data[i]); deck.appendChild(top); bind(top);
     }
@@ -97,7 +97,7 @@
   /* ---------- Stories ---------- */
   (function () {
     var t = $('sty'), bg = $('styBg'), txt = $('styTxt'), bars = $('styBars');
-    var S = [['#f97316', '#ef4444', 'Novo no cardápio: cold brew de laranja'], ['#0ea5e9', '#6366f1', 'Sexta tem jazz ao vivo às 19h'], ['#22c55e', '#14b8a6', 'Traga seu copo e ganhe 10%'], ['#a855f7', '#ec4899', 'Obrigado por mais um ano!']], i = 0, p = 0;
+    var S = [['#f97316', '#ef4444', 'New on the menu: orange cold brew'], ['#0ea5e9', '#6366f1', 'Live jazz on Friday at 7 PM'], ['#22c55e', '#14b8a6', 'Bring your own cup and get 10% off'], ['#a855f7', '#ec4899', 'Thanks for another year!']], i = 0, p = 0;
     bars.innerHTML = S.map(function () { return '<div style="flex:1;height:2px;background:rgba(255,255,255,.4);border-radius:2px;overflow:hidden"><i style="display:block;height:100%;width:0;background:#fff"></i></div>'; }).join('');
     function draw() {
       bg.style.background = 'linear-gradient(160deg,' + S[i][0] + ',' + S[i][1] + ')'; txt.textContent = S[i][2];
@@ -130,20 +130,20 @@
   /* ---------- Menu hambúrguer ---------- */
   (function () {
     var b = $('hambB'), d = $('hambD');
-    function set(o) { b.classList.toggle('open', o); b.setAttribute('aria-expanded', o ? 'true' : 'false'); b.setAttribute('aria-label', o ? 'Fechar menu' : 'Abrir menu'); d.style.transform = o ? 'none' : 'translateX(-102%)'; }
+    function set(o) { b.classList.toggle('open', o); b.setAttribute('aria-expanded', o ? 'true' : 'false'); b.setAttribute('aria-label', o ? 'Close menu' : 'Open menu'); d.style.transform = o ? 'none' : 'translateX(-102%)'; }
     act(b, function () { set(!b.classList.contains('open')); });
     Array.prototype.forEach.call(d.children, function (it) { it.style.cursor = 'pointer'; it.addEventListener('click', function () { Array.prototype.forEach.call(d.children, function (x) { x.style.fontWeight = x === it ? '700' : '400'; }); setTimeout(function () { set(false); }, 250); }); });
   })();
 
   /* ---------- Cartões do webOS ---------- */
   (function () {
-    var row = $('wosRow'), msg = $('wosMsg'), apps = [['E-mail', '#2563eb'], ['Mapa', '#16a34a'], ['Música', '#db2777']], open = [];
+    var row = $('wosRow'), msg = $('wosMsg'), apps = [['E-mail', '#2563eb'], ['Maps', '#16a34a'], ['Music', '#db2777']], open = [];
     function render() {
       row.innerHTML = '';
-      if (!open.length) { msg.textContent = 'todos fechados · toque para reabrir'; return; }
-      msg.textContent = 'arraste um cartão para cima para fechar';
+      if (!open.length) { msg.textContent = 'all closed · tap to reopen'; return; }
+      msg.textContent = 'drag a card up to close it';
       open.forEach(function (a) {
-        var c = A.el('<div class="wcard" role="button" tabindex="0" aria-label="Cartão ' + a[0] + '"><b style="background:' + a[1] + '">' + a[0] + '</b><i></i><i style="flex:.6"></i></div>');
+        var c = A.el('<div class="wcard" role="button" tabindex="0" aria-label="Card ' + a[0] + '"><b style="background:' + a[1] + '">' + a[0] + '</b><i></i><i style="flex:.6"></i></div>');
         var y0 = null, dy = 0, big = false;
         c.addEventListener('pointerdown', function (e) { y0 = e.clientY; dy = 0; c.setPointerCapture(e.pointerId); c.style.transition = 'none'; });
         c.addEventListener('pointermove', function (e) { if (y0 === null) return; dy = Math.min(0, (e.clientY - y0) / k(row)); c.style.transform = 'translateY(' + dy + 'px)'; c.style.opacity = 1 + dy / 120; });
@@ -164,7 +164,7 @@
 
   /* ---------- Cross Media Bar ---------- */
   (function () {
-    var cats = [['◐', 'Fotos', ['Viagem 2025', 'Aniversário', 'Receitas']], ['♫', 'Música', ['Jazz da tarde', 'Bossa nova', 'Lo-fi']], ['▶', 'Vídeo', ['Documentários', 'Filmes', 'Séries']], ['◆', 'Jogos', ['Corrida', 'Quebra-cabeça', 'Plataforma']], ['⚙', 'Ajustes', ['Tela', 'Som', 'Rede']]], ci = 1, ii = 0;
+    var cats = [['◐', 'Photos', ['Trip 2025', 'Birthday', 'Recipes']], ['♫', 'Music', ['Afternoon jazz', 'Bossa nova', 'Lo-fi']], ['▶', 'Video', ['Documentaries', 'Movies', 'Series']], ['◆', 'Games', ['Racing', 'Puzzle', 'Platformer']], ['⚙', 'Settings', ['Display', 'Sound', 'Network']]], ci = 1, ii = 0;
     var C = $('xmbCats'), I = $('xmbItems'), X = 52;
     $('xmbClock').textContent = hhmm();
     function draw() {
@@ -182,19 +182,19 @@
   (function () {
     var box = $('skelIn'), tm = null;
     var sk = '<div style="display:flex;gap:8px;align-items:center"><div class="sk" style="width:30px;height:30px;border-radius:50%"></div><div style="flex:1;display:flex;flex-direction:column;gap:5px"><div class="sk" style="height:8px;width:60%"></div><div class="sk" style="height:6px;width:40%"></div></div></div><div class="sk" style="height:56px;margin-top:10px;border-radius:8px"></div><div class="sk" style="height:7px;width:80%;margin-top:8px"></div>';
-    var real = '<div style="display:flex;gap:8px;align-items:center"><div style="width:30px;height:30px;border-radius:50%;background:#7c2d12;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">☕</div><div><div style="font-size:11px;font-weight:700;color:#111">Café Atlas</div><div style="font-size:8px;color:#16a34a">Aberto agora · 300 m</div></div></div><div style="height:56px;margin-top:10px;border-radius:8px;background:linear-gradient(135deg,#fcd34d,#f97316);display:flex;align-items:flex-end;padding:6px;font-size:9px;color:#fff;font-weight:700">Cold brew de laranja</div><div style="font-size:8px;color:#555;margin-top:8px">Nota 4,8 · 312 avaliações</div>';
+    var real = '<div style="display:flex;gap:8px;align-items:center"><div style="width:30px;height:30px;border-radius:50%;background:#7c2d12;color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px">☕</div><div><div style="font-size:11px;font-weight:700;color:#111">Atlas Coffee</div><div style="font-size:8px;color:#16a34a">Open now · 300 m</div></div></div><div style="height:56px;margin-top:10px;border-radius:8px;background:linear-gradient(135deg,#fcd34d,#f97316);display:flex;align-items:flex-end;padding:6px;font-size:9px;color:#fff;font-weight:700">Orange cold brew</div><div style="font-size:8px;color:#555;margin-top:8px">Rated 4.8 · 312 reviews</div>';
     function load() { clearTimeout(tm); box.innerHTML = sk; tm = setTimeout(function () { box.innerHTML = real; if (!reduce && box.animate) box.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 250 }); }, 1200); }
     act($('skel'), load); load();
   })();
 
   /* ---------- Cursores multiplayer ---------- */
   (function () {
-    var t = $('mcur'), c1 = $('mc1'), c2 = $('mc2'), notes = $('mcurNotes'), msgs = ['boa ideia!', 'e se for azul?', 'aprovado', 'revisar aqui'], ni = 0;
+    var t = $('mcur'), c1 = $('mc1'), c2 = $('mc2'), notes = $('mcurNotes'), msgs = ['nice idea!', 'what if it were blue?', 'approved', 'review this'], ni = 0;
     function mv(c) { c.style.transform = 'translate(' + Math.round(10 + Math.random() * 150) + 'px,' + Math.round(10 + Math.random() * 110) + 'px)'; }
     mv(c1); mv(c2);
     if (!reduce) { setInterval(function () { mv(c1); }, 1600); setInterval(function () { mv(c2); }, 2100); }
     t.addEventListener('click', function (e) {
-      var p = local(t, e), n = A.el('<div class="mnote" style="left:' + clamp(p.x - 15, 2, 166) + 'px;top:' + clamp(p.y - 12, 2, 132) + 'px">' + msgs[ni++ % msgs.length] + '<br><b>você</b></div>');
+      var p = local(t, e), n = A.el('<div class="mnote" style="left:' + clamp(p.x - 15, 2, 166) + 'px;top:' + clamp(p.y - 12, 2, 132) + 'px">' + msgs[ni++ % msgs.length] + '<br><b>you</b></div>');
       notes.appendChild(n); while (notes.children.length > 4) notes.removeChild(notes.firstChild);
     });
   })();
@@ -206,7 +206,7 @@
       var S = [
         ['70px', '20px', '999px', ''],
         ['150px', '24px', '999px', '<span style="color:#fb923c">◷ Timer</span><b style="font-variant-numeric:tabular-nums">' + Math.floor(sec / 60) + ':' + ('0' + sec % 60).slice(-2) + '</b>'],
-        ['176px', '58px', '24px', '<div style="display:flex;gap:6px;align-items:center"><span style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#f97316,#db2777);display:block"></span><div><b style="font-size:9px">Jazz da tarde</b><br><span style="font-size:8px;opacity:.7">Café Atlas</span></div></div><div class="bars"><i style="height:6px"></i><i style="height:12px;animation-delay:.1s"></i><i style="height:8px;animation-delay:.2s"></i><i style="height:11px;animation-delay:.3s"></i></div>'],
+        ['176px', '58px', '24px', '<div style="display:flex;gap:6px;align-items:center"><span style="width:28px;height:28px;border-radius:6px;background:linear-gradient(135deg,#f97316,#db2777);display:block"></span><div><b style="font-size:9px">Afternoon jazz</b><br><span style="font-size:8px;opacity:.7">Atlas Coffee</span></div></div><div class="bars"><i style="height:6px"></i><i style="height:12px;animation-delay:.1s"></i><i style="height:8px;animation-delay:.2s"></i><i style="height:11px;animation-delay:.3s"></i></div>'],
         ['150px', '24px', '999px', '<span style="color:#4ade80">● Ana</span><b style="font-variant-numeric:tabular-nums">0:' + ('0' + call).slice(-2) + '</b>']
       ][st];
       p.style.width = S[0]; p.style.height = S[1]; p.style.borderRadius = S[2]; p.innerHTML = S[3];
@@ -220,9 +220,9 @@
   (function () {
     var tip = $('dpTip');
     function say(t) { tip.textContent = t; tip.style.opacity = 1; }
-    $('dpY').addEventListener('click', function () { say('Botão enorme e colorido só para o "sim".'); });
-    act($('dpN'), function () { say('Confirmshaming: a recusa foi escrita para envergonhar.'); });
-    $('dpC').addEventListener('change', function () { say('Caixa pré-marcada: um consentimento que você não deu.'); });
+    $('dpY').addEventListener('click', function () { say('A huge, colorful button just for “yes”.'); });
+    act($('dpN'), function () { say('Confirmshaming: the refusal was written to shame you.'); });
+    $('dpC').addEventListener('change', function () { say('Pre-checked box: consent you never gave.'); });
   })();
 
   /* ---------- User Inyerface ---------- */
@@ -230,9 +230,9 @@
     var t = $('iny'), b = $('inyB'), msg = $('inyMsg'), tries = 0;
     function flee() {
       tries++;
-      if (tries >= 5) { msg.textContent = 'Tudo bem, você venceu. Pode clicar.'; return false; }
+      if (tries >= 5) { msg.textContent = 'Fine, you win. Go ahead and click.'; return false; }
       b.style.left = Math.round(10 + Math.random() * 120) + 'px'; b.style.top = Math.round(60 + Math.random() * 70) + 'px';
-      msg.textContent = ['Quase!', 'Ops.', 'Tente de novo.', 'Mais uma vez?'][tries - 1] || '';
+      msg.textContent = ['Almost!', 'Oops.', 'Try again.', 'One more time?'][tries - 1] || '';
       return true;
     }
     t.addEventListener('pointermove', function (e) {
@@ -241,9 +241,9 @@
       if (Math.hypot(p.x - bx, p.y - by) < 28) flee();
     });
     b.addEventListener('pointerdown', function (e) { if (tries < 5 && e.pointerType !== 'mouse') { e.preventDefault(); flee(); } });
-    b.addEventListener('click', function () { if (tries >= 5) msg.textContent = 'Conta criada. Ou não.'; });
-    $('inyF').addEventListener('focus', function () { msg.textContent = 'O texto de exemplo é de verdade. Apague você.'; });
-    $('inyC').addEventListener('change', function () { msg.textContent = 'Marcado quer dizer que você NÃO aceita.'; });
+    b.addEventListener('click', function () { if (tries >= 5) msg.textContent = 'Account created. Or not.'; });
+    $('inyF').addEventListener('focus', function () { msg.textContent = 'The example text is real. Delete it yourself.'; });
+    $('inyC').addEventListener('change', function () { msg.textContent = 'Checked means you do NOT accept.'; });
   })();
 
   /* ---------- Páginas pessoais dos anos 90 ---------- */
@@ -271,7 +271,7 @@
 
   /* ---------- Rolagem sequestrada ---------- */
   (function () {
-    var t = $('sjk'), row = $('sjkRow'), bar = $('sjkBar'), P = [['Rápido.', 'processador novo', '#111'], ['Leve.', '1,2 kg', '#1e3a8a'], ['Bonito.', 'alumínio reciclado', '#7c2d12'], ['Caro.', 'a partir de muito', '#14532d']], i = 0, lock = false, acc = 0;
+    var t = $('sjk'), row = $('sjkRow'), bar = $('sjkBar'), P = [['Fast.', 'new processor', '#111'], ['Light.', '1.2 kg', '#1e3a8a'], ['Beautiful.', 'recycled aluminum', '#7c2d12'], ['Expensive.', 'starting at a lot', '#14532d']], i = 0, lock = false, acc = 0;
     row.innerHTML = P.map(function (p) { return '<div class="sjp" style="background:' + p[2] + '"><b>' + p[0] + '</b><span>' + p[1] + '</span></div>'; }).join('');
     function go(n) { i = clamp(n, 0, P.length - 1); row.style.transform = 'translateX(' + (-100 * i) + '%)'; bar.style.width = ((i + 1) / P.length * 100) + '%'; }
     t.addEventListener('wheel', function (e) {

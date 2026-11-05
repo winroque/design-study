@@ -1,10 +1,10 @@
 /* Atlas de Design — casca "manual de normas": cabeçalho, papel (Impresso/Planta), modo Construção e colofão. */
 (function () {
   var CAP = [
-    ['estilos.html', '1', 'Estilos'],
-    ['sistemas.html', '2', 'Sistemas'],
-    ['incomuns.html', '3', 'Incomuns'],
-    ['comparar.html', '4', 'Comparar'],
+    ['styles.html', '1', 'Styles'],
+    ['systems.html', '2', 'Systems'],
+    ['unusual.html', '3', 'Unusual'],
+    ['compare.html', '4', 'Compare'],
     ['labs/mantine.html', '5.1', 'Mantine'],
     ['labs/carbon.html', '5.2', 'Carbon']
   ];
@@ -51,7 +51,7 @@
       var st = cs.fontStretch, map = { 'ultra-condensed': 50, 'extra-condensed': 62.5, condensed: 75, 'semi-condensed': 87.5, normal: 100, 'semi-expanded': 112.5, expanded: 125, 'extra-expanded': 150 };
       var w = map[st] !== undefined ? map[st] : Math.round(parseFloat(st));
       var lh = cs.lineHeight === 'normal' ? '' : '/' + Math.round(parseFloat(cs.lineHeight));
-      e.setAttribute('data-cota', (kind || e.tagName.toLowerCase()) + ', ' + Math.round(parseFloat(cs.fontSize)) + lh + ' px, peso ' + cs.fontWeight + ', largura ' + w + '. ' + dim);
+      e.setAttribute('data-cota', (kind || e.tagName.toLowerCase()) + ', ' + Math.round(parseFloat(cs.fontSize)) + lh + ' px, weight ' + cs.fontWeight + ', width ' + w + '. ' + dim);
     }
   };
 
@@ -65,11 +65,11 @@
       }).join('');
       top.className = 'mb';
       top.innerHTML = '<div class="wrap mb-in">' +
-        '<a class="marca" href="' + HOME + '" data-spec="marca" aria-label="Atlas, página inicial">Atlas<span class="pt">.</span></a>' +
-        '<nav class="nav" aria-label="Capítulos do atlas">' + links + '</nav>' +
+        '<a class="marca" href="' + HOME + '" data-spec="marca" aria-label="Atlas, home">Atlas<span class="pt">.</span></a>' +
+        '<nav class="nav" aria-label="Atlas chapters">' + links + '</nav>' +
         '<div class="ctrl">' +
-          '<button type="button" class="bt" id="obraBtn" aria-pressed="false" aria-label="Mostrar construção da página"><svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1v12M5 1v12M9 1v12M13 1v12M1 4.5h12M1 9.5h12"/></svg><span class="tx">Construção</span></button>' +
-          '<div class="seg" role="group" aria-label="Papel"><button type="button" class="bt" data-p="claro">Impresso</button><button type="button" class="bt" data-p="escuro">Planta</button></div>' +
+          '<button type="button" class="bt" id="obraBtn" aria-pressed="false" aria-label="Show page construction"><svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1v12M5 1v12M9 1v12M13 1v12M1 4.5h12M1 9.5h12"/></svg><span class="tx">Construction</span></button>' +
+          '<div class="seg" role="group" aria-label="Paper"><button type="button" class="bt" data-p="claro">Print</button><button type="button" class="bt" data-p="escuro">Blueprint</button></div>' +
         '</div></div>';
 
       var segs = top.querySelectorAll('.seg .bt');
@@ -98,11 +98,11 @@
     CAP.forEach(function (p) { if (p[0] === here) capN = p[1]; });
     if (capN) {
       var hero = document.querySelector('main .hero .eyebrow');
-      if (hero) hero.textContent = 'Capítulo ' + capN;
+      if (hero) hero.textContent = 'Chapter ' + capN;
       var secs = document.querySelectorAll('main.wrap > section:not(.hero)');
       for (var k = 0; k < secs.length; k++) {
         var num = capN + '.' + (k + 1), eb = secs[k].querySelector('.sec-head .eyebrow');
-        if (eb) eb.innerHTML = '<b>' + num + '</b>' + (/^Grupo \d+$/.test(eb.textContent.trim()) ? '' : eb.innerHTML);
+        if (eb) eb.innerHTML = '<b>' + num + '</b>' + (/^(Grupo|Group) \d+$/.test(eb.textContent.trim()) ? '' : eb.innerHTML);
         else {
           var h2 = secs[k].querySelector('h2');
           if (h2) h2.insertAdjacentHTML('beforebegin', '<span class="eyebrow"><b>' + num + '</b></span>');
@@ -113,17 +113,17 @@
     var foot = document.getElementById('foot');
     if (foot) {
       foot.className = 'wrap g colofao';
-      foot.innerHTML = '<div class="m"><span class="anot">Colofão</span></div><div class="c">' +
-        '<h2>Como este manual foi feito</h2>' +
-        '<p>Composto inteiramente em Archivo, uma família variável. A largura indica o papel do texto: larga nos títulos, normal na leitura e condensada nas anotações. Grade de doze colunas com 24 px de calha e linha de base de 8 px. Ligue a Construção no topo para ver a grade sobre a página.</p>' +
+      foot.innerHTML = '<div class="m"><span class="anot">Colophon</span></div><div class="c">' +
+        '<h2>How this manual was made</h2>' +
+        '<p>Set entirely in Archivo, a single variable family. Width tells you what a piece of text is doing: wide for headings, normal for reading, condensed for notes. Twelve-column grid with 24 px gutters and an 8 px baseline. Turn on Construction at the top to see the grid over the page.</p>' +
         '<div class="amostras">' +
-          '<div><b style="background:#F7F7F4"></b><span>Papel<br>#F7F7F4</span></div>' +
-          '<div><b style="background:#000"></b><span>Tinta<br>#000000</span></div>' +
-          '<div><b style="background:#CF3A14"></b><span>Sinal<br>#CF3A14</span></div>' +
-          '<div><b style="background:#0F3D6E"></b><span>Planta<br>#0F3D6E</span></div>' +
-          '<div><b style="background:#FFD24A"></b><span>Marcador<br>#FFD24A</span></div>' +
+          '<div><b style="background:#F7F7F4"></b><span>Paper<br>#F7F7F4</span></div>' +
+          '<div><b style="background:#000"></b><span>Ink<br>#000000</span></div>' +
+          '<div><b style="background:#CF3A14"></b><span>Signal<br>#CF3A14</span></div>' +
+          '<div><b style="background:#0F3D6E"></b><span>Blueprint<br>#0F3D6E</span></div>' +
+          '<div><b style="background:#FFD24A"></b><span>Marker<br>#FFD24A</span></div>' +
         '</div>' +
-        '<p class="anot">As amostras recriam cada escola em HTML e CSS próprios; os laboratórios usam Mantine e Carbon reais. Pontuações e o gráfico do pêndulo são avaliações qualitativas, com datas conferidas até novembro de 2026. Código no <a href="https://github.com/winroque/design-study">GitHub</a>.</p>' +
+        '<p class="anot">The specimens rebuild each school in their own HTML and CSS; the labs run the real Mantine and Carbon. Scores and the pendulum chart are qualitative judgments, with dates checked through November 2026. Code on <a href="https://github.com/winroque/design-study">GitHub</a>.</p>' +
         '</div>';
     }
   });

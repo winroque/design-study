@@ -1,38 +1,38 @@
-# Atlas de Design
+# Atlas
 
-Atlas. Página de estudo de design de interface: um atlas interativo das filosofias, estilos e design systems, do Bauhaus ao Liquid Glass. O próprio site é composto como um manual de normas gráficas, com papel Impresso e Planta e um modo Construção que mostra a grade. Site estático, sem etapa de build, pronto para o GitHub Pages.
+A study site for interface design: an interactive atlas of design philosophies, styles and design systems, from the Bauhaus to Liquid Glass. The site itself is set as a graphic standards manual, with Print and Blueprint papers and a Construction mode that shows the grid. Static site, no build step, ready for GitHub Pages.
 
-## Páginas
+## Pages
 
-| Página | O que tem |
+| Page | What it has |
 |---|---|
-| `index.html` | Capa que percorre as 25 escolas, capítulos, os três níveis, gráfico do pêndulo, linha do tempo e glossário |
-| `estilos.html` | 25 escolas com a mesma ficha de pedido interativa, sinais para reconhecer e receita em CSS |
-| `sistemas.html` | A mesma tela de pedidos em 10 design systems atuais |
-| `incomuns.html` | 42 interfaces experimentais, gestos, inovações que viraram padrão e designs estranhos, todas interativas |
-| `comparar.html` | Matriz de seis eixos (filtrável e ordenável), bibliotecas React lado a lado e 19 cenários de decisão |
-| `labs/mantine.html` | Mantine 9.7.5 real: tema ao vivo, painel de pedidos, formulário e galeria |
-| `labs/carbon.html` | Carbon 1.120 real: quatro temas, densidade da tabela, seleção em lote e UI Shell |
+| `index.html` | A cover that cycles through the 25 schools, chapters, the three levels, the pendulum chart, a timeline and a glossary |
+| `styles.html` | 25 schools with the same interactive order card, the signs that give each away and the CSS recipe |
+| `systems.html` | The same orders screen in 10 current design systems |
+| `unusual.html` | 42 experimental interfaces, gestures, innovations that became standard and strange designs, all interactive |
+| `compare.html` | A six-axis matrix (filterable and sortable), React libraries side by side and 19 decision scenarios |
+| `labs/mantine.html` | The real Mantine 9.7.5: live theme, orders panel, form and gallery |
+| `labs/carbon.html` | The real Carbon 1.120: four themes, table density, batch selection and the UI Shell |
 
-As galerias recriam a aparência de cada escola em HTML e CSS próprios. Os laboratórios usam os componentes reais, empacotados em `vendor/` a partir dos design systems "Mantine" e "Carbon" do Claude Design. Licenças e origem em [`vendor/README.md`](vendor/README.md).
+The galleries rebuild the look of each school in their own HTML and CSS. The labs use the real components, bundled in `vendor/` from the "Mantine" and "Carbon" design systems in Claude Design. Licenses and sources in [`vendor/README.md`](vendor/README.md).
 
-## Rodar localmente
+## Run locally
 
 ```bash
 python3 -m http.server 8000
-# abra http://localhost:8000
+# open http://localhost:8000
 ```
 
-## Publicar no GitHub Pages
+## Publish on GitHub Pages
 
-Em **Settings → Pages**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`. O arquivo `.nojekyll` faz o Pages servir os arquivos como estão. O endereço fica em `https://winroque.github.io/design-study/`.
+In **Settings → Pages**, choose **Deploy from a branch**, branch `main`, folder `/ (root)`. The `.nojekyll` file makes Pages serve the files as they are. The site lives at `https://winroque.github.io/design-study/`.
 
-## Estrutura
+## Structure
 
 ```
-assets/      casca do manual (manual.css, manual.js), camada das galerias (atlas.css) e o script de cada galeria
-labs/        laboratórios com componentes reais
-vendor/      bundles de Mantine, Carbon e React, com tokens e fontes
+assets/      the manual shell (manual.css, manual.js), the gallery layer (atlas.css) and each gallery's script
+labs/        labs with real components
+vendor/      Mantine, Carbon and React bundles, with tokens and fonts
 ```
 
-Pontuações, eixos e o gráfico do pêndulo são avaliações qualitativas. Datas conferidas até novembro de 2026.
+Scores, axes and the pendulum chart are qualitative judgments. Dates checked through November 2026.

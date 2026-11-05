@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Compare and choose · Atlas</title>
+<meta name="description" content="A six-axis matrix with 25 styles and 10 systems, React libraries side by side and a guide to which design to choose in each scenario.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/manual.css">
+<link rel="stylesheet" href="assets/atlas.css">
+<script src="assets/manual.js"></script>
+<style>
+.qs{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
+.qs div{border-top:3px solid var(--ink);padding-top:10px;display:flex;flex-direction:column;gap:6px}
+.qs .n{font-family:var(--f-mono);font-size:12px;color:var(--accent)}
+.qs p{font-size:14px;color:var(--muted)}
+.dgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.dcard{background:var(--surface);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.dcard .use{font-family:var(--f-display);font-size:21px;font-weight:600;line-height:1.15;color:var(--accent)}
+.dcard dl{grid-template-columns:70px 1fr}
+.dcard a{font-family:var(--f-mono);font-size:12px;color:var(--accent)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.facts>div{background:var(--surface);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:8px}
+.facts p{font-size:14px}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px}
+.rules div{background:var(--surface);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:6px}
+.rules p{font-size:14px;color:var(--muted)}
+.mx-tools{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.mx-tools span{font-family:var(--f-mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+th.sortable{cursor:pointer}
+th.sortable:hover{color:var(--ink)}
+th[aria-sort]{color:var(--accent)}
+code{font-family:var(--f-mono);font-size:12.5px;background:var(--soft);padding:0 4px}
+</style>
+</head>
+<body>
+<header id="top"></header>
+<main class="wrap">
+<section class="hero">
+  <span class="eyebrow">Analysis</span>
+  <h1>Compare and choose</h1>
+  <p class="lede">The matrix puts the schools and systems side by side on six axes. Then five questions and nineteen scenarios help you decide what to use on each project.</p>
+</section>
+
+<section id="matriz" aria-labelledby="mx">
+  <div class="sec-head"><span class="eyebrow">Side by side</span><h2 id="mx">Comparison on six axes</h2><p class="lede">A 1 to 5 scale, as a qualitative reading, not an official metric. “Accessibility” measures the default result, with no tuning by the team. Tap a column name to sort.</p></div>
+  <div class="mx-tools"><span>Show</span><div class="chips" id="mxF" role="group" aria-label="Filter the matrix"><button type="button" data-f="todos" aria-pressed="true">All</button><button type="button" data-f="estilo" aria-pressed="false">Styles</button><button type="button" data-f="plataforma" aria-pressed="false">Platforms</button><button type="button" data-f="biblioteca" aria-pressed="false">Libraries</button></div></div>
+  <div class="table-box">
+    <table>
+      <thead><tr id="mxH"><th scope="col">Name</th></tr></thead>
+      <tbody id="matrix"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="react" aria-labelledby="rx">
+  <div class="sec-head"><span class="eyebrow">For people who code in React</span><h2 id="rx">Mantine, Chakra and the alternatives</h2><p class="lede">Material, Liquid Glass and Fluent define how a platform should look. The libraries below are tools for building web apps, each with a different view of how much to decide for you.</p></div>
+  <div class="table-box">
+    <table class="wide">
+      <thead><tr><th>Library</th><th>How you use it</th><th>Styling</th><th>What comes with it</th><th>Default look</th><th>Best for</th></tr></thead>
+      <tbody>
+        <tr class="mark"><th scope="row">Mantine 9</th><td>npm packages, ready-made components</td><td>CSS Modules and CSS variables</td><td>Forms, dates, charts, notifications, scheduling, editor, ⌘K</td><td>Clean and neutral, blue</td><td>Internal tools, dashboards and full apps with a small team</td></tr>
+        <tr><th scope="row">Chakra UI 3</th><td>An npm package plus snippets copied into the project via CLI</td><td>Emotion with “recipes” inspired by Panda CSS</td><td>Composable components on Ark UI, semantic tokens</td><td>Neutral, configurable palette</td><td>Your own design system with an accessible base</td></tr>
+        <tr class="mark"><th scope="row">Carbon (React)</th><td>npm packages</td><td>Compiled Sass and CSS variables</td><td>Data table, UI Shell, four themes, icons and pictograms</td><td>Corporate, rectangular, gray and blue</td><td>Professional software and data-dense screens</td></tr>
+        <tr><th scope="row">MUI</th><td>npm packages</td><td>Emotion (CSS-in-JS)</td><td>MUI X with a data grid and date pickers, partly paid</td><td>Material Design</td><td>Google-looking apps and heavy data grids</td></tr>
+        <tr><th scope="row">shadcn/ui</th><td>Code copied into the project; you own it</td><td>Tailwind on Radix primitives</td><td>Components only; extras come from other libraries</td><td>Minimalist zinc and black</td><td>SaaS, and anyone who wants full control of the code</td></tr>
+        <tr><th scope="row">Ant Design</th><td>npm packages</td><td>Its own CSS-in-JS</td><td>Very complete tables, forms and filters</td><td>Corporate and dense</td><td>ERP, back office and admin panels</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="facts">
+    <div><h3>Mantine versus Chakra</h3><p>Mantine decides more for you and ships more ready-made pieces, which speeds up an internal product. Chakra decides less and is a better starting point for a design system with its own identity. Both are accessible and have dark mode.</p></div>
+    <div><h3>Mantine versus Carbon</h3><p>Both serve work screens well. Carbon is stricter and denser, with square corners and written content rules; Mantine is more flexible and easier to customize. Compare them in the labs <a href="labs/mantine.html">Mantine</a> e <a href="labs/carbon.html">Carbon</a>.</p></div>
+    <div><h3>Watch out for</h3><p>Mantine 9 requires React 19.2 and depends on one main maintainer. Chakra 3 broke a lot in the migration from version 2. Carbon’s look is strongly tied to IBM, with little room for a personality of your own.</p></div>
+  </div>
+</section>
+
+<section id="perguntas" aria-labelledby="pq">
+  <div class="sec-head"><span class="eyebrow">Decision</span><h2 id="pq">Five questions before choosing</h2></div>
+  <div class="qs">
+    <div><span class="n">Platform</span><h3>Where does the product run?</h3><p>In a native app, the platform’s system beats any personal taste. Users already know how to use those components.</p></div>
+    <div><span class="n">Pace</span><h3>How many decisions per minute?</h3><p>A few call for comfort and space. Many call for density and zero ornament, because every decorative pixel becomes repeated friction.</p></div>
+    <div><span class="n">User</span><h3>Beginner or expert?</h3><p>Beginners need obvious cues for what is clickable. Experts want shortcuts, tables and fewer clicks.</p></div>
+    <div><span class="n">Obligation</span><h3>Is accessibility required?</h3><p>Public services, healthcare and large companies require contrast and keyboard navigation. That rules out neumorphism and glass behind text.</p></div>
+    <div><span class="n">Lifespan</span><h3>How long does it need to last?</h3><p>Fashionable styles date in two or three years. Neutral systems and the Swiss style age well.</p></div>
+  </div>
+</section>
+
+<section id="cenarios" aria-labelledby="cn">
+  <div class="sec-head"><h2 id="cn">What to choose in each case</h2></div>
+  <div class="chips" id="filters" role="group" aria-label="Filter scenarios">
+    <button type="button" data-f="todos" aria-pressed="true">All</button>
+    <button type="button" data-f="celular" aria-pressed="false">Mobile</button>
+    <button type="button" data-f="web" aria-pressed="false">Web</button>
+    <button type="button" data-f="profissional" aria-pressed="false">Professional use</button>
+    <button type="button" data-f="marca" aria-pressed="false">Brand and marketing</button>
+  </div>
+  <div class="dgrid" id="decide"></div>
+</section>
+
+<section id="regras" aria-labelledby="rg">
+  <div class="sec-head"><span class="eyebrow">Whatever the style</span><h2 id="rg">Rules that apply to all</h2></div>
+  <div class="rules">
+    <div><h3>Color with a job</h3><p>Save strong color for the main action and for states (success, warning, error). If everything is colorful, nothing stands out.</p></div>
+    <div><h3>Minimum contrast 4.5:1</h3><p>The WCAG minimum for body text. Glass, neumorphism and light gray on white often fail here.</p></div>
+    <div><h3>Touch targets of 44 to 48 px</h3><p>Apple recommends 44 pt and Google 48 dp. That is why mobile systems have big corners and tall buttons.</p></div>
+    <div><h3>Consistency beats style</h3><p>A mediocre system applied rigorously works better than a beautiful style applied halfway.</p></div>
+  </div>
+</section>
+</main>
+<footer id="foot"></footer>
+<script src="assets/compare.js"></script>
+</body>
+</html>
