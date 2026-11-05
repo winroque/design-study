@@ -4,8 +4,8 @@
    Uma única família variável (Archivo) e a largura codifica o papel do texto:
    larga para títulos, normal para leitura, condensada para cotas e anotações. */
 :root{
-  --papel:#F7F7F4; --tinta:#000000; --grafite:#5E5E5A; --fio:#C9C9C4; --sinal:#D41F16;
-  --cota:#D41F16; --veu:rgba(212,31,22,.06); --malha:none; --placa-borda:#000000;
+  --papel:#F7F7F4; --tinta:#000000; --grafite:#5E5E5A; --fio:#C9C9C4; --sinal:#CF3A14;
+  --cota:#CF3A14; --veu:rgba(207,58,20,.06); --malha:none; --placa-borda:#000000;
   --f:"Archivo","Helvetica Neue",Arial,sans-serif;
   --max:1240px; --gut:24px; --pad:max(16px,env(safe-area-inset-left,0px));
   color-scheme:light;
@@ -46,7 +46,8 @@ h3{font-size:21px;line-height:1.2;font-stretch:104%;font-weight:650}
 /* Cabeçalho do manual */
 .mb{position:sticky;top:0;z-index:60;background-color:var(--papel);background-image:var(--malha);background-attachment:fixed;border-bottom:1px solid var(--tinta);transition:background-color .35s}
 .mb-in{display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-areas:"marca nav ctrl";align-items:center;column-gap:28px;padding-block:12px}
-.marca{grid-area:marca;font-size:19px;font-stretch:125%;font-weight:800;letter-spacing:-.02em;text-decoration:none;white-space:nowrap}
+.marca{grid-area:marca;font-size:24px;line-height:1;font-stretch:125%;font-weight:800;letter-spacing:-.03em;text-decoration:none;white-space:nowrap}
+.marca .pt{color:var(--sinal)}
 .nav{grid-area:nav;display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;min-width:0}
 .nav::-webkit-scrollbar{display:none}
 .nav a{text-decoration:none;white-space:nowrap;font-size:15px;font-weight:500;padding-block:4px;border-bottom:3px solid transparent;display:inline-flex;gap:6px;align-items:baseline}
@@ -99,7 +100,7 @@ main{padding-bottom:40px}
   .m,.c{grid-column:1/-1}
   .obra i:nth-child(n+5){display:none}
   .mb-in{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"marca ctrl" "nav nav";row-gap:8px}
-  .marca{font-stretch:108%;font-size:18px}
+  .marca{font-size:22px}
   .nav{gap:16px}
   .bt .tx{display:none}
   .sec,.colofao{margin-top:80px}

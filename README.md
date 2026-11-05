@@ -1,12 +1,12 @@
 # Atlas de Design
 
-Página de estudo de design de interface: um atlas interativo das filosofias, estilos e design systems, do estilo suíço ao Liquid Glass. Site estático, sem etapa de build, pronto para o GitHub Pages.
+Atlas. Página de estudo de design de interface: um atlas interativo das filosofias, estilos e design systems, do Bauhaus ao Liquid Glass. O próprio site é composto como um manual de normas gráficas, com papel Impresso e Planta e um modo Construção que mostra a grade. Site estático, sem etapa de build, pronto para o GitHub Pages.
 
 ## Páginas
 
 | Página | O que tem |
 |---|---|
-| `index.html` | Roteiro, os três níveis (filosofia, estilo, design system), gráfico do pêndulo, linha do tempo e glossário |
+| `index.html` | Capa que percorre as 25 escolas, capítulos, os três níveis, gráfico do pêndulo, linha do tempo e glossário |
 | `estilos.html` | 25 escolas com a mesma ficha de pedido interativa, sinais para reconhecer e receita em CSS |
 | `sistemas.html` | A mesma tela de pedidos em 10 design systems atuais |
 | `incomuns.html` | 42 interfaces experimentais, gestos, inovações que viraram padrão e designs estranhos, todas interativas |
@@ -30,7 +30,7 @@ Em **Settings → Pages**, escolha **Deploy from a branch**, branch `main`, past
 ## Estrutura
 
 ```
-assets/      casca compartilhada (atlas.css, atlas.js) e o script de cada galeria
+assets/      casca do manual (manual.css, manual.js), camada das galerias (atlas.css) e o script de cada galeria
 labs/        laboratórios com componentes reais
 vendor/      bundles de Mantine, Carbon e React, com tokens e fontes
 ```

@@ -8,7 +8,7 @@
     ['labs/mantine.html', '5.1', 'Mantine'],
     ['labs/carbon.html', '5.2', 'Carbon']
   ];
-  var HOME = 'previa.html';
+  var HOME = 'index.html';
 
   var A = (window.Atlas = window.Atlas || {});
   A.reduce = false;
@@ -16,6 +16,12 @@
   A.esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;'); };
   A.el = function (html) { var t = document.createElement('template'); t.innerHTML = html.trim(); return t.content.firstElementChild; };
   A.$ = function (id) { return document.getElementById(id); };
+  A.act = function (node, fn) {
+    node.addEventListener('click', fn);
+    if (node.tagName !== 'BUTTON' && node.tagName !== 'INPUT') {
+      node.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); fn(e); } });
+    }
+  };
   A.store = {
     get: function (k, d) { try { var v = localStorage.getItem('atlas-' + k); return v === null ? d : JSON.parse(v); } catch (e) { return d; } },
     set: function (k, v) { try { localStorage.setItem('atlas-' + k, JSON.stringify(v)); } catch (e) {} }
@@ -59,7 +65,7 @@
       }).join('');
       top.className = 'mb';
       top.innerHTML = '<div class="wrap mb-in">' +
-        '<a class="marca" href="' + HOME + '" data-spec="marca">Atlas de Design</a>' +
+        '<a class="marca" href="' + HOME + '" data-spec="marca" aria-label="Atlas, página inicial">Atlas<span class="pt">.</span></a>' +
         '<nav class="nav" aria-label="Capítulos do atlas">' + links + '</nav>' +
         '<div class="ctrl">' +
           '<button type="button" class="bt" id="obraBtn" aria-pressed="false" aria-label="Mostrar construção da página"><svg viewBox="0 0 14 14" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M1 1v12M5 1v12M9 1v12M13 1v12M1 4.5h12M1 9.5h12"/></svg><span class="tx">Construção</span></button>' +
@@ -87,6 +93,23 @@
       window.addEventListener('resize', function () { clearTimeout(cotaTimer); cotaTimer = setTimeout(A.cotas, 150); });
     }
 
+    /* Páginas de capítulo: "Capítulo N" na abertura e seções numeradas N.1, N.2… */
+    var here = location.pathname.split('/').pop() || 'index.html', capN = null;
+    CAP.forEach(function (p) { if (p[0] === here) capN = p[1]; });
+    if (capN) {
+      var hero = document.querySelector('main .hero .eyebrow');
+      if (hero) hero.textContent = 'Capítulo ' + capN;
+      var secs = document.querySelectorAll('main.wrap > section:not(.hero)');
+      for (var k = 0; k < secs.length; k++) {
+        var num = capN + '.' + (k + 1), eb = secs[k].querySelector('.sec-head .eyebrow');
+        if (eb) eb.innerHTML = '<b>' + num + '</b>' + (/^Grupo \d+$/.test(eb.textContent.trim()) ? '' : eb.innerHTML);
+        else {
+          var h2 = secs[k].querySelector('h2');
+          if (h2) h2.insertAdjacentHTML('beforebegin', '<span class="eyebrow"><b>' + num + '</b></span>');
+        }
+      }
+    }
+
     var foot = document.getElementById('foot');
     if (foot) {
       foot.className = 'wrap g colofao';
@@ -96,7 +119,7 @@
         '<div class="amostras">' +
           '<div><b style="background:#F7F7F4"></b><span>Papel<br>#F7F7F4</span></div>' +
           '<div><b style="background:#000"></b><span>Tinta<br>#000000</span></div>' +
-          '<div><b style="background:#D41F16"></b><span>Sinal<br>#D41F16</span></div>' +
+          '<div><b style="background:#CF3A14"></b><span>Sinal<br>#CF3A14</span></div>' +
           '<div><b style="background:#0F3D6E"></b><span>Planta<br>#0F3D6E</span></div>' +
           '<div><b style="background:#FFD24A"></b><span>Marcador<br>#FFD24A</span></div>' +
         '</div>' +
